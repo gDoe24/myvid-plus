@@ -6,5 +6,6 @@
     GET Images
     GET Videos
     GET Watch Providers
+    GET Similar Movies
     SEARCH Movies
 */
