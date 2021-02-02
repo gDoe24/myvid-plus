@@ -3,23 +3,32 @@ import React, { Fragment } from 'react';
 function Featured(){
     return (
         <Fragment>
-        <section className="home-featured py-5 text-center container">
-            <div className="home-row row py-5">
-            
-                <div className="featured-pic col-lg-3 col-md-4 mx-5">
+        <section className="home-featured">
+                <div className="featured-pic mx-4">
                 </div>
-                <div className="featured-info col-lg-5 col-md-5">
-                    <h1 className="fw-light">Album example</h1>
-                    <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                <div className="featured-info mt-5 mx-4">
+                    <div className="fi-title-score">
+                        <h1 className="fw-dark" id="fi-title">Title</h1>
+                        <div className="fi-score"></div>
+                    </div>
+                    
+                    <div className="fi-btns my-3">
+                    <a href="#" className="btn btn-primary my-2 me-3">Play</a>
+                    <a href="#" className="btn btn-secondary my-2 ms-3">Watch Trailer</a>
+                    </div>
+                    <h3 className="mt-3 mb-1">Overview</h3>
+                    <p className="lead text-muted " id="fi-sum">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    </p>
                     <p>
-                    <a href="#" className="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" className="btn btn-secondary my-2">Secondary action</a>
                     </p>
                 </div>
-                <div className="featured-cd col-lg-3 col-md-3 ">
+                <div className="featured-cd mt-5 mx-4">
                     <h1 className="fw-dark">Director/Cast</h1>
                 </div>
-            </div>
         </section>
         </Fragment>
     )
