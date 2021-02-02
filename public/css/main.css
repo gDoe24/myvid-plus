@@ -29,3 +29,15 @@ i{
 .login{
     color:#DC97FF;
 }
+
+/* HOME FEATURED/CAROUSEL */
+.home-featured{
+    margin-top: 10vh;
+    height: 70vh;
+}
+.home-row{
+    height: 60vh;
+}
+.featured-pic{
+    background-color: red;
+}
