@@ -1,0 +1,31 @@
+body{
+    background-color: #160523;
+}
+
+/* NAVBAR */
+nav{
+    height: 10vh;
+}
+nav a{
+    color: white;
+}
+
+.home-search{
+    width: 400px;
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+.form-control::placeholder{
+    color:white;
+    opacity: 1;
+}
+.form-control:-ms-input-placeholder, .form-control::-ms-input-placeholder{
+    color: white;
+}
+i{
+    color:white;
+}
+.login{
+    color:#DC97FF;
+}
