@@ -23,7 +23,7 @@ nav a{
 .form-control:-ms-input-placeholder, .form-control::-ms-input-placeholder{
     color: white;
 }
-i{
+nav i{
     color:white;
 }
 .login{
@@ -33,7 +33,11 @@ i{
 /* HOME FEATURED/CAROUSEL */
 
 .home-featured{
-    background: linear-gradient(to right bottom, rgba(35, 36, 35, .7), rgba(77,77,77,.3));
+    background: white;
+    background: linear-gradient(to right bottom,
+        rgba(80, 80, 80, .7),
+        rgba(80, 80, 80, .3)
+        );
     backdrop-filter: blur(10rem);
     border-radius: 2rem;
     padding:2rem;
@@ -55,12 +59,12 @@ i{
     width: 30%;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    box-shadow: -4px 6px 20px 0 rgba(36, 36, 35, 0.2), 2px 6px 10px 0 rgba(36, 36, 35, 0.2);
 }
 .featured-info{
     height: 100%;
     width: 50%;
-    
+    font-family: 'Source Serif Pro', serif;
     border-radius: 2rem;
     padding: 1.2rem;
     display: flex;
@@ -79,12 +83,34 @@ i{
     margin-left: 3rem;
     border-radius: 50%;
 }
+.fi-play{
+    background: linear-gradient(to bottom,
+    #6818a5,
+    #8b2fc9);
+    color: white;
+    border-radius: .3rem;
+    box-shadow: -2px 2px 10px rgba(120, 120, 120, .2);
+}
+.bi-play-fill{
+    margin-right:5px;
+}
+.fi-trailer{
+    background: transparent;
+    color:white;
+    border:1px solid #8b2fc9;
+    border-radius: .3rem;
+    box-shadow: -2px 2px 10px rgba(120, 120, 120, .2);
+}
+.bi-film{
+    margin-right: 5px;
+}
 .featured-cd{
     width: 20%;
     height: 90%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
+    flex-direction: column;
 }
 @media (min-width: 1400px){
     .home-featured{
