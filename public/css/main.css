@@ -35,16 +35,16 @@ nav i{
 .home-featured{
     background: white;
     background: linear-gradient(to right bottom,
-        rgba(80, 80, 80, .7),
+        rgba(80, 80, 80, .5),
         rgba(80, 80, 80, .3)
         );
     backdrop-filter: blur(10rem);
     border-radius: 2rem;
     padding:2rem;
-    margin-top: 15vh;
+    margin-top: 12vh;
     margin-bottom: 5rem;
     height: 80vh;
-    width: 95vw;
+    width: 85vw;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -112,6 +112,25 @@ nav i{
     justify-content: flex-start;
     flex-direction: column;
 }
+/* CAROUSEL INDICATORS */
+.carousel-indicators{
+    bottom: 25px;
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+.carousel-indicators .active{
+    background-color:#8B2FC9;
+}
+.carousel-control-prev{
+    width: 10%;
+}
+.carousel-control-next{
+    width: 10%;
+}
+
 @media (min-width: 1400px){
     .home-featured{
         height: 65vh;
