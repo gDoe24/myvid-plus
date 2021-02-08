@@ -40,6 +40,7 @@ nav i{
         );
     backdrop-filter: blur(10rem);
     border-radius: 2rem;
+    box-shadow:  0px 26px 30px -10px rgba(0, 0, 0, .69),  0px 16px 10px -10px rgba(0, 0, 0, .73);
     padding:2rem;
     margin-top: 12vh;
     margin-bottom: 5rem;
@@ -59,7 +60,7 @@ nav i{
     width: 30%;
     object-fit: contain;
     border-radius: 1rem;
-    box-shadow: -4px 6px 20px 0 rgba(36, 36, 35, 0.2), 2px 6px 10px 0 rgba(36, 36, 35, 0.2);
+    box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, .69), 0 10px 10px -5px rgba(0, 0, 0, .73);
     flex: 1;
 }
 .featured-info{
@@ -203,9 +204,49 @@ nav i{
     }
 }
 
-/* IPAD */
-@media (min-height: 1000px)
-{
 
+/* SLIDER */
+.album{
+    width:95vw;
 }
-
+.album-container{
+    height: auto;
+    width: 100%;
+    
+}
+.album-row{
+    height:40vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 25% auto;
+    grid-template-areas: "title" 
+                         "cards";
+}
+.album-title{
+    grid-area: title;
+}
+.album-cards{
+    grid-area: cards;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.g-card{
+    height: 100%;
+    width: 15%;
+    display: grid;
+    grid-template-rows: auto 10px;
+    grid-template-areas: "image" "gc-title";
+}
+.image-container{
+    height: 100%;
+    width: 100%;
+    grid-area: image;
+    background-color: red;
+}
+.card-title-area{
+    grid-area: gc-title;
+}
+.card-pic{
+    background-color: red;
+}
