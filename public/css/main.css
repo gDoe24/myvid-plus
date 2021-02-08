@@ -1,5 +1,6 @@
 body{
-    background: linear-gradient(to right bottom, #1b0929, #2c0847)
+    background: linear-gradient(to right bottom, #1b0929, #2c0847);
+    font-family: 'Source Serif Pro', serif;
 }
 
 /* NAVBAR */
@@ -66,7 +67,6 @@ nav i{
 .featured-info{
     height: 100%;
     width: 50%;
-    font-family: 'Source Serif Pro', serif;
     border-radius: 2rem;
     padding: 1.2rem;
     display: flex;
@@ -208,6 +208,9 @@ nav i{
 /* SLIDER */
 .album{
     width:95vw;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 .album-container{
     height: auto;
@@ -215,7 +218,7 @@ nav i{
     
 }
 .album-row{
-    height:40vh;
+    height: 20vh;
     width: 100%;
     display: grid;
     grid-template-rows: 25% auto;
@@ -224,6 +227,9 @@ nav i{
 }
 .album-title{
     grid-area: title;
+    color: white;
+    width: 20%;
+    border-bottom: 1px solid white;
 }
 .album-cards{
     grid-area: cards;
@@ -232,7 +238,7 @@ nav i{
     align-items: center;
 }
 .g-card{
-    height: 100%;
+    height: 80%;
     width: 15%;
     display: grid;
     grid-template-rows: auto 10px;
@@ -242,11 +248,23 @@ nav i{
     height: 100%;
     width: 100%;
     grid-area: image;
-    background-color: red;
+    object-fit: contain;
+    padding: 5px;
 }
 .card-title-area{
     grid-area: gc-title;
+    margin-top: 15px;
+    margin-left: 5px;
+    flex-wrap: wrap;
 }
+.card-title{
+    font-size: 1.2rem;
+    color: rgba(255,255,255,.6);
+}
+
 .card-pic{
-    background-color: red;
+    height: 100%;
+    width: 100%;
+    border-radius: .5rem;
+    box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, .69), 0 10px 10px -5px rgba(0, 0, 0, .73);
 }
