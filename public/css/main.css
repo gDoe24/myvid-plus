@@ -43,8 +43,8 @@ nav i{
     padding:2rem;
     margin-top: 12vh;
     margin-bottom: 5rem;
-    height: 80vh;
-    width: 85vw;
+    height: clamp(350px, 80vh, 600px);
+    width: clamp(850px, 85vw, 1300px);
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -57,9 +57,10 @@ nav i{
 .featured-pic{
     height: 100%;
     width: 30%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 1rem;
     box-shadow: -4px 6px 20px 0 rgba(36, 36, 35, 0.2), 2px 6px 10px 0 rgba(36, 36, 35, 0.2);
+    flex: 1;
 }
 .featured-info{
     height: 100%;
@@ -70,11 +71,15 @@ nav i{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
+    flex: auto;
 }
 .fi-title-score{
     display: flex;
     flex-direction: row;
+}
+#fi-title{
+    font-size: 2.2rem;
 }
 .fi-score{
     background-color: white;
@@ -104,6 +109,14 @@ nav i{
 .bi-film{
     margin-right: 5px;
 }
+.fi-overview{
+    
+    font-size: 1.4rem;
+}
+.fi-overview-p{
+    font-size: 1rem;
+    overflow: auto;
+}
 .featured-cd{
     width: 20%;
     height: 90%;
@@ -111,6 +124,15 @@ nav i{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    flex: auto;
+    overflow: auto;
+}
+.featured-cd h2{
+    font-size: 1.4rem
+}
+.featured-cd-p{
+    font-size: 1rem;
+    
 }
 /* CAROUSEL INDICATORS */
 .carousel-indicators{
@@ -132,8 +154,58 @@ nav i{
 }
 
 @media (min-width: 1400px){
-    .home-featured{
-        height: 65vh;
-        width: 85vw;
+    .fi-overview{
+        font-size: 1.6rem;
+    }
+    .fi-overview-p{
+        font-size: 1.2rem;
+        overflow: auto;
     }
 }
+/* IPAD PRO */
+@media (min-height: 1250px) 
+{
+    .featured-pic{
+        height: 65%;
+        width: 25%;
+        object-fit: contain;
+    }
+    #fi-title{
+        font-size: 1.8rem;
+    }
+    .fi-score{
+        background-color: white;
+        width: 2rem;
+        height: 2rem;
+    }
+    .fi-play{
+        height: 2rem;
+        width: auto;
+        font-size: .8rem;
+    }
+    .bi-play-fill{
+        height:.8rem;
+    }
+    .fi-trailer{
+        height: 2rem;
+        width: auto;
+        font-size: .8rem;
+    }
+    .featured-cd{
+        width: 15%;
+        height: 90%;
+    }
+    .featured-cd h2{
+        font-size: 1.2rem
+    }
+    .featured-cd-p{
+        font-size: .8rem;
+    }
+}
+
+/* IPAD */
+@media (min-height: 1000px)
+{
+
+}
+
