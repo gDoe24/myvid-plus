@@ -296,12 +296,12 @@ nav i {
 }
 
 .album-row {
-  height: 30vh;
+  height: 50vh;
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 20% auto;
-      grid-template-rows: 20% auto;
+  -ms-grid-rows: 10% 90%;
+      grid-template-rows: 10% 90%;
       grid-template-areas: "title"  "cards";
 }
 
@@ -314,37 +314,50 @@ nav i {
   border-bottom: 1px solid white;
 }
 
-.album-cards {
-  padding-top: 30px;
+.swiper-container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: cards;
+  width: 95vw;
+  height: 100%;
+  margin-top: 35px;
+  overflow: visible;
+}
+
+.swiper-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
 
 .g-card {
-  height: auto;
-  width: 15%;
+  height: 100%;
+  width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: auto 10%;
-      grid-template-rows: auto 10%;
-      grid-template-areas: "image" "gc-title";
+  -ms-grid-rows: 90% auto;
+      grid-template-rows: 90% auto;
+      grid-template-areas: "image"  "gc-title";
   -webkit-transition: ease-in .3s;
   transition: ease-in .3s;
 }
 
 .g-card:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  z-index: 10;
+}
+
+.g-card:hover .card-title {
+  color: white;
 }
 
 .image-container {
@@ -360,10 +373,10 @@ nav i {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: gc-title;
-  margin-top: 15px;
-  margin-left: 5px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 .card-title {
