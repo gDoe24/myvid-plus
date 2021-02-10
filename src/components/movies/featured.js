@@ -47,7 +47,9 @@ function Featured(){
                       </div>
                       
                       <div className="fi-btns my-3">
-                      <a href="#" className="btn fi-play my-2 me-3"><i className="bi bi-play-fill"></i>Play</a>
+                      <a href="#" className="btn fi-play my-2 me-3">
+                        <i className="bi bi-play-fill"></i>Play
+                      </a>
                       <a href="#" className="btn fi-trailer my-2 ms-3"><i className="bi bi-film"></i>Watch Trailer</a>
                       </div>
                       <h3 className="fi-overview mt-1 mb-3">Overview</h3>

@@ -97,6 +97,7 @@ nav i{
     border-radius: .3rem;
     box-shadow: -2px 2px 10px rgba(120, 120, 120, .2);
 }
+
 .bi-play-fill{
     margin-right:5px;
 }
@@ -218,10 +219,10 @@ nav i{
     
 }
 .album-row{
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     display: grid;
-    grid-template-rows: 25% auto;
+    grid-template-rows: 20% auto;
     grid-template-areas: "title" 
                          "cards";
 }
@@ -232,21 +233,24 @@ nav i{
     border-bottom: 1px solid white;
 }
 .album-cards{
+    padding-top:40px;
     grid-area: cards;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .g-card{
-    height: 80%;
+    height: auto;
     width: 15%;
     display: grid;
-    grid-template-rows: auto 10px;
+    grid-template-rows: auto 10%;
     grid-template-areas: "image" "gc-title";
+    transition: ease-in .3s;
+}
+.g-card:hover{
+    transform: scale(1.2);
 }
 .image-container{
-    height: 100%;
-    width: 100%;
     grid-area: image;
     object-fit: contain;
     padding: 5px;
