@@ -219,10 +219,10 @@ nav i{
     
 }
 .album-row{
-    height: 50vh;
+    height: 40vh;
     width: 100%;
     display: grid;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 20% 80%;
     grid-template-areas: "title" 
                          "cards";
 }
@@ -234,7 +234,7 @@ nav i{
 }
 .swiper-container{
     grid-area: cards;
-    width:95vw;
+    width:90vw;
     height: 100%;
     margin-top: 35px;
     overflow: visible;
@@ -243,8 +243,6 @@ nav i{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
 }
 .g-card{
     height: 100%;
@@ -283,4 +281,81 @@ nav i{
     width: 100%;
     border-radius: .5rem;
     box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, .69), 0 10px 10px -5px rgba(0, 0, 0, .73);
+}
+
+/* SLIDER MEDIA QUERIES */
+
+@media screen and (min-width:0px)and (max-width: 478px)
+{
+    .album-title{
+        width: 30%;
+    }
+    .album-title-h{
+        font-size: 1.2rem;
+    }
+    .album-row{
+        height: 30vh;
+        display: grid;
+        grid-template-rows: 10% 75%;
+        grid-template-areas: "title" 
+                             "cards";
+    }
+    .swiper-container{
+        margin-top: 20px;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:480px) and (max-width: 767px)
+{
+    .album-row{
+        display: grid;
+        grid-template-rows: 15% 85%;
+        grid-template-areas: "title" 
+                             "cards";
+    }
+    .swiper-container{
+        margin-top: 20px;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:768px)and (max-width: 991px)
+{
+    .album-row{
+        display: grid;
+        grid-template-rows: 10% 80%;
+    }
+    .swiper-container{
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
+{
+    .album-row{
+        height: 30vh;
+        display: grid;
+        grid-template-rows: 10% 80%;
+    }
+    .swiper-container{
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width:1200px)
+{
+    .album-row{
+        display: grid;
+        grid-template-rows: 15% 85%;
+    }
+    .swiper-container{
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width:1400px)
+{
+    .album-title{
+        width: 15%;
+    }
+    .album-row{
+        display: grid;
+        grid-template-rows: 10% 90%;
+    }
 }

@@ -296,12 +296,12 @@ nav i {
 }
 
 .album-row {
-  height: 50vh;
+  height: 40vh;
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 10% 90%;
-      grid-template-rows: 10% 90%;
+  -ms-grid-rows: 20% 80%;
+      grid-template-rows: 20% 80%;
       grid-template-areas: "title"  "cards";
 }
 
@@ -318,7 +318,7 @@ nav i {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: cards;
-  width: 95vw;
+  width: 90vw;
   height: 100%;
   margin-top: 35px;
   overflow: visible;
@@ -334,8 +334,6 @@ nav i {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
 }
 
 .g-card {
@@ -390,5 +388,90 @@ nav i {
   border-radius: .5rem;
   -webkit-box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, 0.69), 0 10px 10px -5px rgba(0, 0, 0, 0.73);
           box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, 0.69), 0 10px 10px -5px rgba(0, 0, 0, 0.73);
+}
+
+/* SLIDER MEDIA QUERIES */
+@media screen and (min-width: 0px) and (max-width: 478px) {
+  .album-title {
+    width: 30%;
+  }
+  .album-title-h {
+    font-size: 1.2rem;
+  }
+  .album-row {
+    height: 30vh;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 10% 75%;
+        grid-template-rows: 10% 75%;
+        grid-template-areas: "title"  "cards";
+  }
+  .swiper-container {
+    margin-top: 20px;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .album-row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 15% 85%;
+        grid-template-rows: 15% 85%;
+        grid-template-areas: "title"  "cards";
+  }
+  .swiper-container {
+    margin-top: 20px;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .album-row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 10% 80%;
+        grid-template-rows: 10% 80%;
+  }
+  .swiper-container {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .album-row {
+    height: 30vh;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 10% 80%;
+        grid-template-rows: 10% 80%;
+  }
+  .swiper-container {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .album-row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 15% 85%;
+        grid-template-rows: 15% 85%;
+  }
+  .swiper-container {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .album-title {
+    width: 15%;
+  }
+  .album-row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 10% 90%;
+        grid-template-rows: 10% 90%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

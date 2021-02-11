@@ -36,11 +36,11 @@ function Featured(){
             <div className="carousel-inner" role="listbox">
             { featuredMovies.map((movie, idx) => {
               return(
-                <div className={(idx == 0? "carousel-item active": "carousel-item")}>
-                  <section className="home-featured">
-                    <img className="featured-pic mx-3" src={movie.image}>
+                <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
+                  <section key={`home-featured-${idx}`} className="home-featured">
+                    <img key={`item-pic-${idx}`} className="featured-pic mx-3" src={movie.image}>
                     </img>
-                    <div className="featured-info mx-2">
+                    <div key={`featured-info-${idx}`} className="featured-info mx-2">
                       <div className="fi-title-score">
                           <h1 className="fw-dark" id="fi-title">{movie.title}</h1>
                           <div className="fi-score"></div>
