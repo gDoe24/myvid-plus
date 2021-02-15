@@ -7,7 +7,7 @@ SwiperCore.use([Navigation, Virtual]);
 const featuredMovies = [
     {
      title: "Tenet",
-     image: 'https://www.themoviedb.org/t/p/original//k68nPLbIST6NP96JmTxmZijEvCA.jpg'
+     image: 'https://www.themoviedb.org/t/p/original//k68nPLbIST6NP96JmTxmZijEvCA.jpg',
     },
     {
      title: "Your Name.",
@@ -19,7 +19,8 @@ const featuredMovies = [
     },
     { 
      title: "Soul",
-     image: 'https://www.themoviedb.org/t/p/original/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg'
+     image: 'https://www.themoviedb.org/t/p/original/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg',
+     backdrop: '/kf456ZqeC45XTvo6W9pW5clYKfQ.jpg'
     },
     {
      title: "The Dark Knight Rises",
@@ -56,6 +57,7 @@ const featuredMovies = [
     ];
 
 function Slider(){
+
     return(
         <div className="album py-5">
             
@@ -75,8 +77,8 @@ function Slider(){
                                 slidesPerView: 3,
                             },
                             // when window width is >= 640px
-                            480: {
-                              slidesPerView: 4,
+                            600: {
+                              slidesPerView: 3,
                             },
                             // when window width is >= 768px
                             
@@ -84,8 +86,11 @@ function Slider(){
                                 slidesPerView: 5,
                             },
                             1200: {
-                                slidesPerView: 7,
+                                slidesPerView: 6,
                                 spaceBetween: 30,
+                            },
+                            1400: {
+                                slidesPerView: 7,
                             }
                           }}
                         virtual

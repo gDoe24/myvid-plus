@@ -155,17 +155,86 @@ nav i{
     width: 10%;
 }
 
-@media (min-width: 1400px){
-    .fi-overview{
-        font-size: 1.6rem;
+/* HOME FEATURED CAROUSEL MEDIA QUERIES */
+@media screen and (min-width:0px)and (max-width: 600px)
+{
+    .home-featured-sm{
+        backdrop-filter: blur(10rem);
+        border-radius: 2rem;
+        box-shadow:  0px 26px 30px -10px rgba(0, 0, 0, .69),  0px 16px 10px -10px rgba(0, 0, 0, .73);
+        padding:2rem;
+        margin-top: 12vh;
+        margin-bottom: 5rem;
+        height: 60vh;
+        width: 85vw;
+        background-size: contain;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        
     }
-    .fi-overview-p{
+    .featured-pic-sm{
+        grid-area: pic;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+    .featured-info{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex: auto;
+    }
+    .fi-title-score{
+        grid-area: info;
+        display: flex;
+        flex-direction: row;
+    }
+    #fi-title{
         font-size: 1.2rem;
-        overflow: auto;
     }
+    .fi-score{
+        background-color: white;
+        width: 2rem;
+        height: 1.5rem;
+        margin-left: 1rem;
+        border-radius: 50%;
+    }
+    .fi-play{
+        height: 2rem;
+        width: auto;
+        font-size: .8rem;
+    }
+    
+    .bi-play-fill{
+        margin-right:5px;
+    }
+    .fi-trailer{
+        height: 2rem;
+        font-size: .6rem;
+        justify-content: center;
+    }
+    .bi-film{
+        margin-right: 1px;
+    }
+    
 }
-/* IPAD PRO */
-@media (min-height: 1250px) 
+@media screen and (min-width:600px) and (max-width: 767px)
+{
+    
+}
+@media screen and (min-width:768px)and (max-width: 991px)
+{
+    
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
 {
     .featured-pic{
         height: 65%;
@@ -202,6 +271,20 @@ nav i{
     }
     .featured-cd-p{
         font-size: .8rem;
+    }
+}
+@media screen and (min-width:1200px) and (max-width: 1399)
+{
+
+}
+@media screen and (min-width:1400px)
+{
+    .fi-overview{
+        font-size: 1.6rem;
+    }
+    .fi-overview-p{
+        font-size: 1.2rem;
+        overflow: auto;
     }
 }
 
@@ -243,6 +326,7 @@ nav i{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    overflow: visible;
 }
 .g-card{
     height: 100%;
@@ -339,9 +423,10 @@ nav i{
         margin-top: 20px;
     }
 }
-@media screen and (min-width:1200px)
+@media screen and (min-width:1200px) and (max-width: 1399)
 {
     .album-row{
+        height: 45vh;
         display: grid;
         grid-template-rows: 15% 85%;
     }
@@ -357,5 +442,8 @@ nav i{
     .album-row{
         display: grid;
         grid-template-rows: 10% 90%;
+    }
+    .swiper-container{
+        margin-top: 15px;
     }
 }
