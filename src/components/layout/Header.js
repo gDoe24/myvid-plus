@@ -4,7 +4,7 @@ function Header(){
     return(
         <Fragment>
         <header>
-            <nav className="navbar navbar-expand-md fixed-top">
+            <nav className="navbar navbar-expand-md navbar-dark fixed-top ">
             <div className="container-fluid">
             <a className="navbar-brand" href="#">MyVids Plus</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">

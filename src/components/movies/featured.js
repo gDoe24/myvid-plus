@@ -12,7 +12,7 @@ const featuredMovies = [
                        image: 'https://www.themoviedb.org/t/p/original/k68nPLbIST6NP96JmTxmZijEvCA.jpg',
                        backdrop: 'https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg',
                        cast: array
-                        },
+                        },/*
                         {title: "Your Name.",
                         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
                         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
@@ -21,7 +21,7 @@ const featuredMovies = [
                         image: 'https://www.themoviedb.org/t/p/original/a954X8xMnukqMracTipsK3T5lD3.jpg',
                         backdrop: 'https://www.themoviedb.org/t/p/original/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg',
                         cast: array
-                         }
+                         }*/
                       ];
 
 
@@ -34,19 +34,19 @@ function Featured(){
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured-sm"
           style={{
-            backgroundImage: `url(${movie.image})`
+            backgroundImage: `url(${movie.backdrop})`
           }}>
-            <div key={`featured-info-${idx}`} className="featured-info mx-2">
+            <div key={`featured-info-${idx}`} className="featured-info-sm mx-2">
               <div className="fi-title-score">
                   <h1 className="fw-dark" id="fi-title">{movie.title}</h1>
                   <div className="fi-score"></div>
               </div>
-              
-              <div className="fi-btns my-3">
-              <a href="#" className="btn fi-play my-2 me-3">
+              <div className="fi-btns">
+              <a href="#" className="btn fi-play me-1">
                 <i className="bi bi-play-fill"></i>Play
               </a>
-              <a href="#" className="btn fi-trailer my-2 ms-3"><i className="bi bi-film"></i>Watch Trailer</a>
+              <a href="#" className="btn fi-trailer ms-1 fw-light"><i className="bi bi-film"></i>Watch Trailer
+              </a>
               </div>
           </div>
           </section>
