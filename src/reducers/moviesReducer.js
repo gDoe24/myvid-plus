@@ -22,3 +22,11 @@ export const moviesReducer = (state = initialState, action) => {
         default: return state
     }
 }
+
+// SELECTOR
+
+const getMovieInfoSelector = (state) => {
+    return state.trendingMovies.map((movie) => {
+        return movie.title
+    });
+}

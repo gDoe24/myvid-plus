@@ -1,69 +1,17 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {Navigation, Virtual, breakpoi} from 'swiper';
+import SwiperCore, {Navigation, Virtual} from 'swiper';
+import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.css';
-// import trendingMovies from "../../actions/movies/movies.js";
+import { getTrendingMovies } from '../../actions/movies';
 
 SwiperCore.use([Navigation, Virtual]);
 
-
-const featuredMovies = [
-    {
-     title: "Tenet",
-     image: 'https://www.themoviedb.org/t/p/original//k68nPLbIST6NP96JmTxmZijEvCA.jpg',
-    },
-    {
-     title: "Your Name.",
-     image: 'https://www.themoviedb.org/t/p/original/a954X8xMnukqMracTipsK3T5lD3.jpg'
-    },
-    {
-     title: "Demon Slayer: Infinity Train",
-     image: 'https://www.themoviedb.org/t/p/original//yF45egpHwaYLn4jTyZAgk0Cmug9.jpg'
-    },
-    { 
-     title: "Soul",
-     image: 'https://www.themoviedb.org/t/p/original/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg',
-     backdrop: '/kf456ZqeC45XTvo6W9pW5clYKfQ.jpg'
-    },
-    {
-     title: "The Dark Knight Rises",
-     image: 'https://www.themoviedb.org/t/p/original//vzvKcPQ4o7TjWeGIn0aGC9FeVNu.jpg'
-    },
-    {
-        title: "Avengers: Endgame",
-        image: 'https://www.themoviedb.org/t/p/original/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg'
-       },
-       {
-        title: "Tenet",
-        image: 'https://www.themoviedb.org/t/p/original//k68nPLbIST6NP96JmTxmZijEvCA.jpg'
-       },
-       {
-        title: "Your Name.",
-        image: 'https://www.themoviedb.org/t/p/original/a954X8xMnukqMracTipsK3T5lD3.jpg'
-       },
-       {
-        title: "Demon Slayer: Infinity Train",
-        image: 'https://www.themoviedb.org/t/p/original//yF45egpHwaYLn4jTyZAgk0Cmug9.jpg'
-       },
-       { 
-        title: "Soul",
-        image: 'https://www.themoviedb.org/t/p/original/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg'
-       },
-       {
-        title: "The Dark Knight Rises",
-        image: 'https://www.themoviedb.org/t/p/original//vzvKcPQ4o7TjWeGIn0aGC9FeVNu.jpg'
-       },
-       {
-           title: "Avengers: Endgame",
-           image: 'https://www.themoviedb.org/t/p/original/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg'
-          },
-    ];
-
-function Slider(){
+function Slider(props){
 
     return(
         <div className="album py-5">
-            
                 <div className="album-container">
                 <div className="album-row">
                     <div className="album-title">
@@ -97,15 +45,15 @@ function Slider(){
                             }
                           }}
                         virtual
-
                         >
-                        {featuredMovies.map((movie, idx) =>{
+                        {props.trendingMovies.map((movie, idx) =>{
                             return (
                             <SwiperSlide alt={movie.title} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                                 <div key={`g-card-${idx}`} className="g-card">
                                 <div key={`img-container-${idx}`}className="image-container">
                                     <a key={`href-${idx}`} href="#">
-                                    <img key={`g-card-pic-${idx}`} className="card-pic" src={movie.image}/>
+                                    <img key={`g-card-pic-${idx}`} className="card-pic" 
+                                    src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
                                     </a>
                                 </div>
                                 <div key={`card-title-area-${idx}`} className="card-title-area">
@@ -125,5 +73,22 @@ function Slider(){
     )
 }
 
+Slider.propTypes = {
+    trendingMovies: PropTypes.array.isRequired
+}
 
-export default Slider;
+const mapStateToProps = state => {
+    console.log(state);
+    return{
+        trendingMovies: state.moviesReducer.trendingMovies,
+    }
+}
+/*
+const mapDispatchToProps = dispatch => {
+    return {
+       trendingMovies: () => dispatch(getTrendingMovies())
+    }
+}*/
+
+
+export default connect(mapStateToProps)(Slider);

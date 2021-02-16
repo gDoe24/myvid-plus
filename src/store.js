@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { TRENDING_MOVIES } from './actions/types';
 import { getTrendingMovies } from './actions/movies';
 import rootReducer from './reducers';
 
@@ -14,6 +13,7 @@ const store = createStore(
     applyMiddleware(...middleware),
 );
 
+store.subscribe(() => console.log(store.getState()));
 
 store.dispatch(getTrendingMovies());
 
