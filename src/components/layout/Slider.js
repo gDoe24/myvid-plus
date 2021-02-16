@@ -2,8 +2,11 @@ import React, { Fragment } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual, breakpoi} from 'swiper';
 import 'swiper/swiper-bundle.css';
+// import trendingMovies from "../../actions/movies/movies.js";
 
 SwiperCore.use([Navigation, Virtual]);
+
+
 const featuredMovies = [
     {
      title: "Tenet",
@@ -121,5 +124,6 @@ function Slider(){
         </div>
     )
 }
+
 
 export default Slider;
