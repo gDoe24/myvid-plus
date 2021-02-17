@@ -1,4 +1,4 @@
-import { TRENDING_MOVIES } from '../actions/types';
+import { FETCH_MOVIES_FAILURE, TRENDING_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS } from '../actions/types';
 
 /* TODO: Implement Reducers for:
     GET Popular
@@ -10,14 +10,24 @@ import { TRENDING_MOVIES } from '../actions/types';
 */
 
 const initialState = {
-    trendingMovies: []
+    loading: false,
+    trendingMovies: [],
+    err: ''
 }
 
 export const moviesReducer = (state = initialState, action) => {
     switch(action.type){
-        case TRENDING_MOVIES: return {
+        case TRENDING_MOVIES_REQUEST: return {
+            loading: true
+        }
+        case TRENDING_MOVIES_SUCCESS: return {
             ...state,
-            trendingMovies: action.payload
+            loading: false,
+            trendingMovies: action.payload,
+            err: ''
+        }
+        case FETCH_MOVIES_FAILURE: return {
+            err: action.error
         }
         default: return state
     }

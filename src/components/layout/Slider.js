@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
@@ -8,7 +8,11 @@ import { getTrendingMovies } from '../../actions/movies';
 
 SwiperCore.use([Navigation, Virtual]);
 
-function Slider(props){
+function Slider({ moviesReducer, getTrendingMovies }){
+
+    useEffect(() => {
+        getTrendingMovies()
+    }, [])
 
     return(
         <div className="album py-5">
@@ -17,6 +21,9 @@ function Slider(props){
                     <div className="album-title">
                         <h2 className="album-title-h">Popular</h2>
                     </div>
+                    { moviesReducer.loading ? 
+                        <h2>Loading</h2> : 
+                    
                     <Fragment>
                     <Swiper
                         id="main" 
@@ -46,7 +53,7 @@ function Slider(props){
                           }}
                         virtual
                         >
-                        {props.trendingMovies.map((movie, idx) =>{
+                        {moviesReducer.trendingMovies.map((movie, idx) =>{
                             return (
                             <SwiperSlide alt={movie.title} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                                 <div key={`g-card-${idx}`} className="g-card">
@@ -65,6 +72,7 @@ function Slider(props){
                         })}
                     </Swiper>
                     </Fragment>
+                    }
                 </div>
 
                 </div>
@@ -73,22 +81,20 @@ function Slider(props){
     )
 }
 
-Slider.propTypes = {
-    trendingMovies: PropTypes.array.isRequired
-}
+
 
 const mapStateToProps = state => {
     console.log(state);
     return{
-        trendingMovies: state.moviesReducer.trendingMovies,
+        moviesReducer: state.moviesReducer,
     }
 }
-/*
+
 const mapDispatchToProps = dispatch => {
     return {
-       trendingMovies: () => dispatch(getTrendingMovies())
+       getTrendingMovies: () => dispatch(getTrendingMovies())
     }
-}*/
+}
 
 
-export default connect(mapStateToProps)(Slider);
+export default connect(mapStateToProps, mapDispatchToProps)(Slider);
