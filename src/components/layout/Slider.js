@@ -1,28 +1,34 @@
-import React, { Component, Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.css';
-import { getTrendingMovies } from '../../actions/movies';
+import { getActionMovies, getTrendingMovies } from '../../actions/movies';
 
 SwiperCore.use([Navigation, Virtual]);
 
-function Slider({ moviesReducer, getTrendingMovies }){
+function Slider({ moviesReducer, getTrendingMovies, getActionMovies }){
 
     useEffect(() => {
         getTrendingMovies()
-    }, [])
+    }, []);
 
+    useEffect(() => {
+        getActionMovies()
+    }, []);
+    
+    console.log(moviesReducer.actionMovies);
     return(
-        <div className="album py-5">
+        moviesReducer.loading ?
+            <h2>Loading</h2> : 
+        <div className="album mb-5 py-5">
                 <div className="album-container">
                 <div className="album-row">
                     <div className="album-title">
                         <h2 className="album-title-h">Popular</h2>
                     </div>
-                    { moviesReducer.loading ? 
-                        <h2>Loading</h2> : 
+                    
                     
                     <Fragment>
                     <Swiper
@@ -72,16 +78,64 @@ function Slider({ moviesReducer, getTrendingMovies }){
                         })}
                     </Swiper>
                     </Fragment>
-                    }
                 </div>
-
+                <div className="album-row">
+                    <div className="album-title">
+                        <h2 className="album-title-h">Action Movies</h2>
+                    </div>
+                    <Swiper
+                        id="main" 
+                        navigation
+                        slidesPerView={7}
+                        spaceBetween={20}
+                        breakpoints={{
+                            0:{
+                                slidesPerView: 3,
+                            },
+                            // when window width is >= 640px
+                            600: {
+                              slidesPerView: 3,
+                            },
+                            // when window width is >= 768px
+                            
+                            992: {
+                                slidesPerView: 5,
+                            },
+                            1200: {
+                                slidesPerView: 6,
+                                spaceBetween: 30,
+                            },
+                            1400: {
+                                slidesPerView: 7,
+                            }
+                          }}
+                        virtual
+                        >
+                        { moviesReducer.actionMovies.map((movie, idx) =>{
+                            return (
+                            <SwiperSlide alt={movie.title} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
+                                <div key={`g-card-${idx}`} className="g-card">
+                                <div key={`img-container-${idx}`}className="image-container">
+                                    <a key={`href-${idx}`} href="#">
+                                    <img key={`g-card-pic-${idx}`} className="card-pic" 
+                                    src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
+                                    </a>
+                                </div>
+                                <div key={`card-title-area-${idx}`} className="card-title-area">
+                                <h4 key={`card-title-${idx}`} className="card-title">{movie.title}</h4>
+                                </div>
+                                </div>
+                            </SwiperSlide>
+                            )
+                        })}
+                    </Swiper>
+                </div>
                 </div>
                 
         </div>
+        
     )
 }
-
-
 
 const mapStateToProps = state => {
     console.log(state);
@@ -92,7 +146,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-       getTrendingMovies: () => dispatch(getTrendingMovies())
+       getTrendingMovies: () => dispatch(getTrendingMovies()),
+       getActionMovies: () => dispatch(getActionMovies())
     }
 }
 

@@ -308,6 +308,7 @@ nav i{
     grid-template-rows: 20% 80%;
     grid-template-areas: "title" 
                          "cards";
+    margin-bottom: 40px;
 }
 .album-title{
     grid-area: title;
@@ -336,6 +337,7 @@ nav i{
     grid-template-areas: "image" 
                          "gc-title";
     transition: ease-in .3s;
+    overflow: visible;
 }
 .g-card:hover{
     transform: scale(1.15);
@@ -354,10 +356,12 @@ nav i{
     flex-wrap: wrap;
     margin-top: 10px;
     margin-left: 5px;
+    overflow: visible;
 }
 .card-title{
     font-size: 1.2rem;
     color: rgba(255,255,255,.6);
+    overflow: visible;
 }
 
 .card-pic{

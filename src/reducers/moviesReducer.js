@@ -1,10 +1,10 @@
-import { FETCH_MOVIES_FAILURE, TRENDING_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS } from '../actions/types';
+import { ACTION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS } from '../actions/types';
 
 /* TODO: Implement Reducers for:
     GET Popular
+    GET Genres {action, animation, adventure, thriller}
     GET Top Rated
     GET Movie Details
-    GET Images
     GET Watch Providers
     SEARCH Movies
 */
@@ -12,19 +12,24 @@ import { FETCH_MOVIES_FAILURE, TRENDING_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS 
 const initialState = {
     loading: false,
     trendingMovies: [],
+    actionMovies: [],
     err: ''
 }
 
 export const moviesReducer = (state = initialState, action) => {
     switch(action.type){
-        case TRENDING_MOVIES_REQUEST: return {
+        case FETCH_MOVIES_REQUEST: return {
             loading: true
         }
         case TRENDING_MOVIES_SUCCESS: return {
             ...state,
-            loading: false,
             trendingMovies: action.payload,
             err: ''
+        }
+        case ACTION_MOVIES_SUCCESS: return {
+            ...state,
+            loading: false,
+            actionMovies: action.payload
         }
         case FETCH_MOVIES_FAILURE: return {
             err: action.error
