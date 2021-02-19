@@ -8,9 +8,10 @@ import rootReducer from './reducers';
 
 const middleware = [thunk];
 
+
 const store = createStore(
     rootReducer,
-    applyMiddleware(...middleware),
+    composeWithDevTools(applyMiddleware(...middleware)), 
 );
 
 
