@@ -14,14 +14,14 @@ import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS,
     GET Similar Movies
     SEARCH Movies
 */  
-const API_KEY = '8a36c0e935f6343464e22aed214bd7c2';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 // GET Trending Movies
 export const getTrendingMovies = () => (dispatch) =>{
     dispatch({
         type: FETCH_MOVIES_REQUEST
     })
-    axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`)
+    axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`)
         .then(res => {
             // Response.data is the object of movies
             const movies = res.data["results"];
@@ -74,4 +74,3 @@ export const getAnimationMovies = () => (dispatch) =>{
 };
 
 // GET THRILLER MOVIES
-// GET FANTASY MOVIES

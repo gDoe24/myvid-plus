@@ -15,7 +15,7 @@ const initialState = {
         {
             id: 0,
             loading: true,
-            title: "Popular Movies",
+            title: "Popular",
             movies: []
         },
         {
@@ -29,6 +29,12 @@ const initialState = {
             id: 2,
             loading: true,
             title: "Animated Movies",
+            movies: []
+        },
+        {
+            id: 3, 
+            loading: true,
+            title: "Thriller Movies",
             movies: []
         }
     ],

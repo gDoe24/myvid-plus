@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
-import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.css';
 import { getActionMovies, getAnimationMovies, getTrendingMovies } from '../../actions/movies';
 
