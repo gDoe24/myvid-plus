@@ -1,4 +1,5 @@
-import { ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS } from '../actions/types';
+import { ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, 
+        FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, THRILLER_MOVIES_SUCCESS } from '../actions/types';
 import produce from 'immer';
 /* TODO: Implement Reducers for:
     GET Popular
@@ -47,7 +48,7 @@ export const moviesReducer = (state = initialState, action) => {
             ...state,
             loading: true
         }
-        case TRENDING_MOVIES_SUCCESS: return produce(state, draft =>{
+        case TRENDING_SUCCESS: return produce(state, draft =>{
             draft.loading = false;
             draft.genres[0].movies = action.payload;
             draft.genres[0].loading = false;

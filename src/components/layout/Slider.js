@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import 'swiper/swiper-bundle.css';
-import { getActionMovies, getAnimationMovies, getTrendingMovies } from '../../actions/movies';
+import { getActionMovies, getAnimationMovies, getThrillerMovies, getTrending } from '../../actions/movies';
 
 SwiperCore.use([Navigation, Virtual]);
 
-function Slider({ moviesReducer, getTrendingMovies, getActionMovies, getAnimationMovies }){
+function Slider({ moviesReducer, getTrending, getActionMovies, getAnimationMovies, getThrillerMovies }){
 
     useEffect(() => {
-        getTrendingMovies();
+        getTrending();
     }, []);
 
     useEffect(() => {
@@ -19,6 +19,10 @@ function Slider({ moviesReducer, getTrendingMovies, getActionMovies, getAnimatio
 
     useEffect(() => {
         getAnimationMovies();
+    }, []);
+
+    useEffect(() => {
+        getThrillerMovies();
     }, []);
 
     return(
@@ -99,14 +103,16 @@ function Slider({ moviesReducer, getTrendingMovies, getActionMovies, getAnimatio
 const mapStateToProps = state => {
     return{
         moviesReducer: state.moviesReducer,
+        showsReducer: state.showsReducer
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-       getTrendingMovies: () => dispatch(getTrendingMovies()),
+       getTrending: () => dispatch(getTrending()),
        getActionMovies: () => dispatch(getActionMovies()),
-       getAnimationMovies: () => dispatch(getAnimationMovies())
+       getAnimationMovies: () => dispatch(getAnimationMovies()),
+       getThrillerMovies: () => dispatch(getThrillerMovies())
     }
 }
 

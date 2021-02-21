@@ -1,6 +1,6 @@
-/* TODO Implement Reducers for:
-    
-*/
+import { FETCH_SHOWS_REQUEST, FETCH_SHOWS_FAILURE, TRENDING_SHOWS_SUCCESS,
+    ACTION_SHOWS_SUCCESS, COMEDY_SHOWS_SUCCESS, SCIFI_SHOWS_SUCCESS} from '../actions/types';
+import produce from 'immer';
 
 const initialState = {
     loading: false,

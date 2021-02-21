@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS, 
-         ACTION_MOVIES_SUCCESS, 
-         ANIMATION_MOVIES_SUCCESS} from './types';
+import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, 
+         ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, THRILLER_MOVIES_SUCCESS} from './types';
 
 /* TODO: Implement actions for endpoints:
     GET Popular
@@ -16,7 +15,7 @@ import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS,
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 // GET Trending Movies
-export const getTrendingMovies = () => (dispatch) =>{
+export const getTrending = () => (dispatch) =>{
     dispatch({
         type: FETCH_MOVIES_REQUEST
     })
@@ -25,7 +24,7 @@ export const getTrendingMovies = () => (dispatch) =>{
             // Response.data is the object of movies
             const movies = res.data["results"];
             dispatch({
-                type: TRENDING_MOVIES_SUCCESS,
+                type: TRENDING_SUCCESS,
                 payload: movies
             });
         }).catch(err => {
@@ -80,7 +79,7 @@ export const getThrillerMovies = () => (dispatch) =>{
             // Response.data is the object of movies
             const movies = res.data["results"];
             dispatch({
-                type: Thriller_MOVIES_SUCCESS,
+                type: THRILLER_MOVIES_SUCCESS,
                 payload: movies
             });
         }).catch(err => {
@@ -92,6 +91,7 @@ export const getThrillerMovies = () => (dispatch) =>{
 };
 
 // TOP RATED MOVIES
+/*
 export const getTopRatedMovies = () => (dispatch) =>{
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
         .then(res => {
@@ -108,11 +108,11 @@ export const getTopRatedMovies = () => (dispatch) =>{
             })
         });
 };
-
-// SEARCH MOVIE
+*/
+// SEARCH MULTI
 /*
 export const searchMovie = (value) => (dispatch) => {
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${value}`)
+    axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${value}`)
         .then(res => {
             const movies = res.data["results"];
             dispatch({
