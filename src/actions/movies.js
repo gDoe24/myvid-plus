@@ -8,7 +8,6 @@ import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_MOVIES_SUCCESS,
     GET Top Rated
     GET By Genre
     GET Movie Details
-    GET Images
     GET Videos
     GET Watch Providers
     GET Similar Movies
@@ -74,3 +73,61 @@ export const getAnimationMovies = () => (dispatch) =>{
 };
 
 // GET THRILLER MOVIES
+
+export const getThrillerMovies = () => (dispatch) =>{
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=53`)
+        .then(res => {
+            // Response.data is the object of movies
+            const movies = res.data["results"];
+            dispatch({
+                type: Thriller_MOVIES_SUCCESS,
+                payload: movies
+            });
+        }).catch(err => {
+            dispatch({
+                type: FETCH_MOVIES_FAILURE,
+                error: err.message
+            })
+        });
+};
+
+// TOP RATED MOVIES
+export const getTopRatedMovies = () => (dispatch) =>{
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
+        .then(res => {
+            // Response.data is the object of movies
+            const movies = res.data["results"];
+            dispatch({
+                type: TOP_RATED_MOVIES_SUCCESS,
+                payload: movies
+            });
+        }).catch(err => {
+            dispatch({
+                type: FETCH_MOVIES_FAILURE,
+                error: err.message
+            })
+        });
+};
+
+// SEARCH MOVIE
+/*
+export const searchMovie = (value) => (dispatch) => {
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${value}`)
+        .then(res => {
+            const movies = res.data["results"];
+            dispatch({
+                type: SEARCH_MOVIE_SUCCESS,
+                payload: movies
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: SEARCH_MOVIES_FAILURE,
+                error: err.message
+            })
+        })
+}*/
+
+// MOVIE DETAIL
+
+// GET SIMILAR MOVIES

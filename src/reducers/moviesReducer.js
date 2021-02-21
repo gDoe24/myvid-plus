@@ -62,6 +62,11 @@ export const moviesReducer = (state = initialState, action) => {
             draft.genres[2].loading = false;
 
         })
+        case THRILLER_MOVIES_SUCCESS: return produce(state, draft =>{
+            draft.genres[3].movies = action.payload;
+            draft.genres[3].loading = false;
+
+        })
         case FETCH_MOVIES_FAILURE: return {
             ...state,
             err: action.error
