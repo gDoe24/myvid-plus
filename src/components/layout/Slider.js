@@ -3,31 +3,34 @@ import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import 'swiper/swiper-bundle.css';
-import { getActionMovies, getAnimationMovies, getTrending } from '../../actions/movies';
-import { getActionShows, getComedyShows, getTrendingShows } from '../../actions/shows';
+import { getActionMovies, getAnimationMovies, getThrillerMovies, getTrending } from '../../actions/movies';
+import { getActionShows, getComedyShows, getSciFiShows, getTrendingShows } from '../../actions/shows';
 
 
 SwiperCore.use([Navigation, Virtual]);
 
-function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies, 
-                  showsReducer, getTrendingShows, getActionShows, getComedyShows}){
+function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies, getThrillerMovies,
+                  showsReducer, getTrendingShows, getActionShows, getComedyShows, getSciFiShows,}){
 
     useEffect(() => {
         getTrending();
         getActionMovies();
         getAnimationMovies();
+        getThrillerMovies();
     }, []);
 
     useEffect(() => {
         getTrendingShows();
         getActionShows();
         getComedyShows();
+        getSciFiShows();
     }, []);
 
     const rows = [];
     var m_i = 0;
     var t_j = 0;
-    for (let i = 0; i < 6; i ++)
+
+    for (let i = 0; i < 8; i ++)
     {
         if (i % 2 == 0){
             rows.push(moviesReducer.genres[m_i]);
@@ -79,7 +82,7 @@ function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies
                 >
                 {genre.data.map((multi, idx) =>{
                 return (
-                    <SwiperSlide alt={multi.title} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
+                    <SwiperSlide alt={multi.title ? multi.title : multi.name} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
                             <a key={`href-${idx}`} href="#">
@@ -88,7 +91,7 @@ function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies
                             </a>
                         </div>
                         <div key={`card-title-area-${idx}`} className="card-title-area">
-                        <h4 key={`card-title-${idx}`} className="card-title">{multi.title}</h4>
+                        <h4 key={`card-title-${idx}`} className="card-title">{multi.title ? multi.title : multi.name}</h4>
                         </div>
                         </div>
                     </SwiperSlide>
@@ -127,9 +130,11 @@ const mapDispatchToProps = dispatch => {
        getTrending: () => dispatch(getTrending()),
        getActionMovies: () => dispatch(getActionMovies()),
        getAnimationMovies: () => dispatch(getAnimationMovies()),
+       getThrillerMovies: () => dispatch(getThrillerMovies()),
        getTrendingShows: () => dispatch(getTrendingShows()),
        getActionShows: () => dispatch(getActionShows()),
        getComedyShows: () => dispatch(getComedyShows()),
+       getSciFiShows: () => dispatch(getSciFiShows())
     }
 }
 

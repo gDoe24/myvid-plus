@@ -1,5 +1,5 @@
 import { FETCH_SHOWS_REQUEST, FETCH_SHOWS_FAILURE, TRENDING_SHOWS_SUCCESS,
-    ACTION_SHOWS_SUCCESS, COMEDY_SHOWS_SUCCESS, SCIFI_SHOWS_SUCCESS} from '../actions/types';
+         ACTION_SHOWS_SUCCESS, COMEDY_SHOWS_SUCCESS, SCIFI_SHOWS_SUCCESS} from '../actions/types';
 import produce from 'immer';
 
 const initialState = {
@@ -45,7 +45,6 @@ export const showsReducer = (state = initialState, action) => {
             draft.genres[0].data = action.payload;
             draft.genres[0].loading = false;
         })
-
         case ACTION_SHOWS_SUCCESS: return produce(state, draft =>{
             draft.genres[1].data = action.payload;
             draft.genres[1].loading = false;
@@ -53,12 +52,10 @@ export const showsReducer = (state = initialState, action) => {
         case COMEDY_SHOWS_SUCCESS: return produce(state, draft =>{
             draft.genres[2].data = action.payload;
             draft.genres[2].loading = false;
-
         })
         case SCIFI_SHOWS_SUCCESS: return produce(state, draft =>{
             draft.genres[3].data = action.payload;
             draft.genres[3].loading = false;
-
         })
         case FETCH_SHOWS_FAILURE: return {
             ...state,
@@ -67,3 +64,4 @@ export const showsReducer = (state = initialState, action) => {
         default: return state
     }
 }
+
