@@ -17,26 +17,26 @@ const initialState = {
             id: 0,
             loading: true,
             title: "Popular",
-            movies: []
+            data: []
         },
         {
             id: 1,
             loading: true,
             title: "Action Movies",
-            movies: []
+            data: []
         },
         {
             
             id: 2,
             loading: true,
             title: "Animated Movies",
-            movies: []
+            data: []
         },
         {
             id: 3, 
             loading: true,
             title: "Thriller Movies",
-            movies: []
+            data: []
         }
     ],
     err: ''
@@ -50,21 +50,21 @@ export const moviesReducer = (state = initialState, action) => {
         }
         case TRENDING_SUCCESS: return produce(state, draft =>{
             draft.loading = false;
-            draft.genres[0].movies = action.payload;
+            draft.genres[0].data = action.payload;
             draft.genres[0].loading = false;
         })
 
         case ACTION_MOVIES_SUCCESS: return produce(state, draft =>{
-            draft.genres[1].movies = action.payload;
+            draft.genres[1].data = action.payload;
             draft.genres[1].loading = false;
         })
         case ANIMATION_MOVIES_SUCCESS: return produce(state, draft =>{
-            draft.genres[2].movies = action.payload;
+            draft.genres[2].data = action.payload;
             draft.genres[2].loading = false;
 
         })
         case THRILLER_MOVIES_SUCCESS: return produce(state, draft =>{
-            draft.genres[3].movies = action.payload;
+            draft.genres[3].data = action.payload;
             draft.genres[3].loading = false;
 
         })
