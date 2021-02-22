@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { Link } from 'react-router-dom';
 import { getActionMovies, getAnimationMovies, getThrillerMovies, getTrending } from '../../actions/movies';
 import { getActionShows, getComedyShows, getSciFiShows, getTrendingShows } from '../../actions/shows';
 
@@ -82,13 +83,16 @@ function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies
                 >
                 {genre.data.map((multi, idx) =>{
                 return (
-                    <SwiperSlide alt={multi.title ? multi.title : multi.name} key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
+                    <SwiperSlide alt={multi.title ? multi.title 
+                                                    : multi.name } 
+                                 key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
-                            <a key={`href-${idx}`} href="#">
+                            <Link  key={`href-${idx}`} to={ multi.title ? `/movie/${multi.id}`
+                                                            :`/tv/${multi.id}`}>
                             <img key={`g-card-pic-${idx}`} className="card-pic" 
                             src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />
-                            </a>
+                            </Link>
                         </div>
                         <div key={`card-title-area-${idx}`} className="card-title-area">
                         <h4 key={`card-title-${idx}`} className="card-title">{multi.title ? multi.title : multi.name}</h4>
