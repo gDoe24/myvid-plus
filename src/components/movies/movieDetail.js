@@ -11,22 +11,17 @@ function MovieDetail({ match }){
     return (
         
         <div className="movie-detail-main">
-            <section className="detail" 
-                     /*style={{
-                        backgroundImage: `url("https://www.themoviedb.org/t/p/original/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg")`,
-                        
-                     }}*/
-                     >
+            <section className="detail">
                 <div className="detail-info">
                     <div className="detail-title-score mb-3">
                         <h1 className="fw-dark" id="detail-title">Title</h1>
                         <div className="detail-score"></div>
                     </div>
-                    <div className="detail-btns">
-                        <a href="#" className="btn fi-play me-1">
+                    <div className="detail-btns mb-5">
+                        <a href="#" className="btn fi-play mx-3">
                             <i className="bi bi-play-fill"></i>Play
                         </a>
-                        <a href="#" className="btn fi-trailer ms-1 fw-light"><i className="bi bi-film"></i>Watch Trailer
+                        <a href="#" className="btn fi-trailer mx-3 fw-light"><i className="bi bi-film"></i>Watch Trailer
                         </a>
                     </div>
                     <h3 className="detail-overview mt-1 mb-3">Overview</h3>
@@ -36,8 +31,9 @@ function MovieDetail({ match }){
                         laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
                         voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
-                    <div className="detail-cd mx-4">
-                        <div className="director">
+                </div>
+                <div className="detail-cd mx-4">
+                        <div className="director mb-4">
                             <h2 className="fw-dark mb-3">Director/Cast</h2>
                             <ul>
                                 <li>Kobe</li>
@@ -56,8 +52,6 @@ function MovieDetail({ match }){
                             </ul>
                         </div>
                     </div>
-                </div>
-                
                 <img className="detail-pic"
                     src="https://www.themoviedb.org/t/p/original/srYya1ZlI97Au4jUYAktDe3avyA.jpg">
                 </img>
