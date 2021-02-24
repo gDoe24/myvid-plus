@@ -1,17 +1,21 @@
 import React, {useEffect} from "react";
 import { connect } from 'react-redux';
 import '../../styles/detail.css';
-import {getMovieDetail} from '../../actions/movieDetailAction';
+import {getMovieDetail, getMovieCredits, getWatchProviders, 
+        getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
 
-function MovieDetail({ match, movie, getMovieDetail }){
-
-    
-    const movie_id = match.params.id;
+function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders,
+                      getSimilarMovies, getVideos }){
 
     useEffect(() => {
-        getMovieDetail(movie_id);
+        getMovieDetail();
+        getMovieCredits();
+        getWatchProviders();
+        getVideos();
+        getSimilarMovies();
     }, [])
     
+    const credits = movie.movie_credits.cast.slice(0,5);
     return (
         
         <div className="movie-detail-main">
@@ -38,13 +42,14 @@ function MovieDetail({ match, movie, getMovieDetail }){
                 </div>
                 <div className="detail-cd mx-4">
                         <div className="director mb-4">
-                            <h2 className="fw-dark mb-3">Director/Cast</h2>
-                            <ul>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                            </ul>
+                            <h2 className="fw-dark mb-3">Starring:</h2>
+                            
+                                {credits.map((actor, idx) => {
+                                    return (
+                                        <div>{actor.name}</div>
+                                    )
+                                })}
+                            
                         </div>
                         <div className="watch mb-3">
                             <h2>Where to Watch</h2>
@@ -77,6 +82,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         
         return {
             getMovieDetail: () => dispatch(getMovieDetail(ownProps.match.params.id)),
+            getMovieCredits: () => dispatch(getMovieCredits(ownProps.match.params.id)),
+            getWatchProviders: () => dispatch(getWatchProviders(ownProps.match.params.id)),
+            getVideos: () => dispatch(getVideos(ownProps.match.params.id)),
+            getSimilarMovies: () => dispatch(getSimilarMovies(ownProps.match.params.id))
         }
 }
 
