@@ -1,14 +1,6 @@
 import { ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, 
         FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, THRILLER_MOVIES_SUCCESS } from '../actions/types';
 import produce from 'immer';
-/* TODO: Implement Reducers for:
-    GET Popular
-    GET Genres {action, animation, adventure, thriller}
-    GET Top Rated
-    GET Movie Details
-    GET Watch Providers
-    SEARCH Movies
-*/
 
 const initialState = {
     loading: false,

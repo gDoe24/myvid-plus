@@ -1,32 +1,27 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
+import { connect } from 'react-redux';
 import '../../styles/detail.css';
-import axios from 'axios';
+import {getMovieDetail} from '../../actions/movieDetailAction';
 
-function MovieDetail({ match }){
+function MovieDetail({ match, movie, getMovieDetail }){
 
-    const API_KEY = process.env.REACT_APP_API_KEY;
+    
     const movie_id = match.params.id;
 
-    const [movie, setMovie] = useState({})
-
     useEffect(() => {
-        axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`)
-             .then(res => {
-                 const movie = res.data;
-                 setMovie(movie);
-                 console.log(movie);
-             }).catch(err => {
-                 console.log(err.message);
-             })
+        getMovieDetail(movie_id);
     }, [])
     
     return (
         
         <div className="movie-detail-main">
+            {movie.loading ? 
+                <h2>Loading </h2> :
             <section className="detail">
+                 
                 <div className="detail-info">
                     <div className="detail-title-score mb-3">
-                        <h1 className="fw-dark" id="detail-title">{movie.title}</h1>
+                        <h1 className="fw-dark" id="detail-title">{movie.movie_detail.title}</h1>
                         <div className="detail-score"></div>
                     </div>
                     <div className="detail-btns mb-5">
@@ -38,7 +33,7 @@ function MovieDetail({ match }){
                     </div>
                     <h3 className="detail-overview mt-1 mb-3">Overview</h3>
                     <p className="detail-overview-p lead " id="fi-sum">
-                        {movie.overview}
+                        {movie.movie_detail.overview}
                     </p>
                 </div>
                 <div className="detail-cd mx-4">
@@ -62,12 +57,27 @@ function MovieDetail({ match }){
                         </div>
                     </div>
                 <img className="detail-pic"
-                    src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`}>
+                    src={`https://www.themoviedb.org/t/p/original${movie.movie_detail.backdrop_path}`}>
                 </img>
                 <div className="overlay"></div>
+                
             </section>
+}
             </div>
     )
 };
 
-export default MovieDetail;
+const mapStateToProps = state => {
+    return {
+        movie: state.movieDetailReducer
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+        
+        return {
+            getMovieDetail: () => dispatch(getMovieDetail(ownProps.match.params.id)),
+        }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
