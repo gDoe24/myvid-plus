@@ -1,11 +1,23 @@
-import React, {useEffect} from "react";
-import {css, jsx } from '@emotion/react';
+import React, {useEffect, useState} from "react";
 import '../../styles/detail.css';
+import axios from 'axios';
 
 function MovieDetail({ match }){
 
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const movie_id = match.params.id;
+
+    const [movie, setMovie] = useState({})
+
     useEffect(() => {
-        console.log(match);
+        axios.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`)
+             .then(res => {
+                 const movie = res.data;
+                 setMovie(movie);
+                 console.log(movie);
+             }).catch(err => {
+                 console.log(err.message);
+             })
     }, [])
     
     return (
@@ -14,7 +26,7 @@ function MovieDetail({ match }){
             <section className="detail">
                 <div className="detail-info">
                     <div className="detail-title-score mb-3">
-                        <h1 className="fw-dark" id="detail-title">Title</h1>
+                        <h1 className="fw-dark" id="detail-title">{movie.title}</h1>
                         <div className="detail-score"></div>
                     </div>
                     <div className="detail-btns mb-5">
@@ -26,10 +38,7 @@ function MovieDetail({ match }){
                     </div>
                     <h3 className="detail-overview mt-1 mb-3">Overview</h3>
                     <p className="detail-overview-p lead " id="fi-sum">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        {movie.overview}
                     </p>
                 </div>
                 <div className="detail-cd mx-4">
@@ -53,7 +62,7 @@ function MovieDetail({ match }){
                         </div>
                     </div>
                 <img className="detail-pic"
-                    src="https://www.themoviedb.org/t/p/original/srYya1ZlI97Au4jUYAktDe3avyA.jpg">
+                    src={`https://www.themoviedb.org/t/p/original${movie.backdrop_path}`}>
                 </img>
                 <div className="overlay"></div>
             </section>
