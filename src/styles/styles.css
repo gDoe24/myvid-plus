@@ -1,7 +1,7 @@
 body {
   background: -webkit-gradient(linear, left top, right bottom, from(#1b0929), to(#2c0847));
   background: linear-gradient(to right bottom, #1b0929, #2c0847);
-  font-family: 'Source Serif Pro', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* NAVBAR */

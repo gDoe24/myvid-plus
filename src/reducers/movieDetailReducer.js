@@ -2,7 +2,7 @@ import { FETCH_MOVIE_DETAIL_REQUEST, FETCH_MOVIE_DETAIL_SUCCESS, FETCH_MOVIE_DET
      MOVIE_CREDITS, MOVIE_VIDEOS, MOVIE_WATCH_PROVIDERS, SIMILAR_MOVIES } from "../actions/types";
 
 const initialState = {
-    loading: false,
+    loading: true,
     movie_detail: {},
     movie_credits: [],
     watch_providers: [],
@@ -21,11 +21,11 @@ export const movieDetailReducer = (state = initialState, action) => {
         }
         case FETCH_MOVIE_DETAIL_SUCCESS: return{
             ...state,
-            loading: false,
             movie_detail: action.payload
         }
         case MOVIE_CREDITS: return {
             ...state,
+            loading: false,
             movie_credits: action.payload
         }
         case MOVIE_WATCH_PROVIDERS: return {
@@ -38,7 +38,6 @@ export const movieDetailReducer = (state = initialState, action) => {
         }
         case SIMILAR_MOVIES: return {
             ...state,
-            loading: false,
             similar_movies: action.payload
         }
         case FETCH_MOVIE_DETAIL_FAILURE: return {

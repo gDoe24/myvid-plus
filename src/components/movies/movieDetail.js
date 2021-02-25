@@ -14,8 +14,9 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
         getVideos();
         getSimilarMovies();
     }, [])
-    
-    const credits = movie.movie_credits.cast.slice(0,5);
+
+    //const watch = movie.
+
     return (
         
         <div className="movie-detail-main">
@@ -24,41 +25,39 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
             <section className="detail">
                  
                 <div className="detail-info">
-                    <div className="detail-title-score mb-3">
+                    <div className="detail-title-score">
                         <h1 className="fw-dark" id="detail-title">{movie.movie_detail.title}</h1>
                         <div className="detail-score"></div>
                     </div>
-                    <div className="detail-btns mb-5">
-                        <a href="#" className="btn fi-play mx-3">
+                    <div className="detail-btns">
+                        <a href="#" className="btn fi-play dt-play">
                             <i className="bi bi-play-fill"></i>Play
                         </a>
-                        <a href="#" className="btn fi-trailer mx-3 fw-light"><i className="bi bi-film"></i>Watch Trailer
+                        <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
                         </a>
                     </div>
-                    <h3 className="detail-overview mt-1 mb-3">Overview</h3>
-                    <p className="detail-overview-p lead " id="fi-sum">
+                    <h2 className="detail-overview">Overview</h2>
+                    <p className="detail-overview-p lead" id="">
                         {movie.movie_detail.overview}
                     </p>
                 </div>
-                <div className="detail-cd mx-4">
-                        <div className="director mb-4">
-                            <h2 className="fw-dark mb-3">Starring:</h2>
+                <div className="detail-cd">
+                        <div className="cast">
+                            <h2 className="fw-dark">Starring:</h2>
                             
-                                {credits.map((actor, idx) => {
+                                {movie.movie_credits.cast.slice(0,5).map((actor, idx) => {
                                     return (
-                                        <div>{actor.name}</div>
+                                        <div className="cast-n" key={actor.id}>{actor.name}</div>
                                     )
                                 })}
                             
                         </div>
-                        <div className="watch mb-3">
+                        <div className="watch">
                             <h2>Where to Watch</h2>
-                            <ul>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                                <li>Kobe</li>
-                            </ul>
+                            <div className="watch-n">Kobe</div>
+                            <div className="watch-n">Kobe</div>
+                            <div className="watch-n">Kobe</div>
+                            <div className="watch-n">Kobe</div>
                         </div>
                     </div>
                 <img className="detail-pic"
@@ -79,7 +78,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-        
+
+
         return {
             getMovieDetail: () => dispatch(getMovieDetail(ownProps.match.params.id)),
             getMovieCredits: () => dispatch(getMovieCredits(ownProps.match.params.id)),
