@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import '../../styles/detail.css';
 import {getMovieDetail, getMovieCredits, getWatchProviders, 
         getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
+import {validProvidersSelector} from '../../reducers/movieDetailReducer';
 
-function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders,
+function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
                       getSimilarMovies, getVideos }){
 
     useEffect(() => {
@@ -14,9 +15,7 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
         getVideos();
         getSimilarMovies();
     }, [])
-
-    //const watch = movie.
-
+    
     return (
         
         <div className="movie-detail-main">
@@ -44,7 +43,6 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
                 <div className="detail-cd">
                         <div className="cast">
                             <h2 className="fw-dark">Starring:</h2>
-                            
                                 {movie.movie_credits.cast.slice(0,5).map((actor, idx) => {
                                     return (
                                         <div className="cast-n" key={actor.id}>{actor.name}</div>
@@ -54,10 +52,16 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
                         </div>
                         <div className="watch">
                             <h2>Where to Watch</h2>
-                            <div className="watch-n">Kobe</div>
-                            <div className="watch-n">Kobe</div>
-                            <div className="watch-n">Kobe</div>
-                            <div className="watch-n">Kobe</div>
+                            { providers ? 
+                              providers.map((provider, idx) => {
+                                return <div key={`${provider}-${idx}`}>
+                                    <img className="me-3"
+                                        src={`${process.env.PUBLIC_URL}/${provider.toLowerCase()}.svg`}/>
+                                    {provider}
+                                </div>
+                            }) 
+                            : <div>None</div>
+                            }
                         </div>
                     </div>
                 <img className="detail-pic"
@@ -73,13 +77,12 @@ function MovieDetail({ movie, getMovieDetail, getMovieCredits, getWatchProviders
 
 const mapStateToProps = state => {
     return {
-        movie: state.movieDetailReducer
+        movie: state.movieDetailReducer,
+        providers: validProvidersSelector(state.movieDetailReducer)
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
-
         return {
             getMovieDetail: () => dispatch(getMovieDetail(ownProps.match.params.id)),
             getMovieCredits: () => dispatch(getMovieCredits(ownProps.match.params.id)),

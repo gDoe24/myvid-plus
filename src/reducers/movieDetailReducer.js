@@ -48,3 +48,40 @@ export const movieDetailReducer = (state = initialState, action) => {
     }
 }
 
+export function validProvidersSelector(state){
+    const validProviders = ["apple itunes", "amazon video", "disney plus", "hbo max", "google play movies", "hulu",
+                            "netflix", "youtube", "crunchyroll"];
+
+    const validProvidersSet = new Set(validProviders);
+    const rent = state.watch_providers.rent ? state.watch_providers.rent : null;
+    const flatrate = state.watch_providers.flatrate ? state.watch_providers.flatrate : null;
+    const buy = state.watch_providers.buy ? state.watch_providers.buy : null;
+
+    const output = []
+
+    if (rent){
+        rent.forEach(provider => {
+            if (validProvidersSet.has(provider.provider_name.toLowerCase())){
+                output.push(provider.provider_name)
+            }
+        })
+    }
+
+    if (flatrate){
+        flatrate.forEach(provider => {
+            if (validProvidersSet.has(provider.provider_name.toLowerCase())){
+                output.push(provider.provider_name)
+            }
+        })
+    }
+
+    if (buy){
+        buy.forEach(provider => {
+            if (validProvidersSet.has(provider.provider_name.toLowerCase()) && !output){
+                output.push(provider.provider_name)
+            }
+        })
+    }
+
+    return output;
+}

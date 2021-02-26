@@ -52,7 +52,7 @@ export const getMovieCredits = (movie_id) => (dispatch) => {
 export const getWatchProviders = (movie_id) => (dispatch) => {
     axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${API_KEY}`)
         .then(res => {
-            const providers = res.data["results"]
+            const providers = res.data["results"]["US"];
             dispatch({
                 type: MOVIE_WATCH_PROVIDERS,
                 payload: providers
