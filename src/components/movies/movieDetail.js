@@ -15,7 +15,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
         getVideos();
         getSimilarMovies();
     }, [])
-    
+ 
     return (
         
         <div className="movie-detail-main">
@@ -52,7 +52,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         </div>
                         <div className="watch">
                             <h2>Where to Watch</h2>
-                            { providers ? 
+                            { providers.length > 0 ? 
                               providers.map((provider, idx) => {
                                 return <div key={`${provider}-${idx}`}>
                                     <img className="me-3"

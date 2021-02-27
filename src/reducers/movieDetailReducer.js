@@ -77,7 +77,7 @@ export function validProvidersSelector(state){
 
     if (buy){
         buy.forEach(provider => {
-            if (validProvidersSet.has(provider.provider_name.toLowerCase()) && !output){
+            if ((validProvidersSet.has(provider.provider_name.toLowerCase()) && (!output.includes(provider.provider_name)))){
                 output.push(provider.provider_name)
             }
         })
