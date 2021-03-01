@@ -4,6 +4,7 @@ import '../../styles/detail.css';
 import {getMovieDetail, getMovieCredits, getWatchProviders, 
         getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
 import {validProvidersSelector} from '../../reducers/movieDetailReducer';
+import Suggested from '../tvshows/suggested';
 
 function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
                       getSimilarMovies, getVideos }){
@@ -71,6 +72,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                 
             </section>
 }
+            <Suggested suggested={movie.similar_movies} name={movie.movie_detail.title}/>
             </div>
     )
 };

@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import {connect} from 'react-redux';
 import {getShowDetail, getShowCredits, getShowWatchProviders, 
     getShowVideos, getSimilarShows} from '../../actions/showDetailAction';
 import {validShowProvidersSelector} from '../../reducers/showDetailReducer';
+import Suggested from './suggested';
 import '../../styles/detail.css';
 
 function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatchProviders, 
@@ -16,7 +17,6 @@ function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatch
         getSimilarShows();
     }, [])
 
-    console.log(providers);
     return (
         <div className="movie-detail-main">
             {show.loading ? 
@@ -70,7 +70,8 @@ function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatch
                 <div className="overlay"></div>
                 
             </section>
-}
+} 
+            <Suggested suggested={show.similar_shows} name={show.show_detail.name}/>
             </div>
     )
 };

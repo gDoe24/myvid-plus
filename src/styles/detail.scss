@@ -15,7 +15,6 @@
     justify-content: space-between;
     background-size: cover;
     place-items: center;
-   
 }
 .detail-info{
     
@@ -113,6 +112,16 @@
     background: linear-gradient(to left bottom, rgba(0,0,0,0), rgba(0,0,0, .8)),
                 linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
 }
+
+//SUGGESTED SLIDER
+
+.sugg-album-row{
+    margin-top: 10vh;
+
+}
+.sugg-album-title-h{
+}
+
 @media screen and (min-width:0px)and (max-width: 600px)
 {
     .detail{

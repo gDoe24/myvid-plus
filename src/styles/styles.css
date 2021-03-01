@@ -406,8 +406,12 @@ nav i {
   -ms-grid-column: 1;
   grid-area: title;
   color: white;
-  width: 20%;
-  border-bottom: 1px solid white;
+  margin-left: 50px;
+}
+
+.album-title-h {
+  width: auto;
+  text-decoration: underline;
 }
 
 .swiper-container {
@@ -565,9 +569,6 @@ nav i {
 }
 
 @media screen and (min-width: 1400px) {
-  .album-title {
-    width: 15%;
-  }
   .album-row {
     display: -ms-grid;
     display: grid;
