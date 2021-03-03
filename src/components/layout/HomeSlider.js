@@ -1,31 +1,17 @@
-import React, { Fragment, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { Fragment } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { Link } from 'react-router-dom';
-import { getActionMovies, getAnimationMovies, getThrillerMovies, getTrending } from '../../actions/movies';
-import { getActionShows, getComedyShows, getSciFiShows, getTrendingShows } from '../../actions/shows';
+
 
 
 SwiperCore.use([Navigation, Virtual]);
 
-function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies, getThrillerMovies,
-                  showsReducer, getTrendingShows, getActionShows, getComedyShows, getSciFiShows,}){
+function HomeSlider( props ){
 
-    useEffect(() => {
-        getTrending();
-        getActionMovies();
-        getAnimationMovies();
-        getThrillerMovies();
-    }, []);
-
-    useEffect(() => {
-        getTrendingShows();
-        getActionShows();
-        getComedyShows();
-        getSciFiShows();
-    }, []);
+    const moviesReducer = props.moviesReducer;
+    const showsReducer = props.showsReducer;
 
     const rows = [];
     var m_i = 0;
@@ -122,25 +108,9 @@ function Slider({ moviesReducer, getTrending, getActionMovies,getAnimationMovies
     )
 }
 
-const mapStateToProps = state => {
-    return{
-        moviesReducer: state.moviesReducer,
-        showsReducer: state.showsReducer
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-       getTrending: () => dispatch(getTrending()),
-       getActionMovies: () => dispatch(getActionMovies()),
-       getAnimationMovies: () => dispatch(getAnimationMovies()),
-       getThrillerMovies: () => dispatch(getThrillerMovies()),
-       getTrendingShows: () => dispatch(getTrendingShows()),
-       getActionShows: () => dispatch(getActionShows()),
-       getComedyShows: () => dispatch(getComedyShows()),
-       getSciFiShows: () => dispatch(getSciFiShows())
-    }
-}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Slider);
+
+
+
+export default HomeSlider;
