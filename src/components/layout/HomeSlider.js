@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 SwiperCore.use([Navigation, Virtual]);
 
-function HomeSlider( props ){
+function HomeSlider(props){
 
     const moviesReducer = props.moviesReducer;
     const showsReducer = props.showsReducer;

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect} from "react";
 import {connect} from 'react-redux';
 import {getShowDetail, getShowCredits, getShowWatchProviders, 
     getShowVideos, getSimilarShows} from '../../actions/showDetailAction';
@@ -6,7 +6,10 @@ import {validShowProvidersSelector} from '../../reducers/showDetailReducer';
 import Suggested from './suggested';
 import '../../styles/detail.css';
 
-function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatchProviders, 
+
+
+
+function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getShowWatchProviders, 
     getShowVideos, getSimilarShows}){
     
     useEffect(() => {
@@ -16,9 +19,9 @@ function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatch
         getShowVideos(); 
         getSimilarShows();
     }, [])
-
+    const m = match.params.id;
     return (
-        <div className="movie-detail-main">
+        <div className="movie-detail-main" key={m}>
             {show.loading ? 
                 <h2>Loading </h2> :
             <section className="detail">
@@ -71,7 +74,8 @@ function TvDetail({ show, providers, getShowDetail, getShowCredits, getShowWatch
                 
             </section>
 } 
-            <Suggested suggested={show.similar_shows} name={show.show_detail.name}/>
+            <Suggested 
+            suggested={show.similar_shows} name={show.show_detail.name}/>
             </div>
     )
 };

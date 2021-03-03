@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Navigation, Virtual} from 'swiper';
 import 'swiper/swiper-bundle.css';
 
 SwiperCore.use([Navigation, Virtual]);
 
+
 export default function Suggested(props) {
+    
     const suggested = props.suggested;
-    console.log(suggested);
+
     return(
         <div className="sugg-album-row album-row">
             <div className="album-title sugg-album-title">
@@ -51,7 +53,7 @@ export default function Suggested(props) {
                                  key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
-                            <Link  key={`href-${idx}`} 
+                            <Link  key={`href-${idx}`}
                                    to={ multi.title ? `/movie/${multi.id}`
                                                       :`/tv/${multi.id}`}
                             >
@@ -67,7 +69,6 @@ export default function Suggested(props) {
                     )
                 })}
             </Swiper>
-                
             </Fragment>
         </div>
     )

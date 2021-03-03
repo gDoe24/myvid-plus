@@ -14,8 +14,8 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/tv/:id" component={TvDetail} />
-          <Route path="/movie/:id" component={MovieDetail} />
+          <Route path="/tv/:id" render={props => <TvDetail key={props.location.key} {...props} />} />
+          <Route path="/movie/:id" render={props => <MovieDetail key={props.location.key} {...props} />} />
         </Switch>
       </Router>
     </Provider>

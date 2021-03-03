@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import {Link} from 'react-router-dom';
 
 function Header(){
     return(
@@ -6,7 +7,7 @@ function Header(){
         <header>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top ">
             <div className="container-fluid">
-            <a className="navbar-brand" href="#">MyVids Plus</a>
+                <Link to="/" className="navbar-brand" href="#">MyVids Plus</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -14,7 +15,7 @@ function Header(){
             <div className="collapse navbar-collapse" id="navbarsExample04">
                 <ul className="navbar-nav me-auto mb-2 mb-md-0">
                 <li className="nav-item active">
-                    <a className="nav-link disabled" aria-current="page" href="#">Home</a>
+                    <Link to="/" className="nav-link disabled" aria-current="page">Home</Link>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="#">Movies</a>
