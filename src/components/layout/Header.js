@@ -18,7 +18,7 @@ function Header(){
                     <Link to="/" className="nav-link disabled" aria-current="page">Home</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Movies</a>
+                    <Link to="/movies/" className="nav-link" >Movies</Link>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</a>

@@ -399,6 +399,7 @@ nav i {
       grid-template-rows: 20% 80%;
       grid-template-areas: "title"  "cards";
   margin-bottom: 40px;
+  overflow: visible;
 }
 
 .album-title {

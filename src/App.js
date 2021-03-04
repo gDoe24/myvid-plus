@@ -6,6 +6,7 @@ import Home from './components/layout/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TvDetail from './components/tvshows/tvDetail';
 import MovieDetail from './components/movies/movieDetail';
+import MoviesPage from './components/movies/moviesPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/tv/:id" render={props => <TvDetail key={props.location.key} {...props} />} />
           <Route path="/movie/:id" render={props => <MovieDetail key={props.location.key} {...props} />} />
+          <Route path="/movies/" exact component={MoviesPage}/>
         </Switch>
       </Router>
     </Provider>

@@ -152,6 +152,7 @@
 
 .sugg-album-row {
   margin-top: 10vh;
+  overflow: visible;
 }
 
 @media screen and (min-width: 0px) and (max-width: 600px) {
