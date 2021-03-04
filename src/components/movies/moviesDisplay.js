@@ -1,10 +1,12 @@
 import React from 'react';
 
 
-function MoviesDisplay(){
+function MoviesDisplay(props){
     
+    const genre = props.genre;
     return (
-        <h1>MovieDisplay</h1>
+
+        <h1>{genre.title}</h1>
     )
 }
 

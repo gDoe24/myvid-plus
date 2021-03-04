@@ -1,5 +1,6 @@
 import { ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, 
-        FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, THRILLER_MOVIES_SUCCESS } from '../actions/types';
+        FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, THRILLER_MOVIES_SUCCESS,
+        SCIFI_MOVIES_SUCCESS, DOCUMENTARY_MOVIES_SUCCESS } from '../actions/types';
 import produce from 'immer';
 
 const initialState = {
@@ -18,7 +19,6 @@ const initialState = {
             data: []
         },
         {
-            
             id: 2,
             loading: true,
             title: "Animated Movies",
@@ -28,6 +28,18 @@ const initialState = {
             id: 3, 
             loading: true,
             title: "Thriller Movies",
+            data: []
+        },
+        {
+            id: 4,
+            loading: true,
+            title: "Sci-Fi",
+            data: []
+        },
+        {
+            id: 5,
+            loading: true,
+            title: "Documentary",
             data: []
         }
     ],
@@ -60,18 +72,20 @@ export const moviesReducer = (state = initialState, action) => {
             draft.genres[3].loading = false;
 
         })
+        case SCIFI_MOVIES_SUCCESS: return produce(state, draft =>{
+            draft.genres[4].data = action.payload;
+            draft.genres[4].loading = false;
+
+        })
+        case DOCUMENTARY_MOVIES_SUCCESS: return produce(state, draft =>{
+            draft.genres[5].data = action.payload;
+            draft.genres[5].loading = false;
+
+        })
         case FETCH_MOVIES_FAILURE: return {
             ...state,
             err: action.error
         }
         default: return state
     }
-}
-
-// SELECTOR
-
-const getMovieInfoSelector = (state) => {
-    return state.trendingMovies.map((movie) => {
-        return movie.title
-    });
 }

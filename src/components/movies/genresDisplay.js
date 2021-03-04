@@ -1,8 +1,19 @@
 import React from 'react';
 
-function GenreDisplay(){
+function GenreDisplay(props){
+
+    const genres = props.genres;
     return (
-        <h1>GenreDisplay</h1>
+        <div>
+            {genres.map((genre, idx) => {
+                return(
+                    <button  key={`genre-${idx}`} onClick={() => props.handleGenre(idx)}>
+                        {genre.title}
+                    </button>
+                    )
+            })}
+        </div>
+        
     )
 }
 
