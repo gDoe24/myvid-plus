@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, 
          ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, THRILLER_MOVIES_SUCCESS, 
-         SCIFI_MOVIES_SUCCESS, DOCUMENTARY_MOVIES_SUCCESS} from './types';
+         SCIFI_MOVIES_SUCCESS, DOCUMENTARY_MOVIES_SUCCESS, GENRE_BY_ID_SUCCESS } from './types';
 
 
 
@@ -122,6 +122,22 @@ export const getDocumentaryMovies = () => (dispatch) =>{
         });
     };
 
+export const getGenreById = (id) => (dispatch) =>{
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${id}`)
+        .then(res => {
+            // Response.data is the object of movies
+            const movies = res.data["results"];
+            dispatch({
+                type: GENRE_BY_ID_SUCCESS,
+                payload: movies
+            });
+        }).catch(err => {
+            dispatch({
+                type: FETCH_MOVIES_FAILURE,
+                error: err.message
+            })
+        });
+};
 
 // SEARCH MULTI
 /*

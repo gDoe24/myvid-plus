@@ -9,7 +9,7 @@ import '../../styles/displayPages.css';
 
 function MoviesPage({ movies }) {
 
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(1);
 
     const handleGenre = (id) => {
         setActive(id)
@@ -20,7 +20,7 @@ function MoviesPage({ movies }) {
             <h1>MoviesPage</h1>
             <GenreDisplay handleGenre={handleGenre}
                           genres={movies.genres}/>
-            <MoviesDisplay genre={movies.genres[active]}/>
+            <MoviesDisplay genre={movies.genres[active]} key={movies.genres[active].id}/>
         </div>
     )
 };
