@@ -17,7 +17,6 @@ function MoviesDisplay({props, getGenreById, movies}){
         {genre.id == 0 ? 
             <h1>Popular Movies</h1>
             :
-        
         movies.genre_by_id.loading ? 
             <h3>Loading</h3> :
             movies.genre_by_id.data.map((movie, idx) => {

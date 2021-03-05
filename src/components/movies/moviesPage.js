@@ -19,7 +19,7 @@ function MoviesPage({ movies }) {
         <div className="display-main">
             <h1>MoviesPage</h1>
             <GenreDisplay handleGenre={handleGenre}
-                          genres={movies.genres}/>
+                          genres={movies.genres} active={active}/>
             <MoviesDisplay genre={movies.genres[active]} key={movies.genres[active].id}/>
         </div>
     )
