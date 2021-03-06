@@ -19,7 +19,7 @@ function GenreDisplay(props){
                     slidesPerView={6}
                     breakpoints={{
                         0:{
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                         },
                         // when window width is >= 640px
                         600: {
@@ -28,10 +28,10 @@ function GenreDisplay(props){
                         // when window width is >= 768px
                         
                         992: {
-                            slidesPerView: 5,
+                            slidesPerView: 4,
                         },
                         1200: {
-                            slidesPerView: 6,
+                            slidesPerView: 5,
                         },
                         1400: {
                             slidesPerView: 6,
@@ -40,7 +40,7 @@ function GenreDisplay(props){
                         {genres.map((genre, idx) => {
                             return(
                                 <SwiperSlide>
-                                <button className={` ${idx == props.active ? `genre-box genre-active`: 
+                                <button className={`${idx == props.active ? `genre-box genre-active`: 
                                 ` genre-box genre-deactive`}`} key={`genre-${idx}`} 
                                         onClick={() => props.handleGenre(idx)}>
                                     <p className="genre-title">{genre.title}</p>
