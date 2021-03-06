@@ -54,7 +54,7 @@
   height: auto;
   display: -ms-grid;
   display: grid;
-  gap: 80px 2rem;
+  gap: 2rem;
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   -webkit-box-pack: justify;
@@ -70,19 +70,26 @@
   -ms-grid-rows: 90% auto;
       grid-template-rows: 90% auto;
       grid-template-areas: "image"  "gc-title";
-  -webkit-transition: ease-in .3s;
-  transition: ease-in .3s;
   overflow: visible;
 }
 
 .g-card:hover {
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
   z-index: 10;
 }
 
 .g-card:hover .card-title {
+  position: absolute;
+  bottom: 30px;
+  left: 16px;
+  font-size: 1.2rem;
   color: white;
+  display: block;
+  -webkit-transition: ease-in .3s;
+  transition: ease-in .3s;
+}
+
+.g-card:hover .image-container {
+  opacity: .6;
 }
 
 .image-container {
@@ -94,20 +101,10 @@
   padding: 5px;
 }
 
-.card-title-area {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: gc-title;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 10px;
-  margin-left: 5px;
-  overflow: visible;
-}
-
 .card-title {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
+  display: none;
   overflow: visible;
 }
 
@@ -152,6 +149,7 @@
     height: 80%;
   }
   .card-title {
+    display: block;
     font-size: 18px;
     color: white;
   }

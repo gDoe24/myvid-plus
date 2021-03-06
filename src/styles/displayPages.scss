@@ -44,7 +44,7 @@
     width: 100%;
     height: auto;
     display: grid;
-    gap: 80px 2rem;
+    gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-between;
 }
@@ -55,14 +55,21 @@
     grid-template-rows: 90% auto;
     grid-template-areas: "image" 
                             "gc-title";
-    transition: ease-in .3s;
     overflow: visible;
 }
 .g-card:hover{
-    transform: scale(1.15);
     z-index:10;
     .card-title{
+        position: absolute;
+        bottom: 30px;
+        left: 16px;
+        font-size: 1.2rem;
         color: white;
+        display: block;
+        transition: ease-in .3s;
+    }
+    .image-container{
+        opacity: .6;
     }
 }
 .image-container{
@@ -70,19 +77,12 @@
     object-fit: contain;
     padding: 5px;
 }
-.card-title-area{
-    grid-area: gc-title;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    margin-left: 5px;
-    overflow: visible;
-}
 .card-title{
     font-size: 1.2rem;
     color: rgba(255,255,255,.6);
+    display: none;
     overflow: visible;
 }
-
 .card-pic{
     height: 100%;
     width: 100%;
@@ -116,6 +116,7 @@
         height: 80%;
     }
     .card-title{
+        display: block;
         font-size: 18px;
         color: white;
     }

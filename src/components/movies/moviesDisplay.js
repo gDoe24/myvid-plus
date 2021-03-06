@@ -34,9 +34,11 @@ function MoviesDisplay({props, getGenreById, movies}){
                             </Link>
                         </div>
                         <div key={`card-title-area-${idx}`} className="card-title-area">
-                        <h4 key={`card-title-${idx}`} className="card-title">{movie.title ? movie.title : movie.name}</h4>
-                        </div>
-                        </div>
+                            <h4 key={`card-title-${idx}`} className="card-title">
+                                {movie.title ? movie.title : movie.name}
+                            </h4>
+                        </div>                        
+                    </div>
                 )
             })
     }
