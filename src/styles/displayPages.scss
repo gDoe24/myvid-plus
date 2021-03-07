@@ -40,7 +40,7 @@
         );
     }
 }
-.album-container{
+.display-album-container{
     width: 100%;
     height: auto;
     display: grid;
@@ -48,42 +48,42 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-between;
 }
-.g-card{
+.display-g-card{
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-rows: 90% auto;
     grid-template-areas: "image" 
-                            "gc-title";
-    overflow: visible;
+                         "gc-title";
+    transition: ease-in .3s;
+    overflow: hidden;
 }
-.g-card:hover{
+.display-g-card:hover{
+    transform: scale(1.15);
     z-index:10;
-    .card-title{
-        position: absolute;
-        bottom: 30px;
-        left: 16px;
+    .display-card-title{
         font-size: 1.2rem;
         color: white;
         display: block;
-        transition: ease-in .3s;
     }
-    .image-container{
+    .display-image-container{
         opacity: .6;
     }
 }
-.image-container{
+.display-image-container{
     grid-area: image;
     object-fit: contain;
     padding: 5px;
 }
-.card-title{
+.display-card-title{
     font-size: 1.2rem;
     color: rgba(255,255,255,.6);
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
     display: none;
-    overflow: visible;
 }
-.card-pic{
+.display-card-pic{
     height: 100%;
     width: 100%;
     border-radius: .5rem;
@@ -107,15 +107,15 @@
             }
         }
     }
-    .album-container{
+    .display-album-container{
         gap: 2rem;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         justify-content: space-between;
     }
-    .g-card{
+    .display-g-card{
         height: 80%;
     }
-    .card-title{
+    .display-card-title{
         display: block;
         font-size: 18px;
         color: white;

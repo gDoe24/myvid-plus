@@ -23,14 +23,15 @@ function Header(){
                 <li className="nav-item">
                     <a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</a>
                 </li>
-                <li className="nav-item dropdown">
+              {/*  <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Upcoming</a>
                     <ul className="dropdown-menu" aria-labelledby="dropdown04">
                     <li><a className="dropdown-item" href="#">Movies</a></li>
                     <li><a className="dropdown-item" href="#">TV Shows</a></li>
                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                </li>
+                    </li>
+                */}
                 <span className="navbar-nav mx-5">
                 <i className="bi bi-search mx-2 pt-1"></i>
                 <form className="home-search-form ">

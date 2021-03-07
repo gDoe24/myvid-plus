@@ -15,7 +15,7 @@ function MoviesDisplay({props, getGenreById, movies}){
     return (
         <div className="movies-container">
         <h1>{genre.title}</h1>
-        <div key={`genre-${genre.title}`} className="album-container">
+        <div key={`genre-${genre.title}`} className="display-album-container">
         {genre.id == 0 ? 
             <h1>Popular Movies</h1>
             :
@@ -25,16 +25,17 @@ function MoviesDisplay({props, getGenreById, movies}){
             
             movies.genre_by_id.data.map((movie, idx) => {
                 return (
-                    <div key={`g-card-${idx}`} className="g-card">
-                        <div key={`img-container-${idx}`}className="image-container">
-                            <Link  key={`href-${idx}`} to={ movie.title ? `/movie/${movie.id}`
+                    <div key={`display-g-card-${idx}`} className="display-g-card">
+                        <Link  key={`href-${idx}`} to={ movie.title ? `/movie/${movie.id}`
                                                             :`/tv/${movie.id}`}>
-                            <img key={`g-card-pic-${idx}`} className="card-pic" 
+                        <div key={`display-img-container-${idx}`}className="display-image-container">
+                            
+                            <img key={`display-g-card-pic-${idx}`} className="display-card-pic" 
                             src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
-                            </Link>
                         </div>
-                        <div key={`card-title-area-${idx}`} className="card-title-area">
-                            <h4 key={`card-title-${idx}`} className="card-title">
+                        </Link>
+                        <div key={`display-card-overlay-${idx}`} className="display-card-overlay">
+                            <h4 key={`display-card-title-${idx}`} className="display-card-title">
                                 {movie.title ? movie.title : movie.name}
                             </h4>
                         </div>                        
