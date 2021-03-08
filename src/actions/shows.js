@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_SHOWS_REQUEST, FETCH_SHOWS_FAILURE, TRENDING_SHOWS_SUCCESS,
         ACTION_SHOWS_SUCCESS, COMEDY_SHOWS_SUCCESS, SCIFI_SHOWS_SUCCESS,
-        CRIME_SHOWS_SUCCESS, ANIMATION_SHOWS_SUCCESS, SHOW_GENRE_BY_ID_SUCCESS} from './types';
+        CRIME_SHOWS_SUCCESS, ANIMATION_SHOWS_SUCCESS, SHOW_GENRE_BY_ID_SUCCESS, CONCAT_GENRE_BY_ID} from './types';
 
 /* TODO: Implement actions for endpoints:
     GET Popular
@@ -114,8 +114,8 @@ export const getCrimeShows = () => (dispatch) =>{
 
 //GET SHOW GENRE BY ID
 
-export const getShowGenreById = (id) => (dispatch) =>{
-    axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${id}`)
+export const getShowGenreById = (id, page) => (dispatch) => {
+    axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${id}`)
         .then(res => {
             // Response.data is the object of shows
             const shows = res.data["results"];
@@ -130,3 +130,20 @@ export const getShowGenreById = (id) => (dispatch) =>{
             })
         });
 };
+
+export const fetchData = (id, page) => (dispatch) => {
+    axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${id}`)
+        .then(res => {
+            // Response.data is the object of shows
+            const shows = res.data["results"];
+            dispatch({
+                type: CONCAT_GENRE_BY_ID,
+                payload: shows
+            });
+        }).catch(err => {
+            dispatch({
+                type: FETCH_SHOWS_FAILURE,
+                error: err.message
+            })
+        });
+}

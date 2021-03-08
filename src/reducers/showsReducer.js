@@ -1,6 +1,6 @@
 import { FETCH_SHOWS_REQUEST, FETCH_SHOWS_FAILURE, TRENDING_SHOWS_SUCCESS,
          ACTION_SHOWS_SUCCESS, COMEDY_SHOWS_SUCCESS, SCIFI_SHOWS_SUCCESS,
-         CRIME_SHOWS_SUCCESS, ANIMATION_SHOWS_SUCCESS, SHOW_GENRE_BY_ID_SUCCESS} from '../actions/types';
+         CRIME_SHOWS_SUCCESS, ANIMATION_SHOWS_SUCCESS, SHOW_GENRE_BY_ID_SUCCESS, CONCAT_GENRE_BY_ID} from '../actions/types';
 import produce from 'immer';
 
 const initialState = {
@@ -82,14 +82,13 @@ export const showsReducer = (state = initialState, action) => {
             draft.genres[5].data = action.payload;
             draft.genres[5].loading = false;
         })
-        case SHOW_GENRE_BY_ID_SUCCESS: return {
-            ...state,
-            genre_by_id: {
-                ...state,
-                loading: false,
-                data: action.payload
-            }
-        }
+        case SHOW_GENRE_BY_ID_SUCCESS: return produce(state, draft =>{
+            draft.genre_by_id.data = action.payload;
+            draft.genre_by_id.loading = false;
+        })
+        case CONCAT_GENRE_BY_ID: return produce(state, draft => {
+            draft.genre_by_id.data = draft.genre_by_id.data.concat(action.payload);
+        })
         case FETCH_SHOWS_FAILURE: return {
             ...state,
             err: action.error

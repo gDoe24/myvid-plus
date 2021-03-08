@@ -10,11 +10,11 @@ function GenreDisplay(props){
 
     const genres = props.genres;
     return (
-
             <div className="genres-row">
                 <Fragment>
                     <Swiper
-                    id="main" 
+                    id="main"
+                    key={`swiper`}
                     navigation
                     slidesPerView={6}
                     breakpoints={{
@@ -39,11 +39,11 @@ function GenreDisplay(props){
                       }}>
                         {genres.map((genre, idx) => {
                             return(
-                                <SwiperSlide>
+                                <SwiperSlide key={`swiperslide-${idx}`}>
                                 <button className={`${idx == props.active ? `genre-box genre-active`: 
                                 ` genre-box genre-deactive`}`} key={`genre-${idx}`} 
                                         onClick={() => props.handleGenre(idx)}>
-                                    <p className="genre-title">{genre.title}</p>
+                                    <p key={`${genre.title}`} className="genre-title">{genre.title}</p>
                                 </button>
                                 </SwiperSlide>
                                 )

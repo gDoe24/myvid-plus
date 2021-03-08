@@ -1,18 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {getShowGenreById} from '../../actions/shows';
+import { getShowGenreById, fetchData } from '../../actions/shows';
 
-function ShowsDisplay({props, shows, getShowGenreById}){
+function ShowsDisplay({props, shows, getShowGenreById, fetchData}){
     
     useEffect(() => {
         getShowGenreById();
+        fetchData(2);
     }, [])
 
+    const [page, incrementPage] = useState(1);
+
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    
     const genre = props.genre;
-    console.log(genre.id);
+    
     return (
-        <div className="shows-container">
+        <div key={`shows-${genre.title}`} className="shows-container">
         <h1>{genre.title}</h1>
         <div key={`genre-${genre.title}`} className="display-album-container">
         {genre.id == 0 ? 
@@ -56,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getShowGenreById: () => dispatch(getShowGenreById(ownProps.genre.id))
+        getShowGenreById: () => dispatch(getShowGenreById(ownProps.genre.id, 1)),
+        fetchData: (page) => dispatch(fetchData(ownProps.genre.id, page))
     }
 }
 
