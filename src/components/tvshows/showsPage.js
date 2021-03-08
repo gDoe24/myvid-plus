@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import GenreDisplay from '../movies/genresDisplay';
+import GenreDisplay from '../layout/genresDisplay';
 import ShowsDisplay from './showsDisplay';
 
 function ShowsPage({ shows }){

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import {connect} from 'react-redux';
-import GenreDisplay from './genresDisplay';
+import GenreDisplay from '../layout/genresDisplay';
 import MoviesDisplay from './moviesDisplay';
 import '../../styles/displayPages.css';
 

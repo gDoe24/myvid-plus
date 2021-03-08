@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getShowDetail, getShowCredits, getShowWatchProviders, 
     getShowVideos, getSimilarShows} from '../../actions/showDetailAction';
 import {validShowProvidersSelector} from '../../reducers/showDetailReducer';
-import Suggested from './suggested';
+import Suggested from '../layout/suggested';
 import '../../styles/detail.css';
 
 

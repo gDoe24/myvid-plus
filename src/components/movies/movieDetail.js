@@ -4,7 +4,7 @@ import '../../styles/detail.css';
 import {getMovieDetail, getMovieCredits, getWatchProviders, 
         getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
 import {validProvidersSelector} from '../../reducers/movieDetailReducer';
-import Suggested from '../tvshows/suggested';
+import Suggested from '../layout/suggested';
 
 function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
                       getSimilarMovies, getVideos }){
