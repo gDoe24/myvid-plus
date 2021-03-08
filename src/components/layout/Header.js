@@ -21,7 +21,7 @@ function Header(){
                     <Link to="/movies/" className="nav-link" >Movies</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</a>
+                    <Link to="/tv/" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</Link>
                 </li>
               {/*  <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Upcoming</a>

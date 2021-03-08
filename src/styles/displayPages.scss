@@ -45,7 +45,7 @@
     height: auto;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     justify-content: space-between;
 }
 .display-g-card{
@@ -59,7 +59,7 @@
     overflow: hidden;
 }
 .display-g-card:hover{
-    transform: scale(1.15);
+    transform: scale(1.1);
     z-index:10;
     .display-card-title{
         font-size: 1.2rem;
