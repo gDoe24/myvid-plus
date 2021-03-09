@@ -1,6 +1,7 @@
 import { ACTION_MOVIES_SUCCESS, ANIMATION_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE, 
         FETCH_MOVIES_REQUEST, TRENDING_SUCCESS, THRILLER_MOVIES_SUCCESS,
-        SCIFI_MOVIES_SUCCESS, DOCUMENTARY_MOVIES_SUCCESS, GENRE_BY_ID_SUCCESS } from '../actions/types';
+        SCIFI_MOVIES_SUCCESS, DOCUMENTARY_MOVIES_SUCCESS, GENRE_BY_ID_SUCCESS, CONCAT_MOVIE_GENRE_BY_ID
+         } from '../actions/types';
 import produce from 'immer';
 
 const initialState = {
@@ -89,14 +90,13 @@ export const moviesReducer = (state = initialState, action) => {
             draft.genres[5].loading = false;
         })
 
-        case GENRE_BY_ID_SUCCESS: return {
-            ...state,
-            genre_by_id: {
-                ...state,
-                loading: false,
-                data: action.payload
-            }
-        }
+        case GENRE_BY_ID_SUCCESS: return produce(state, draft =>{
+            draft.genre_by_id.data = action.payload;
+            draft.genre_by_id.loading = false;
+        })
+        case CONCAT_MOVIE_GENRE_BY_ID: return produce(state, draft => {
+            draft.genre_by_id.data = draft.genre_by_id.data.concat(action.payload);
+        })
         case FETCH_MOVIES_FAILURE: return {
             ...state,
             err: action.error

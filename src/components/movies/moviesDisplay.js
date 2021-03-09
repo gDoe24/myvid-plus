@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getGenreById } from '../../actions/movies';
+import { getGenreById, fetchMoviesData } from '../../actions/movies';
 import { Link } from 'react-router-dom';
 
 
-function MoviesDisplay({props, getGenreById, movies}){
+function MoviesDisplay({props, getGenreById, fetchMoviesData, movies}){
     
+    const [isBottom, setIsBottom] = useState(false);
+    const [page, incrementPage] = useState(2);
+
     useEffect(() => {
         getGenreById();
+        window.addEventListener('scroll', infinteLoop);
     }, [])
+
+    useEffect(() => {
+        if (isBottom)
+        {
+            fetchMoviesData(page);
+            incrementPage(page + 1);
+            setIsBottom(false);
+            setTimeout(1000);
+        }
+    }, [isBottom])
+
+    const infinteLoop = () => {
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+        if (scrollTop + window.innerHeight + 50 >= scrollHeight)
+        {
+            setIsBottom(true);
+        }
+    }
 
     const genre = props.genre;
 
@@ -55,8 +78,10 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
+    const genre = ownProps.genre.id
     return {
-        getGenreById: () => dispatch(getGenreById(ownProps.genre.id))
+        getGenreById: () => dispatch(getGenreById(genre)),
+        fetchMoviesData: (page) => dispatch(fetchMoviesData(genre, page))
     }
 }
 

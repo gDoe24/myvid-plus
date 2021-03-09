@@ -53,7 +53,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         </div>
                         <div className="watch">
                             <h2>Where to Watch</h2>
-                            { providers.length > 0 ? 
+                            { providers ? 
                               providers.map((provider, idx) => {
                                 return <div key={`${provider}-${idx}`}>
                                     <img className="me-3"
@@ -61,7 +61,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                                     {provider}
                                 </div>
                             }) 
-                            : <div>None</div>
+                            : <div>N/A</div>
                             }
                         </div>
                     </div>
