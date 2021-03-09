@@ -55,6 +55,10 @@ export function validShowProvidersSelector(state){
                             "netflix", "youtube", "crunchyroll", "funimation now"];
 
     const validProvidersSet = new Set(validProviders);
+    if (!state.watch_providers)
+    {
+        return null;
+    }
     const rent = state.watch_providers.rent ? state.watch_providers.rent : null;
     const flatrate = state.watch_providers.flatrate ? state.watch_providers.flatrate : null;
     const buy = state.watch_providers.buy ? state.watch_providers.buy : null;

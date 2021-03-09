@@ -5,14 +5,32 @@ import { getShowGenreById, fetchData } from '../../actions/shows';
 
 function ShowsDisplay({props, shows, getShowGenreById, fetchData}){
     
+    const [isBottom, setIsBottom] = useState(false);
+    const [page, incrementPage] = useState(2);
+
     useEffect(() => {
         getShowGenreById();
-        fetchData(2);
+        window.addEventListener('scroll', infinteLoop);
     }, [])
 
-    const [page, incrementPage] = useState(1);
+    useEffect(() => {
+        if (isBottom){
+            fetchData(page);
+            incrementPage(page + 1);
+            setIsBottom(false);
+        }
+    }, [isBottom])
 
-    const API_KEY = process.env.REACT_APP_API_KEY;
+    
+
+    const infinteLoop = () => {
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+        if (scrollTop + window.innerHeight + 50 >= scrollHeight)
+        {
+            setIsBottom(true);
+        }
+    }
     
     const genre = props.genre;
     
