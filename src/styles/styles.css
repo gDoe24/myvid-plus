@@ -52,6 +52,17 @@ nav i {
   color: #DC97FF !important;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 /* HOME FEATURED/CAROUSEL */
 .home-featured {
   background: white;

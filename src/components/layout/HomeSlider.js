@@ -74,7 +74,7 @@ function HomeSlider(props){
                                  key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
-                            <Link  key={`href-${idx}`} to={ multi.title ? `/movie/${multi.id}`
+                            <Link  key={`href-${idx}`} to={ multi.title ? `/movies/${multi.id}`
                                                             :`/tv/${multi.id}`}>
                             <img key={`g-card-pic-${idx}`} className="card-pic" 
                             src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />

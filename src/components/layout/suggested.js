@@ -54,7 +54,7 @@ export default function Suggested(props) {
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
                             <Link  key={`href-${idx}`}
-                                   to={ multi.title ? `/movie/${multi.id}`
+                                   to={ multi.title ? `/movies/${multi.id}`
                                                       :`/tv/${multi.id}`}
                             >
                             <img key={`g-card-pic-${idx}`} className="card-pic" 

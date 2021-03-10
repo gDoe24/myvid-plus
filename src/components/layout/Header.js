@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import {Link} from 'react-router-dom';
+import Search from './Search';
 
 function Header(){
     return(
@@ -32,12 +33,7 @@ function Header(){
                     </ul>
                     </li>
                 */}
-                <span className="navbar-nav mx-5">
-                <i className="bi bi-search mx-2 pt-1"></i>
-                <form className="home-search-form ">
-                    <input className="home-search form-control " type="text" placeholder="Search" />
-                </form>
-                </span>
+                <Search />
                 </ul>
                 <ul className="navbar-nav mx-5">
                     <li className="nav-item">

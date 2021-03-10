@@ -49,7 +49,7 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, movies}){
             movies.genre_by_id.data.map((movie, idx) => {
                 return (
                     <div key={`display-g-card-${idx}`} className="display-g-card">
-                        <Link  key={`href-${idx}`} to={ movie.title ? `/movie/${movie.id}`
+                        <Link  key={`href-${idx}`} to={ movie.title ? `/movies/${movie.id}`
                                                             :`/tv/${movie.id}`}>
                         <div key={`display-img-container-${idx}`}className="display-image-container">
                             
