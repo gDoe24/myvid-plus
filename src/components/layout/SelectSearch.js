@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/displayPages.css';
 
 export default function SelectSearch(props){
-    console.log(props.active);
+    
     return (
         <div className="search-row">
         <button className={`${props.active == "movies" ? `genre-box genre-active`: 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
+import { Link } from 'react-router-dom';
 import SelectSearch from './SelectSearch';
 import '../../styles/search.css';
 
@@ -26,9 +27,11 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
     useEffect(() => {
         if (active == "movies")
         {
+            setPage(1);
             searchMovies(dbFriendly, page);
         }
         else{
+            setPage(1);
             searchShows(dbFriendly, page);
         }
     }, [active])
@@ -64,15 +67,37 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         <div className="search-container">
             <SelectSearch handleClick={handleClick}
                             active={active}/>
-            {multi.data.map((multi, idx) => {
-                return (
-                    <h2 key={`multi-${idx}`}>
-                    {multi.title? multi.title : multi.name}
-                    </h2>
-                    )
-            })}
-            <div className="pagination">
-                {createPagination()}
+            <div className="search-results">
+                {multi.data.map((multi, idx) => {
+                    return (
+                        <div key={`result-${idx}`} className="result">
+                            <div className="result-img-container">
+                            <img className="result-img" src={ multi.poster_path ?
+                                `https://www.themoviedb.org/t/p/original${multi.poster_path}`
+                                : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
+                            }
+                            />
+                            </div>
+                            <div className="result-info">
+                                <Link className="result-title" 
+                                    to={ multi.title ? `/movies/${multi.id}`
+                                                        :`/tv/${multi.id}`}>
+                                        {multi.title? multi.title : multi.name}
+                                </Link>
+                                <p className="result-release-date">
+                                    {multi.release_date}
+                                </p>
+                                <p className="result-overview">
+                                    {multi.overview}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        )
+                })}
+                <div className="pagination">
+                    {createPagination()}
+                </div>
             </div>
         </div>
         

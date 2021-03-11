@@ -4,9 +4,6 @@ import React, { useState } from 'react';
 function Search(){
 
     const [search, setSearch] = useState('')
-    const submitForm = () => {
-       
-    }
 
     return(
         <span className="navbar-nav mx-5">
