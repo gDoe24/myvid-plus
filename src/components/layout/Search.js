@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function Search(){
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
 
     return(
         <span className="navbar-nav mx-5">

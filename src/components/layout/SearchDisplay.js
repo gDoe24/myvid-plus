@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import SelectSearch from './SelectSearch';
 import '../../styles/search.css';
 
@@ -9,20 +9,24 @@ import '../../styles/search.css';
 
 function SearchDisplay({ multi, searchMovies, searchShows }){
 
-    const { search } = window.location;
-    const query = new URLSearchParams(search).get('query');
-
+    let currentUrlParams= new URLSearchParams(useLocation().search);
+    const query = currentUrlParams.get('query');
     const replaceWhitespace = (searchTerm) => {
         return searchTerm.replace(" ", "%20");
     }
-
     var dbFriendly = replaceWhitespace(query);
-    const [page, setPage] = useState(1)
-    const [active, setActive] = useState("movies")
 
-    useEffect(() => {
-        searchMovies(dbFriendly, page);
-    }, [])
+    const [page, setPage] = useState(1);
+    const [active, setActive] = useState("movies");
+    
+    currentUrlParams.set('active', active);
+    currentUrlParams.set('page', page);
+    let history = useHistory();
+
+   /*
+    if (currentUrlParams.get('page') != page){
+        setPage(currentUrlParams.get('page'));
+    }*/
 
     useEffect(() => {
         if (active == "movies")
@@ -36,7 +40,7 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         }
     }, [active])
 
-    useEffect(() => {
+   useEffect(() => {
         if (active == "movies")
         {
             searchMovies(dbFriendly, page);
@@ -44,6 +48,8 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         else{
             searchShows(dbFriendly, page);
         }
+        
+        //history.push(window.location.pathname + "?" + currentUrlParams);
     }, [page])
 
     const handleClick = (id) => {
@@ -54,11 +60,16 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         let pageNumbers = [];
         for (let i = 1; i <= multi.pages; i++) {
           pageNumbers.push(
-            <span
+              <span>
+            <a
               key={i}
               className={`page-num ${i === page ? 'active' : ''}`}
-              onClick={() => {setPage(i)}}>{i}
-            </span>)
+              onClick={() => {
+                  setPage(i);
+                  } }>{i}
+            </a>
+            </span>
+            )
         }
         return pageNumbers;
       }
@@ -68,7 +79,10 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
             <SelectSearch handleClick={handleClick}
                             active={active}/>
             <div className="search-results">
-                {multi.data.map((multi, idx) => {
+                {multi.loading ? 
+                <h2>Loading</h2>
+                :
+                multi.data.map((multi, idx) => {
                     return (
                         <div key={`result-${idx}`} className="result">
                             <div className="result-img-container">

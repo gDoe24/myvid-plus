@@ -1,3 +1,7 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .search-container {
   margin-top: 10vh;
   width: 80%;
@@ -118,16 +122,15 @@
   margin-right: auto;
 }
 
-.pagination span.page-num {
+.pagination .page-num {
   margin: 5px;
   padding-bottom: 50px;
   /* color: blue; */
   font-weight: bolder;
-  text-decoration: underline;
   font-size: 16px;
 }
 
-.pagination span.page-num.active {
+.pagination .page-num.active {
   color: blue;
 }
 /*# sourceMappingURL=search.css.map */
