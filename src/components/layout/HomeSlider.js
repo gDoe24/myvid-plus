@@ -34,7 +34,7 @@ function HomeSlider(props){
             return(
             <div key={`genre-${idx}`} className="album-row">
             <div className="album-title">
-                <h2 className="album-title-h">{genre.title}</h2>
+                <p className="album-title-h">{genre.title}</p>
             </div>
             {genre.loading == true ? <h2>Loading</h2> :
             
@@ -49,8 +49,8 @@ function HomeSlider(props){
                         slidesPerView: 3,
                     },
                     // when window width is >= 640px
-                    600: {
-                      slidesPerView: 3,
+                    500: {
+                      slidesPerView: 4,
                     },
                     // when window width is >= 768px
                     
@@ -98,7 +98,7 @@ function HomeSlider(props){
     )
 
     return(
-        <div className="album mb-5 py-5">
+        <div className="album">
                 <div className="album-container">
                 {slides}
                 </div>

@@ -27,7 +27,7 @@ const featuredMovies = [
 
 function Featured(){
   
-  const mql = window.matchMedia('(max-width: 480px)');
+  const mql = window.matchMedia('(max-width: 767px)');
 
   const smallSection = ( featuredMovies.map((movie, idx) => {
     return(
@@ -68,19 +68,21 @@ function Featured(){
               </div>
               
               <div className="fi-btns my-3">
-              <a href="#" className="btn fi-play my-2 me-3">
+              <a href="#" className="btn fi-play my-1">
                 <i className="bi bi-play-fill"></i>Play
               </a>
-              <a href="#" className="btn fi-trailer my-2 ms-3"><i className="bi bi-film"></i>Watch Trailer</a>
+              <a href="#" className="btn fi-trailer my-1"><i className="bi bi-film"></i>Watch Trailer</a>
               </div>
               <h3 className="fi-overview mt-1 mb-3">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
           <div className="featured-cd mx-4">
               <h2 className="fw-dark mb-4">Director/Cast</h2>
+              <ul className="featured-cd-ul">
               {movie.cast.map((name) =>{
-                  return(<p className="featured-cd-p"key={name}> {name} </p>)
+                  return(<li className="featured-cd-p"key={name}> {name} </li>)
               })} 
+              </ul>
           </div>
           </section>
           </div>
