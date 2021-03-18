@@ -1,34 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation, withRouter } from 'react-router-dom';
 import SelectSearch from './SelectSearch';
 import '../../styles/search.css';
 
 /* DISPLAY COMPONENT FOR WHEN USER SEARCHES. */
 
-function SearchDisplay({ multi, searchMovies, searchShows }){
-
+function SearchDisplay({ location, multi, searchMovies, searchShows }){
+    
     let currentUrlParams= new URLSearchParams(useLocation().search);
-    const query = currentUrlParams.get('query');
+    const currentQuery = currentUrlParams.get('query');
+    
     const replaceWhitespace = (searchTerm) => {
         return searchTerm.replace(" ", "%20");
     }
-    var dbFriendly = replaceWhitespace(query);
+    var dbFriendly = replaceWhitespace(currentQuery);
 
-    const [page, setPage] = useState(1);
-    const [active, setActive] = useState("movies");
+    const currentPage = currentUrlParams.get('page');
+    const currentActive = currentUrlParams.get('active');
+
+    const [page, setPage] = useState(currentPage);
+    const [active, setActive] = useState(currentActive);
+    const [query, setQuery] = useState(currentQuery);
     
-    currentUrlParams.set('active', active);
-    currentUrlParams.set('page', page);
     let history = useHistory();
-
-   /*
+    /*
     if (currentUrlParams.get('page') != page){
         setPage(currentUrlParams.get('page'));
     }*/
 
     useEffect(() => {
+        currentUrlParams.set('active', active);
         if (active == "movies")
         {
             setPage(1);
@@ -38,9 +41,11 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
             setPage(1);
             searchShows(dbFriendly, page);
         }
+        history.push(window.location.pathname + "?" + currentUrlParams);
     }, [active])
 
    useEffect(() => {
+        currentUrlParams.set('page', page);
         if (active == "movies")
         {
             searchMovies(dbFriendly, page);
@@ -49,7 +54,7 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
             searchShows(dbFriendly, page);
         }
         
-        //history.push(window.location.pathname + "?" + currentUrlParams);
+        history.push(window.location.pathname + "?" + currentUrlParams);
     }, [page])
 
     const handleClick = (id) => {
@@ -118,8 +123,9 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
+        location: ownProps.location,
         multi: state.searchReducer
     }
 }
