@@ -14,11 +14,11 @@ function Search(){
     }
 
     const  onSubmit = (e) => {
-        
         history.push({
             pathname: '/search',
             search: "?" + new URLSearchParams({query: query, page: page, active: active})
         })
+        console.log("Search");
         e.preventDefault();
     }
 
@@ -30,7 +30,7 @@ function Search(){
                         className="home-search form-control" type="text" 
                         placeholder="Search"
                         //name="query"
-                        value={query}
+                        value={query || ''}
                         onChange={handleChange}
                     />
                 </form>

@@ -13,7 +13,7 @@ import SearchDisplay from './components/layout/SearchDisplay';
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router >
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/movies/:id" render={props => <MovieDetail key={props.location.key} {...props} />} />
           <Route path="/movies/" exact component={MoviesPage}/>
           <Route path="/tv/" exact component={ShowsPage}/>
-          <Route path="/search" render={props => <SearchDisplay key={props.location.search}{...props} /> }/>
+          <Route path="/search" render={props => <SearchDisplay key={props.location.search} {...props} /> }/>
         </Switch>
       </Router>
     </Provider>

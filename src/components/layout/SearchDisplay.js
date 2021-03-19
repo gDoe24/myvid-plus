@@ -8,6 +8,7 @@ import '../../styles/search.css';
 /* DISPLAY COMPONENT FOR WHEN USER SEARCHES. */
 
 function SearchDisplay({ location, multi, searchMovies, searchShows }){
+    console.log(location);
     
     let currentUrlParams= new URLSearchParams(useLocation().search);
     const currentQuery = currentUrlParams.get('query');
@@ -22,30 +23,13 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
 
     const [page, setPage] = useState(currentPage);
     const [active, setActive] = useState(currentActive);
-    const [query, setQuery] = useState(currentQuery);
     
     let history = useHistory();
-    /*
-    if (currentUrlParams.get('page') != page){
-        setPage(currentUrlParams.get('page'));
-    }*/
-
-    useEffect(() => {
-        currentUrlParams.set('active', active);
-        if (active == "movies")
-        {
-            setPage(1);
-            searchMovies(dbFriendly, page);
-        }
-        else{
-            setPage(1);
-            searchShows(dbFriendly, page);
-        }
-        history.push(window.location.pathname + "?" + currentUrlParams);
-    }, [active])
 
    useEffect(() => {
+        console.log("page");
         currentUrlParams.set('page', page);
+        currentUrlParams.set('active', active);
         if (active == "movies")
         {
             searchMovies(dbFriendly, page);
@@ -55,10 +39,11 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
         }
         
         history.push(window.location.pathname + "?" + currentUrlParams);
-    }, [page])
+    }, [page, active])
 
     const handleClick = (id) => {
         setActive(id);
+        setPage(1);
     };
 
     function createPagination(){
@@ -125,7 +110,7 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        location: ownProps.location,
+        location: ownProps,
         multi: state.searchReducer
     }
 }
