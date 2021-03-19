@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
-import {Link} from 'react-router-dom';
-import Search from './Search';
+import {Link, NavLink, useHistory} from 'react-router-dom';
+import Search from '../search/Search';
 
 function Header(){
+
     return(
         <Fragment>
         <header>
@@ -15,14 +16,14 @@ function Header(){
 
             <div className="collapse navbar-collapse" id="navbarsExample04">
                 <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                <li className="nav-item active">
-                    <Link to="/" className="nav-link disabled" aria-current="page">Home</Link>
+                <li className="nav-item">
+                    <NavLink to="/" exact className="nav-link" aria-current="page">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/movies/" className="nav-link" >Movies</Link>
+                    <NavLink to="/movies/" className="nav-link">Movies</NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/tv/" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</Link>
+                    <NavLink to="/tv/" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">TV Shows</NavLink>
                 </li>
               {/*  <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Upcoming</a>

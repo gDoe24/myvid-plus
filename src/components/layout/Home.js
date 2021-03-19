@@ -12,13 +12,10 @@ function Home({ moviesReducer, showsReducer, getTrending, getActionMovies,getAni
               getTrendingShows, getActionShows, getComedyShows, getSciFiShows,}){
 
     useEffect(() => {
-        getTrending();
+        getTrending('all');
         getActionMovies();
         getAnimationMovies();
         getThrillerMovies();
-    }, []);
-
-    useEffect(() => {
         getTrendingShows();
         getActionShows();
         getComedyShows();
@@ -45,7 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-       getTrending: () => dispatch(getTrending()),
+       getTrending: (media_type) => dispatch(getTrending(media_type)),
        getActionMovies: () => dispatch(getActionMovies()),
        getAnimationMovies: () => dispatch(getAnimationMovies()),
        getThrillerMovies: () => dispatch(getThrillerMovies()),

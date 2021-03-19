@@ -5,11 +5,9 @@ import MoviesDisplay from './moviesDisplay';
 import '../../styles/displayPages.css';
 
 
-
-
 function MoviesPage({ movies }) {
 
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
 
     const handleGenre = (id) => {
         setActive(id)

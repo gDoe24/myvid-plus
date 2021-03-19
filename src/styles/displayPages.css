@@ -49,6 +49,10 @@
   background: linear-gradient(to right bottom, rgba(139, 47, 201, 0.7), rgba(55, 1, 96, 0.5));
 }
 
+.shows-container {
+  margin-top: 20px;
+}
+
 .display-album-container {
   width: 100%;
   height: auto;

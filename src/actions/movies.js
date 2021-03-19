@@ -8,12 +8,12 @@ import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, TRENDING_SUCCESS,
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-// GET Trending Movies
-export const getTrending = () => (dispatch) =>{
+// GET Trending Movies/shows
+export const getTrending = (media_type) => (dispatch) =>{
     dispatch({
         type: FETCH_MOVIES_REQUEST
     })
-    axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`)
+    axios.get(`https://api.themoviedb.org/3/trending/${media_type}/week?api_key=${API_KEY}`)
         .then(res => {
             // Response.data is the object of movies
             const movies = res.data["results"];

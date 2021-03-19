@@ -8,7 +8,7 @@ import TvDetail from './components/tvshows/tvDetail';
 import MovieDetail from './components/movies/movieDetail';
 import MoviesPage from './components/movies/moviesPage';
 import ShowsPage from './components/tvshows/showsPage';
-import SearchDisplay from './components/layout/SearchDisplay';
+import SearchDisplay from './components/search/SearchDisplay';
 
 function App() {
   return (

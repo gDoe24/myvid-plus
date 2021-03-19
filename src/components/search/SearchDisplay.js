@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
-import { Link, useHistory, useLocation, withRouter } from 'react-router-dom';
+import { Link, useHistory, useLocation} from 'react-router-dom';
 import SelectSearch from './SelectSearch';
 import '../../styles/search.css';
 
