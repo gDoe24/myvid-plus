@@ -1,42 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation, withRouter } from 'react-router-dom';
 import SelectSearch from './SelectSearch';
 import '../../styles/search.css';
 
 /* DISPLAY COMPONENT FOR WHEN USER SEARCHES. */
 
-function SearchDisplay({ multi, searchMovies, searchShows }){
-
-    const { search } = window.location;
-    const query = new URLSearchParams(search).get('query');
-
+function SearchDisplay({ location, multi, searchMovies, searchShows }){
+    console.log(location);
+    
+    let currentUrlParams= new URLSearchParams(useLocation().search);
+    const currentQuery = currentUrlParams.get('query');
+    
     const replaceWhitespace = (searchTerm) => {
         return searchTerm.replace(" ", "%20");
     }
+    var dbFriendly = replaceWhitespace(currentQuery);
 
-    var dbFriendly = replaceWhitespace(query);
-    const [page, setPage] = useState(1)
-    const [active, setActive] = useState("movies")
+    const currentPage = currentUrlParams.get('page');
+    const currentActive = currentUrlParams.get('active');
 
-    useEffect(() => {
-        searchMovies(dbFriendly, page);
-    }, [])
+    const [page, setPage] = useState(currentPage);
+    const [active, setActive] = useState(currentActive);
+    
+    let history = useHistory();
 
-    useEffect(() => {
-        if (active == "movies")
-        {
-            setPage(1);
-            searchMovies(dbFriendly, page);
-        }
-        else{
-            setPage(1);
-            searchShows(dbFriendly, page);
-        }
-    }, [active])
-
-    useEffect(() => {
+   useEffect(() => {
+        console.log("page");
+        currentUrlParams.set('page', page);
+        currentUrlParams.set('active', active);
         if (active == "movies")
         {
             searchMovies(dbFriendly, page);
@@ -44,21 +37,29 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         else{
             searchShows(dbFriendly, page);
         }
-    }, [page])
+        
+        history.push(window.location.pathname + "?" + currentUrlParams);
+    }, [page, active])
 
     const handleClick = (id) => {
         setActive(id);
+        setPage(1);
     };
 
     function createPagination(){
         let pageNumbers = [];
         for (let i = 1; i <= multi.pages; i++) {
           pageNumbers.push(
-            <span
+              <span>
+            <a
               key={i}
               className={`page-num ${i === page ? 'active' : ''}`}
-              onClick={() => {setPage(i)}}>{i}
-            </span>)
+              onClick={() => {
+                  setPage(i);
+                  } }>{i}
+            </a>
+            </span>
+            )
         }
         return pageNumbers;
       }
@@ -68,7 +69,10 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
             <SelectSearch handleClick={handleClick}
                             active={active}/>
             <div className="search-results">
-                {multi.data.map((multi, idx) => {
+                {multi.loading ? 
+                <h2>Loading</h2>
+                :
+                multi.data.map((multi, idx) => {
                     return (
                         <div key={`result-${idx}`} className="result">
                             <div className="result-img-container">
@@ -104,8 +108,9 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
+        location: ownProps,
         multi: state.searchReducer
     }
 }

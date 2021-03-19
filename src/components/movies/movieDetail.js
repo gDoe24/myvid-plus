@@ -8,7 +8,6 @@ import Suggested from '../layout/suggested';
 
 function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
                       getSimilarMovies, getVideos }){
-
     useEffect(() => {
         getMovieDetail();
         getMovieCredits();
@@ -16,7 +15,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
         getVideos();
         getSimilarMovies();
     }, [])
- 
+    
     return (
         
         <div className="movie-detail-main">
