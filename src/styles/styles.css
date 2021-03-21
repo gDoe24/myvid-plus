@@ -147,9 +147,8 @@ nav i {
 }
 
 .fi-score {
-  background-color: white;
-  width: 3rem;
-  height: 3rem;
+  width: 60px;
+  height: 60px;
   margin-left: 3rem;
   border-radius: 50%;
 }
@@ -708,8 +707,8 @@ nav i {
 }
 
 .g-card:hover {
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
+  -webkit-transform: scale(1.065);
+          transform: scale(1.065);
   z-index: 10;
 }
 

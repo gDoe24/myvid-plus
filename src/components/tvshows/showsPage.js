@@ -5,7 +5,7 @@ import ShowsDisplay from './showsDisplay';
 
 function ShowsPage({ shows }){
 
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
 
     const handleGenre = (id) => {
         setActive(id)

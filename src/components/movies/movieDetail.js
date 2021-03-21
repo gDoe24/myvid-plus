@@ -5,6 +5,7 @@ import {getMovieDetail, getMovieCredits, getWatchProviders,
         getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
 import {validProvidersSelector} from '../../reducers/movieDetailReducer';
 import Suggested from '../layout/suggested';
+import ProgressBar from "../layout/ProgressBar";
 
 function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
                       getSimilarMovies, getVideos }){
@@ -26,7 +27,9 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                 <div className="detail-info">
                     <div className="detail-title-score">
                         <h1 className="fw-dark" id="detail-title">{movie.movie_detail.title}</h1>
-                        <div className="detail-score"></div>
+                        <div className="detail-score">
+                            <ProgressBar rating={movie.movie_detail.vote_average}/>
+                        </div>
                     </div>
                     <div className="detail-btns">
                         <a href="#" className="btn fi-play dt-play">

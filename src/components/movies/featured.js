@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ProgressBar from '../layout/ProgressBar';
 
 
 const array = ["Lebron James", "Kobe Bryant", "Michael Jordan", "John Cena", "Deshaun Watson"];
@@ -11,7 +12,8 @@ const featuredMovies = [
                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                        image: 'https://www.themoviedb.org/t/p/original/k68nPLbIST6NP96JmTxmZijEvCA.jpg',
                        backdrop: 'https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg',
-                       cast: array
+                       cast: array,
+                       vote_average: 8.1
                         },/*
                         {title: "Your Name.",
                         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
@@ -64,7 +66,9 @@ function Featured(){
             <div key={`featured-info-${idx}`} className="featured-info mx-2">
               <div className="fi-title-score">
                   <h1 className="fw-dark" id="fi-title">{movie.title}</h1>
-                  <div className="fi-score"></div>
+                  <div className="fi-score">
+                    <ProgressBar rating={movie.vote_average}/>
+                  </div>
               </div>
               
               <div className="fi-btns my-3">
