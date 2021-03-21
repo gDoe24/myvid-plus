@@ -5,6 +5,7 @@ import {getShowDetail, getShowCredits, getShowWatchProviders,
 import {validShowProvidersSelector} from '../../reducers/showDetailReducer';
 import Suggested from '../layout/suggested';
 import '../../styles/detail.css';
+import ProgressBar from "../layout/ProgressBar";
 
 
 
@@ -29,7 +30,9 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getSh
                 <div className="detail-info">
                     <div className="detail-title-score">
                         <h1 className="fw-dark" id="detail-title">{show.show_detail.name}</h1>
-                        <div className="detail-score"></div>
+                        <div className="detail-score">
+                            <ProgressBar rating={show.show_detail.vote_average}/>
+                        </div>
                     </div>
                     <div className="detail-btns">
                         <a href="#" className="btn fi-play dt-play">
