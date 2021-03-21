@@ -93,11 +93,11 @@ nav i{
     font-size: 2.2rem;
 }
 .fi-score{
-    background-color: white;
-    width: 3rem;
-    height: 3rem;
+    width: 60px;
+    height: 60px;
     margin-left: 3rem;
     border-radius: 50%;
+    bottom: 30px;
 }
 .fi-play{
     background: linear-gradient(to bottom,
@@ -552,7 +552,7 @@ nav i{
     overflow: visible;
 }
 .g-card:hover{
-    transform: scale(1.15);
+    transform: scale(1.065);
     z-index:10;
     .card-title{
         color: white;
