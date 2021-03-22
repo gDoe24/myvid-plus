@@ -7,8 +7,7 @@ import '../../styles/search.css';
 
 /* DISPLAY COMPONENT FOR WHEN USER SEARCHES. */
 
-function SearchDisplay({ location, multi, searchMovies, searchShows }){
-    console.log(location);
+function SearchDisplay({ multi, searchMovies, searchShows }){
     
     let currentUrlParams= new URLSearchParams(useLocation().search);
     const currentQuery = currentUrlParams.get('query');
@@ -26,8 +25,7 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
     
     let history = useHistory();
 
-   useEffect(() => {
-        console.log("page");
+    useEffect(() => {
         currentUrlParams.set('page', page);
         currentUrlParams.set('active', active);
         if (active == "movies")
@@ -37,7 +35,6 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
         else{
             searchShows(dbFriendly, page);
         }
-        
         history.push(window.location.pathname + "?" + currentUrlParams);
     }, [page, active])
 
@@ -45,6 +42,8 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
         setActive(id);
         setPage(1);
     };
+
+    // PAGINATION
 
     function createPagination(){
         let pageNumbers = [];
@@ -64,11 +63,10 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
         return pageNumbers;
       }
     
-    return(
-        <div className="search-container">
-            <SelectSearch handleClick={handleClick}
-                            active={active}/>
-            <div className="search-results">
+
+    // SEARCH RESULTS COMPONENT
+    const searchResults = (
+        <div className="search-results">
                 {multi.loading ? 
                 <h2>Loading</h2>
                 :
@@ -76,11 +74,16 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
                     return (
                         <div key={`result-${idx}`} className="result">
                             <div className="result-img-container">
-                            <img className="result-img" src={ multi.poster_path ?
-                                `https://www.themoviedb.org/t/p/original${multi.poster_path}`
-                                : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
-                            }
-                            />
+                                <Link 
+                                    to={multi.title ? `/movies/${multi.id}`
+                                    :`/tv/${multi.id}`}
+                                    >
+                                    <img className="result-img" src={ multi.poster_path ?
+                                        `https://www.themoviedb.org/t/p/original${multi.poster_path}`
+                                        : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
+                                    }
+                                    />
+                                </Link>
                             </div>
                             <div className="result-info">
                                 <Link className="result-title" 
@@ -103,6 +106,13 @@ function SearchDisplay({ location, multi, searchMovies, searchShows }){
                     {createPagination()}
                 </div>
             </div>
+    );
+    
+    return(
+        <div className="search-container">
+            <SelectSearch handleClick={handleClick}
+                            active={active}/>
+            {searchResults}
         </div>
         
     )

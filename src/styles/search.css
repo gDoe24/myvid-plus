@@ -12,8 +12,8 @@ body {
           align-items: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(150px, 25%) 1fr;
-      grid-template-columns: minmax(150px, 25%) 1fr;
+  -ms-grid-columns: minmax(300px, 25%) 1fr;
+      grid-template-columns: minmax(300px, 25%) 1fr;
 }
 
 .search-aside {
@@ -43,7 +43,7 @@ body {
 
 .search-aside .title-box .aside-title {
   height: 30%;
-  font-size: 32px;
+  font-size: 28px;
   color: white;
 }
 
@@ -66,8 +66,6 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: .5rem;
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   z-index: 3;
 }
 
@@ -83,16 +81,20 @@ body {
 
 .search-aside .search-results-deactive {
   color: #d283ff;
-  background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.2)));
-  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(40, 40, 40, 0.3)), to(rgba(40, 40, 40, 0.2)));
+  background: linear-gradient(to right bottom, rgba(40, 40, 40, 0.3), rgba(40, 40, 40, 0.2));
   -webkit-backdrop-filter: blur(0.5rem);
           backdrop-filter: blur(0.5rem);
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .search-aside .search-results-active {
   color: #e9ecef;
   background: -webkit-gradient(linear, left top, right bottom, from(rgba(139, 47, 201, 0.7)), to(rgba(55, 1, 96, 0.5)));
   background: linear-gradient(to right bottom, rgba(139, 47, 201, 0.7), rgba(55, 1, 96, 0.5));
+  -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+          box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   -webkit-backdrop-filter: blur(1rem);
           backdrop-filter: blur(1rem);
 }
@@ -134,8 +136,10 @@ body {
 }
 
 .search-results .result-info {
-  padding: 16px;
-  margin-left: 16px;
+  height: 90%;
+  width: 90%;
+  margin: auto 0 auto 16px;
+  padding: 16px 16px 16px 16px;
 }
 
 .search-results .result-info .result-title {
@@ -172,5 +176,23 @@ body {
 
 .pagination .page-num.active {
   color: blue;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .search-aside .title-box .aside-title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399) {
+  .search-aside .title-box span .aside-title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .search-aside .title-box span .aside-title {
+    font-size: 32px;
+  }
 }
 /*# sourceMappingURL=search.css.map */
