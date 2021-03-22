@@ -4,17 +4,23 @@ import '../../styles/displayPages.css';
 export default function SelectSearch(props){
     
     return (
-        <div className="search-row">
-        <button className={`${props.active == "movies" ? `genre-box genre-active`: 
-                ` genre-box genre-deactive`}`} key={`search-movies`} 
-                        onClick={() => props.handleClick("movies")}>
-                    <p className="genre-title">Movies</p>
-        </button>
-        <button className={`${props.active == "shows" ? `genre-box genre-active`: 
-        ` genre-box genre-deactive`}`} key={`search-shows`} 
-                onClick={() => props.handleClick("shows")}>
-            <p className="genre-title">Shows</p>
-        </button>
+        <div className="search-aside">
+            <div className="title-box">
+                <span className="aside-title">Search Results</span>
+            </div>
+            <span className="divider"></span>
+            <button className={`${props.active == "movies" ? `search-type-box search-results-active`: 
+                    ` search-type-box search-results-deactive`}`} key={`search-movies`} 
+                            onClick={() => props.handleClick("movies")}>
+                        <span className="search-type">Movies</span>
+                        <span className="type-amount">20</span>
+            </button>
+            <button className={`${props.active == "shows" ? `search-type-box search-results-active`: 
+            ` search-type-box search-results-deactive`}`} key={`search-shows`} 
+                    onClick={() => props.handleClick("shows")}>
+                    <span className="search-type">Shows</span>
+                    <span className="type-amount">20</span>
+            </button>
         </div>
     )
 }
