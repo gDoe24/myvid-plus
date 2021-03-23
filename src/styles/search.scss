@@ -8,8 +8,7 @@ body{
   margin-right: auto;
   align-items: center;
   display: grid;
-  grid-template-columns: minmax(300px, 25%) 1fr;
-  
+  grid-template-columns: minmax(200px, 25%) 1fr;
 }
 .search-aside{
   margin-top: 24px;
@@ -112,17 +111,17 @@ body{
     .result-title{
       text-decoration: none;
       color: white;  
-      font-size: 24px;
+      font-size: 28px;
     }
     .result-release-date{
       padding-top: 8px;
       color: #D4D4D4;
-      font-size: 12px;
+      font-size: 14px;
     }
     .result-overview{
       padding-top: 16px;
       color: white;
-      font-size: 14px;
+      font-size: 18px;
     }
   }
 }
@@ -146,28 +145,184 @@ body{
 // MEDIA QUERIES
 @media screen and (min-width:0px)and (max-width: 480px)
 {
+  .search-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center
+  }
+  .search-aside{
+    margin-top: 20px;
+    height: 220px;
+    width: 70%;
+      .title-box{
+        .aside-title{
+          height: 40%;
+          font-size: 24px;
+        }
+      }
+      .search-type-box{
+        height: 80%;
+        width: 90%;
+      }
+      .search-type{
+          margin: auto;
+          font-size: 16px;
+      }
+      .type-amount{
+          margin: auto;
+          font-size: 16px;
+      }
+  }
+  .search-results{
+    align-items: center;
+    justify-content: center;
+    .result{
+      width: 100%;
+      grid-template-columns: 30% auto;
+    }
+    .result-info{
+      height: 90%;
+      width: 90%;
+      padding: 8px 8px 8px 8px;
+      .result-title{
+        font-size: 18px;
+      }
+      .result-overview{
+        display: none;
+      }
+    }
+  }
 }
 @media screen and (min-width:480px) and (max-width: 767px)
 {
+  .search-container{
+    width: 90%;
+    grid-template-columns: 30% auto;
+  }
+  .search-aside{
+    width: 90%;
+    height: 220px;
+    .title-box{
+      .aside-title{
+        font-size: 18px;
+      }
+    }
+    .search-type{
+      font-size: 14px;
+    }
+    .type-amount{
+      font-size: 14px;
+    }
+  }
+  .search-results{
+    .result{
+      width: 100%;
+      grid-template-columns: 30% auto;
+    }
+    .result-info{
+      height: 90%;
+      width: 90%;
+      padding: 8px 8px 8px 8px;
+      .result-title{
+        font-size: 18px;
+      }
+      .result-overview{
+        display: none;
+      }
+    }
+  }
 }
+
+// IPAD
+
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (orientation: portrait) 
   and (-webkit-min-device-pixel-ratio: 1){
-
+    .search-aside{
+      width: 85%;
+      height: 320px;
+      .title-box{
+        .aside-title{
+          font-size: 22px;
+        }
+      }
+      .search-type{
+        margin: auto;
+        font-size: 16px;
+      }
+    .type-amount{
+        margin: auto;
+        font-size: 16px;
+      }
+    }
+    .search-results{
+      .result{
+        width: 100%;
+        grid-template-columns: 30% auto;
+      }
+    }
   }
+
+// IPAD PRO
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .search-aside{
+      .title-box{
+        .aside-title{
+          font-size: 24px;
+        }
+      }
+      .search-type{
+        margin: auto;
+        font-size: 16px;
+      }
+    .type-amount{
+        margin: auto;
+        font-size: 16px;
+      }
+    }
+    .search-results{
+      .result{
+        width: 100%;
+        grid-template-columns: 25% auto;
+      }
+    }
+}
 @media only screen and (min-width:768px) and (max-width: 991px) and (min-device-width: 1023)
 {
-    
+  .search-aside{
+    .title-box{
+      .aside-title{
+        font-size: 24px;
+      }
+    }
+    .search-type{
+      font-size: 18px;
+    }
+  .type-amount{
+      font-size: 18px;
+    }
+  }
 }
 @media screen and (min-width:992px) and (max-width: 1199px)
 {
   .search-aside{
     .title-box{
       .aside-title{
-        font-size: 28px;
+        font-size: 24px;
       }
+    }
+    .search-type{
+      font-size: 18px;
+    }
+  .type-amount{
+      font-size: 18px;
     }
   }
 }
@@ -175,9 +330,15 @@ body{
 {
   .search-aside{
     .title-box{
-      span .aside-title{
+      .aside-title{
         font-size: 28px;
       }
+    }
+    .search-type{
+      font-size: 20px;
+    }
+  .type-amount{
+      font-size: 20px;
     }
   }
     
@@ -186,9 +347,15 @@ body{
 {
   .search-aside{
     .title-box{
-      span .aside-title{
+      .aside-title{
         font-size: 32px;
       }
+    }
+    .search-type{
+      font-size: 24px;
+    }
+    .type-amount{
+      font-size: 24px;
     }
   }
 }
