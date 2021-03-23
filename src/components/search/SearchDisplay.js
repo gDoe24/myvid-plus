@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { searchMovies, searchShows } from '../../actions/search';
-import { Link, useHistory, useLocation} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import SelectSearch from './SelectSearch';
+import SearchResults from './SearchResults';
 import '../../styles/search.css';
 
 /* DISPLAY COMPONENT FOR WHEN USER SEARCHES. */
@@ -25,16 +26,14 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
     
     let history = useHistory();
 
+
     useEffect(() => {
         currentUrlParams.set('page', page);
         currentUrlParams.set('active', active);
-        if (active == "movies")
-        {
-            searchMovies(dbFriendly, page);
-        }
-        else{
-            searchShows(dbFriendly, page);
-        }
+        
+        searchMovies(dbFriendly, page);
+        searchShows(dbFriendly, page);
+
         history.push(window.location.pathname + "?" + currentUrlParams);
     }, [page, active])
 
@@ -42,85 +41,34 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
         setActive(id);
         setPage(1);
     };
+    const movies = multi.movies;
+    const shows = multi.shows;
 
-    // PAGINATION
-
-    function createPagination(){
-        let pageNumbers = [];
-        for (let i = 1; i <= multi.pages; i++) {
-          pageNumbers.push(
-              <span>
-            <a
-              key={i}
-              className={`page-num ${i === page ? 'active' : ''}`}
-              onClick={() => {
-                  setPage(i);
-                  } }>{i}
-            </a>
-            </span>
-            )
-        }
-        return pageNumbers;
-      }
+    const activeType = active == "movies" ? movies : shows;
+    const moviesTotal = multi.total_movies;
+    const showsTotal = multi.total_shows
     
-
-    // SEARCH RESULTS COMPONENT
-    const searchResults = (
-        <div className="search-results">
-                {multi.loading ? 
-                <h2>Loading</h2>
-                :
-                multi.data.map((multi, idx) => {
-                    return (
-                        <div key={`result-${idx}`} className="result">
-                            <div className="result-img-container">
-                                <Link 
-                                    to={multi.title ? `/movies/${multi.id}`
-                                    :`/tv/${multi.id}`}
-                                    >
-                                    <img className="result-img" src={ multi.poster_path ?
-                                        `https://www.themoviedb.org/t/p/original${multi.poster_path}`
-                                        : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
-                                    }
-                                    />
-                                </Link>
-                            </div>
-                            <div className="result-info">
-                                <Link className="result-title" 
-                                    to={ multi.title ? `/movies/${multi.id}`
-                                                        :`/tv/${multi.id}`}>
-                                        {multi.title? multi.title : multi.name}
-                                </Link>
-                                <p className="result-release-date">
-                                    {multi.release_date}
-                                </p>
-                                <p className="result-overview">
-                                    {multi.overview}
-                                </p>
-                            </div>
-                        </div>
-                        
-                        )
-                })}
-                <div className="pagination">
-                    {createPagination()}
-                </div>
-            </div>
-    );
     
     return(
         <div className="search-container">
-            <SelectSearch handleClick={handleClick}
-                            active={active}/>
-            {searchResults}
+            <SelectSearch 
+                    handleClick={handleClick}
+                    active={active}
+                    movieTotal={moviesTotal}
+                    showTotal={showsTotal}
+                    />
+            <SearchResults 
+                    multi={activeType}
+                    active={active}
+                    page={page}
+                    setPage={setPage}/>
         </div>
         
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        location: ownProps,
         multi: state.searchReducer
     }
 }

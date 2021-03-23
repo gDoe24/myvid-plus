@@ -118,8 +118,8 @@ body {
   margin-right: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 15% auto;
-      grid-template-columns: 15% auto;
+  -ms-grid-columns: 20% auto;
+      grid-template-columns: 20% auto;
       grid-template-areas: "image"  "gc-title";
   margin-top: 24px;
 }
@@ -157,7 +157,7 @@ body {
 .search-results .result-info .result-overview {
   padding-top: 16px;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .pagination {

@@ -13,13 +13,13 @@ export default function SelectSearch(props){
                     ` search-type-box search-results-deactive`}`} key={`search-movies`} 
                             onClick={() => props.handleClick("movies")}>
                         <span className="search-type">Movies</span>
-                        <span className="type-amount">20</span>
+                        <span className="type-amount">{props.movieTotal}</span>
             </button>
             <button className={`${props.active == "shows" ? `search-type-box search-results-active`: 
             ` search-type-box search-results-deactive`}`} key={`search-shows`} 
                     onClick={() => props.handleClick("shows")}>
                     <span className="search-type">Shows</span>
-                    <span className="type-amount">20</span>
+                    <span className="type-amount">{props.showTotal}</span>
             </button>
         </div>
     )

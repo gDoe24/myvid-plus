@@ -87,9 +87,7 @@ function HomeSlider(props){
                     </SwiperSlide>
                     )
                 })}
-            </Swiper>
-                
-
+            </Swiper>                
             </Fragment>
         }
         </div>
