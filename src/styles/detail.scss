@@ -24,19 +24,23 @@
     z-index: 2;
 }
 .detail-title-score{
-    display: flex;
-    flex-direction: row;
     height: auto;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    justify-content: space-between;
     padding-bottom: 20px;
     #detail-title{
         font-size: 48px;
     }
+    .detail-score{
+        width: 100px;
+        height: 100px;
+        margin-left: 30px;
+        margin-top: 10%;
+        border-radius: 50%;
+    }
 }
-.detail-score{
-    width:200px;
-    height: 100px;
-    border-radius: 50%;
-}
+
 .detail-btns{
     padding-bottom: 40px;
     align-items: center;
@@ -110,59 +114,97 @@
                 linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
 }
 
-//SUGGESTED SLIDER
 
-.sugg-album-row{
-    margin-top: 10vh;
-    overflow: visible;
-}
 
-@media screen and (min-width:0px)and (max-width: 600px)
+@media screen and (min-width:0px)and (max-width: 420px)
 {
+    .movie-detail-main{
+        margin-top: 0vh;
+        width: 100%;
+    }
     .detail{
-        margin-top:50%; 
+        height: auto;
+        width: 100%;
         grid-template-columns: 100%;
-        align-items: baseline;
+        align-items: center;
+        padding: 0;
+        margin: 50vh auto 0 auto;
+    }
+    .detail-info{
+        height: auto;
+        width: 80%;
+        bottom: 0px;
+        padding: 0px;
+        margin: 0 auto 0 auto;
     }
     .detail-title-score{
+        height: auto;
+        width: 100%;
+        place-items: center;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 100%;
+        padding-bottom: 20px;
         #detail-title{
-            font-size: 48px;
+            font-size: 24px;
+            text-align: center;
+            }
+        .detail-score{
+            display: none;
         }
     }
     .detail-btns{
         padding-bottom: 40px;
+        display: flex;
+        flex-wrap: wrap;
         align-items: center;
         a{
-            font-size: 16px;
+            font-size: 14px;
             
         }
         .dt-play{
-            width: 100px;
+            width: 100%;
             height: auto;
-            margin-right: 10px;
+            margin: 0;
+            margin-bottom: 10px;
         }
         .dt-trailer{
-            width: 160px;
+            width: 100%;
             height: auto;
-            margin-left: 10px;
+            margin: 0;
         }
     }
-    
-    .detail-overview{
-        padding-bottom: 10px;
-        font-size: 32px;
+    .overview-section{
+        margin-top: 5vh;
+        margin-right: 0;
+        width: 100%;
+        .detail-overview{
+            padding-bottom: 10px;
+            font-size: 18px;
+        }
+        .detail-overview-p {
+            width: 100%;
+            font-size: 14px;
+            line-height: 20px;
+            height: auto;
+        }
     }
-    .detail-overview-p {
-        font-size: 16px;
-        line-height: 30px;
-    }
-    
     .detail-cd{
-        left: 20%;
+        left: 0%;
+        width: 80%;
+        margin: 0 auto 0 auto;
         .cast{
-            display: none;
+            h2{
+                font-size: 18px;
+            }
+            .cast-n{
+                font-size: 14px;
+            }
         }
         .watch{
+            h2{
+                font-size: 18px;
+            }
             .watch-n{
                 display: inline-block;
                 padding-right: 10px;
@@ -170,14 +212,37 @@
             }
         }
     }
+    .detail-pic{
+        position: absolute;
+        height: 80vh;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+    .overlay{
+        height: 80vh;
+    }
 }
-@media screen and (min-width:600px) and (max-width: 767px)
-{
+@media screen and (min-width:421px) and (max-width: 767px){
     
 }
-@media screen and (min-width:768px)and (max-width: 991px)
-{
+@media screen and (min-width:768px)and (max-width: 991px){
     
+}
+// IPAD
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1){
+
+}
+
+// IPAD PRO
+  @media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px)
+  and (-webkit-min-device-pixel-ratio: 2) {
 }
 @media screen and (min-width:992px) and (max-width: 1199px)
 {
@@ -209,4 +274,11 @@
             margin-left: 30px;
         }
     }
+}
+
+//SUGGESTED SLIDER
+
+.sugg-album-row{
+    margin-top: 10vh;
+    overflow: visible;
 }

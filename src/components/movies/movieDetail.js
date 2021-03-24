@@ -17,6 +17,9 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
         getSimilarMovies();
     }, [])
     
+    const mql = window.matchMedia('(max-width: 420px)');
+
+    
     return (
         
         <div className="movie-detail-main">
@@ -38,17 +41,22 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
                         </a>
                     </div>
-                    <h2 className="detail-overview">Overview</h2>
-                    <p className="detail-overview-p lead" id="">
-                        {movie.movie_detail.overview}
-                    </p>
+                    <div className="overview-section">
+                        <h2 className="detail-overview">Overview</h2>
+                        <p className="detail-overview-p lead" id="">
+                            {movie.movie_detail.overview}
+                        </p>
+                    </div>
                 </div>
                 <div className="detail-cd">
                         <div className="cast">
                             <h2 className="fw-dark">Starring:</h2>
                                 {movie.movie_credits.cast.slice(0,5).map((actor, idx) => {
                                     return (
-                                        <div className="cast-n" key={actor.id}>{actor.name}</div>
+                                        <span className="cast-n" key={actor.id}>{
+                                            idx == 4 ? actor.name :
+                                            `${actor.name}, `}
+                                            </span>
                                     )
                                 })}
                             
@@ -68,7 +76,9 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         </div>
                     </div>
                 <img className="detail-pic"
-                    src={`https://www.themoviedb.org/t/p/original${movie.movie_detail.backdrop_path}`}>
+                    src={`https://www.themoviedb.org/t/p/original${
+                        mql.matches == false ? 
+                        movie.movie_detail.backdrop_path : movie.movie_detail.poster_path}`}>
                 </img>
                 <div className="overlay"></div>
                 
