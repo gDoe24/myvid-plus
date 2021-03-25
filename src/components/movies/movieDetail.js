@@ -66,12 +66,12 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                             { providers ? 
                               providers.map((provider, idx) => {
                                 return <div key={`${provider}-${idx}`}>
-                                    <img className="me-3"
+                                    <img className="me-3 watch-img"
                                         src={`${process.env.PUBLIC_URL}/${provider.toLowerCase()}.svg`}/>
                                     {provider}
                                 </div>
                             }) 
-                            : <div>N/A</div>
+                            : <div className="watch-n">N/A</div>
                             }
                         </div>
                     </div>
