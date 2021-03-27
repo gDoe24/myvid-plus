@@ -185,7 +185,7 @@
         }
     }
     .overview-section{
-        margin-top: 5vh;
+        margin-top: 10vh;
         margin-right: 0;
         width: 100%;
         .detail-overview{
@@ -234,7 +234,83 @@
     }
 }
 @media screen and (min-width:421px) and (max-width: 767px){
+    .detail{
+        margin-top: 20vh;
+        padding-top: 5%;
+        grid-template-columns: 40% 40%;
+    }
+    .detail-info{
+        width: 100%;
+        height: 100%;
+        padding-left: 5%;
+        color: white;
+        z-index: 2;
+    }
+    .detail-title-score{
+        #detail-title{
+            font-size: 32px;
+        }
+        .detail-score{
+            display: none;
+        }
+    }
     
+    .detail-btns{
+        padding-bottom: 2em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        a{
+            font-size: 14px;
+        }
+        .dt-play{
+            width: 100%;
+            height: auto;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .dt-trailer{
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+    }
+    .overview-section{
+        .detail-overview{
+            padding-bottom: .5em;
+            font-size: 24px;
+        }
+        .detail-overview-p {
+            font-size: 14px;
+            line-height: 20px;
+            height: 200px;
+            width: 140%;
+        }
+    }
+    
+    .detail-cd{
+        .cast{
+            h2{
+                font-size: 24px;
+            }
+            .cast-n{
+                font-size: 14px;
+            }
+        }
+        .watch{
+            h2{
+                font-size: 18px;
+            }
+            .watch-n{
+                font-size: 14px;
+            }
+            .watch-img{
+                height: 30px;
+                width: 30px;
+            }
+        }
+        
+    }  
 }
 @media screen and (min-width:768px)and (max-width: 991px){
     .detail{
@@ -310,7 +386,7 @@
     }
 }
 // IPAD
-@media only screen 
+@media all 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (orientation: portrait) 
@@ -391,22 +467,66 @@
     
     }
 }
-@media screen and (min-width:768px) and (max-width: 991px) and (min-device-width: 1023)
+@media screen and (min-width:768px) and (max-width: 991px)
 {
     .detail{
-        margin-top:30%; 
+        margin-top: 20vh;
+        padding-top: 5%;
         grid-template-columns: 40% 30%;
-        justify-content: space-between;
-        background-size: cover;
-        place-items: center;
-       
     }
-    .detail-pic{
-        height: 60%;
-        object-fit: cover;
+    .detail-info{
+        width: 100%;
+        height: 100%;
+        padding-left: 5%;
+        color: white;
+        z-index: 2;
     }
-    .overlay{
-        height: 60%;
+    .detail-title-score{
+        #detail-title{
+            font-size: 36px;
+        }
+        .detail-score{
+            width: 60px;
+            height: 60px;
+            margin-left: 0;
+        }
+    }
+    
+    .detail-btns{
+        padding-bottom: 40px;
+        align-items: center;
+        a{
+            font-size: 16px;
+            
+        }
+        .dt-play{
+            width: auto;
+            height: auto;
+            margin-right: .2em;
+        }
+        .dt-trailer{
+            width: 160px;
+            height: auto;
+            margin-left: .2em;
+        }
+    }
+    .overview-section{
+        .detail-overview{
+            padding-bottom: 20px;
+            font-size: 28px;
+        }
+        .detail-overview-p {
+            font-size: 18px;
+            line-height: 30px;
+            height: 200px;
+            width: 140%;
+        }
+    }
+    
+    .detail-cd{
+        h2{
+            font-size: 28px;
+        }
     }
 }
 @media screen and (min-width:992px) and (max-width: 1199px)
@@ -598,9 +718,74 @@
     
 }
 
+
 //SUGGESTED SLIDER
 
 .sugg-album-row{
     margin-top: 10vh;
     overflow: visible;
+}
+.sugg-album-title{
+    width: 100%;
+}
+@media screen and (min-width:0px)and (max-width: 420px){
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:421px) and (max-width: 767px){
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+    
+}
+@media screen and (min-width:768px)and (max-width: 991px){
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+}
+// IPAD
+
+@media all 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1)
+  {
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+  }
+// IPAD PRO
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px)
+and (-webkit-min-device-pixel-ratio: 2)
+{
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 991px)
+{
+    .sugg-album-row{
+        margin-top: 10vh;
+    }
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
+{
+    .sugg-album-row{
+        margin-top: 40vh;
+    }
+}
+@media screen and (min-width:1400px)
+{
+    .sugg-album-row{
+        margin-top: 20vh;
+    }
 }

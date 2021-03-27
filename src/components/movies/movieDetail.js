@@ -65,7 +65,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                             <h2>Where to Watch</h2>
                             { providers ? 
                               providers.map((provider, idx) => {
-                                return <div key={`${provider}-${idx}`}>
+                                return <div key={`${provider}-${idx}`} className="watch-n">
                                     <img className="me-3 watch-img"
                                         src={`${process.env.PUBLIC_URL}/${provider.toLowerCase()}.svg`}/>
                                     {provider}

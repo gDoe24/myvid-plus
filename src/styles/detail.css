@@ -228,7 +228,7 @@
     margin: 0;
   }
   .overview-section {
-    margin-top: 5vh;
+    margin-top: 10vh;
     margin-right: 0;
     width: 100%;
   }
@@ -271,6 +271,79 @@
   }
   .overlay {
     height: 80vh;
+  }
+}
+
+@media screen and (min-width: 421px) and (max-width: 767px) {
+  .detail {
+    margin-top: 20vh;
+    padding-top: 5%;
+    -ms-grid-columns: 40% 40%;
+        grid-template-columns: 40% 40%;
+  }
+  .detail-info {
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    color: white;
+    z-index: 2;
+  }
+  .detail-title-score #detail-title {
+    font-size: 32px;
+  }
+  .detail-title-score .detail-score {
+    display: none;
+  }
+  .detail-btns {
+    padding-bottom: 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .detail-btns a {
+    font-size: 14px;
+  }
+  .detail-btns .dt-play {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .detail-btns .dt-trailer {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .overview-section .detail-overview {
+    padding-bottom: .5em;
+    font-size: 24px;
+  }
+  .overview-section .detail-overview-p {
+    font-size: 14px;
+    line-height: 20px;
+    height: 200px;
+    width: 140%;
+  }
+  .detail-cd .cast h2 {
+    font-size: 24px;
+  }
+  .detail-cd .cast .cast-n {
+    font-size: 14px;
+  }
+  .detail-cd .watch h2 {
+    font-size: 18px;
+  }
+  .detail-cd .watch .watch-n {
+    font-size: 14px;
+  }
+  .detail-cd .watch .watch-img {
+    height: 30px;
+    width: 30px;
   }
 }
 
@@ -353,7 +426,7 @@
   }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+@media all and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
   .detail {
     margin: 75vh auto 0 auto;
   }
@@ -436,24 +509,59 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) and (min-device-width: 1023) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   .detail {
-    margin-top: 30%;
+    margin-top: 20vh;
+    padding-top: 5%;
     -ms-grid-columns: 40% 30%;
         grid-template-columns: 40% 30%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    background-size: cover;
-    place-items: center;
   }
-  .detail-pic {
-    height: 60%;
-    -o-object-fit: cover;
-       object-fit: cover;
+  .detail-info {
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    color: white;
+    z-index: 2;
   }
-  .overlay {
-    height: 60%;
+  .detail-title-score #detail-title {
+    font-size: 36px;
+  }
+  .detail-title-score .detail-score {
+    width: 60px;
+    height: 60px;
+    margin-left: 0;
+  }
+  .detail-btns {
+    padding-bottom: 40px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .detail-btns a {
+    font-size: 16px;
+  }
+  .detail-btns .dt-play {
+    width: auto;
+    height: auto;
+    margin-right: .2em;
+  }
+  .detail-btns .dt-trailer {
+    width: 160px;
+    height: auto;
+    margin-left: .2em;
+  }
+  .overview-section .detail-overview {
+    padding-bottom: 20px;
+    font-size: 28px;
+  }
+  .overview-section .detail-overview-p {
+    font-size: 18px;
+    line-height: 30px;
+    height: 200px;
+    width: 140%;
+  }
+  .detail-cd h2 {
+    font-size: 28px;
   }
 }
 
@@ -658,5 +766,62 @@
 .sugg-album-row {
   margin-top: 10vh;
   overflow: visible;
+}
+
+.sugg-album-title {
+  width: 100%;
+}
+
+@media screen and (min-width: 0px) and (max-width: 420px) {
+  .sugg-album-row {
+    margin-top: 10vh;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 421px) and (max-width: 767px) {
+  .sugg-album-row {
+    margin-top: 10vh;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .sugg-album-row {
+    margin-top: 10vh;
+    overflow: visible;
+  }
+}
+
+@media all and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .sugg-album-row {
+    margin-top: 10vh;
+    overflow: visible;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  .sugg-album-row {
+    margin-top: 10vh;
+    overflow: visible;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .sugg-album-row {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .sugg-album-row {
+    margin-top: 40vh;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .sugg-album-row {
+    margin-top: 20vh;
+  }
 }
 /*# sourceMappingURL=detail.css.map */

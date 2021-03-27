@@ -21,6 +21,7 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getSh
         getSimilarShows();
     }, [])
     const m = match.params.id;
+    const mql = window.matchMedia('(max-width: 420px)');
     return (
         <div className="movie-detail-main" key={m}>
             {show.loading ? 
@@ -41,10 +42,12 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getSh
                         <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
                         </a>
                     </div>
-                    <h2 className="detail-overview">Overview</h2>
-                    <p className="detail-overview-p lead" id="">
-                        {show.show_detail.overview}
-                    </p>
+                    <div className="overview-section">
+                        <h2 className="detail-overview">Overview</h2>
+                        <p className="detail-overview-p lead" id="">
+                            {show.show_detail.overview}
+                        </p>
+                    </div>
                 </div>
                 <div className="detail-cd">
                         <div className="cast">
@@ -71,7 +74,10 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getSh
                         </div>
                     </div>
                 <img className="detail-pic"
-                    src={`https://www.themoviedb.org/t/p/original${show.show_detail.backdrop_path}`}>
+                    src={`https://www.themoviedb.org/t/p/original${
+                        mql.matches == false ?
+                        show.show_detail.backdrop_path : show.show_detail.poster_path
+                        }`}>
                 </img>
                 <div className="overlay"></div>
                 
