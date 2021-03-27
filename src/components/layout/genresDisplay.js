@@ -16,17 +16,15 @@ function GenreDisplay(props){
                     id="main"
                     key={`swiper`}
                     navigation
+                    virtual
                     slidesPerView={6}
                     breakpoints={{
                         0:{
                             slidesPerView: 2,
                         },
-                        // when window width is >= 640px
                         600: {
                           slidesPerView: 3,
                         },
-                        // when window width is >= 768px
-                        
                         992: {
                             slidesPerView: 4,
                         },

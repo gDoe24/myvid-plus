@@ -13,7 +13,9 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
         if (genre.id == 0){
             getTrendingShows();
         }
-        getShowGenreById();
+        else{
+            getShowGenreById();
+        }
         window.addEventListener('scroll', infinteLoop);
     }, [])
 
@@ -89,13 +91,15 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
     
     return (
         <div key={`shows-${genre.title}`} className="shows-container">
-        <h1>{genre.title}</h1>
-        <div key={`genre-${genre.title}`} className="display-album-container">
-            {genre.id == 0 ? 
-                popularShows :
-                genreById
-            }
-        </div>
+            <div className="active-genre">
+                <h1>{genre.title}</h1>
+            </div>
+            <div key={`genre-${genre.title}`} className="display-album-container">
+                {genre.id == 0 ? 
+                    popularShows :
+                    genreById
+                }
+            </div>
         </div>
     )
 }
@@ -109,7 +113,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getTrendingShows: () => dispatch(getTrending()),
+        getTrendingShows: () => dispatch(getTrendingShows()),
         getShowGenreById: () => dispatch(getShowGenreById(ownProps.genre.id, 1)),
         fetchData: (page) => dispatch(fetchData(ownProps.genre.id, page))
     }

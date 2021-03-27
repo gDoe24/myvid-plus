@@ -94,7 +94,9 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, getTrending, movie
 
     return (
         <div className="movies-container">
-        <h1>{genre.title}</h1>
+            <div className="active-genre">
+                <h1 className="active-genre-title">{genre.title}</h1>
+            </div>
         <div key={`genre-${genre.title}`} className="display-album-container">
         { genre.id == 0 ? 
         trendingMovies :
