@@ -8,7 +8,7 @@ function Footer(){
            <div className="footer-container">
                <div className="footer-links-column">
                     <span className="footer-logo">MyVids +</span>
-                    <ul className="footer-personal-links">
+                    <ul>
                         <li className="personal-li">
                             <a href="#">Contact</a>
                         </li>
@@ -21,7 +21,7 @@ function Footer(){
                     </ul>
                </div>
                <div className="footer-myvid-links-column">
-                    <ul className="footer-myvid-links">
+                    <ul>
                         <li className="myvid-link">
                             <NavLink to="/" >Home</NavLink>
                         </li>
@@ -37,7 +37,7 @@ function Footer(){
                     </ul>
                </div>
                <div className="attribution">
-                    <span className="provided-by">Provided By:</span>
+                    <span className="provided-by">Powered By:</span>
                     <img className="movieDb-logo" src={`${process.env.PUBLIC_URL}/theMovieDb.svg`}/>
                </div>
            </div>
