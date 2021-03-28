@@ -9,6 +9,7 @@ import MovieDetail from './components/movies/movieDetail';
 import MoviesPage from './components/movies/moviesPage';
 import ShowsPage from './components/tvshows/showsPage';
 import SearchDisplay from './components/search/SearchDisplay';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/tv/" exact component={ShowsPage}/>
           <Route path="/search" render={props => <SearchDisplay key={props.location.search} {...props} /> }/>
         </Switch>
+        <Footer />
       </Router>
     </Provider>
   );
