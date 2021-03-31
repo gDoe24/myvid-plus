@@ -785,7 +785,7 @@
 
 @media screen and (min-width: 421px) and (max-width: 767px) {
   .sugg-album-row {
-    margin-top: 10vh;
+    margin-top: 20vh;
     overflow: visible;
   }
 }
@@ -794,6 +794,10 @@
   .sugg-album-row {
     margin-top: 10vh;
     overflow: visible;
+  }
+  .g-card {
+    height: 85%;
+    width: 100%;
   }
 }
 
@@ -804,28 +808,24 @@
   }
 }
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   .sugg-album-row {
     margin-top: 10vh;
     overflow: visible;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .sugg-album-row {
-    margin-top: 10vh;
-  }
-}
-
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .sugg-album-row {
     margin-top: 40vh;
+    overflow: visible;
   }
 }
 
 @media screen and (min-width: 1400px) {
   .sugg-album-row {
     margin-top: 20vh;
+    overflow: visible;
   }
 }
 /*# sourceMappingURL=detail.css.map */

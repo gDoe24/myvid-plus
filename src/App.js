@@ -1,9 +1,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import store from './store';
 import Home from './components/layout/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ScrollToTop from './components/layout/ScrollToTop';
 import TvDetail from './components/tvshows/tvDetail';
 import MovieDetail from './components/movies/movieDetail';
 import MoviesPage from './components/movies/moviesPage';
@@ -12,9 +13,12 @@ import SearchDisplay from './components/search/SearchDisplay';
 import Footer from './components/layout/Footer';
 
 function App() {
+  
+
   return (
     <Provider store={store}>
       <Router >
+        <ScrollToTop />
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />

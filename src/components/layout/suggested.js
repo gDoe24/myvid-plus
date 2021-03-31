@@ -32,7 +32,9 @@ export default function Suggested(props) {
                       slidesPerView: 3,
                     },
                     // when window width is >= 768px
-                    
+                    767: {
+                        slidesPerView: 4,
+                    },
                     992: {
                         slidesPerView: 5,
                     },
