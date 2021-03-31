@@ -129,6 +129,10 @@
   line-height: 30px;
 }
 
+.detail-cd .watch h2 {
+  font-size: 28px;
+}
+
 .detail-cd .watch .watch-img {
   height: 40px;
   width: 40px;
@@ -276,7 +280,7 @@
 
 @media screen and (min-width: 421px) and (max-width: 767px) {
   .detail {
-    margin-top: 20vh;
+    margin-top: 15vh;
     padding-top: 5%;
     -ms-grid-columns: 40% 40%;
         grid-template-columns: 40% 40%;
@@ -326,7 +330,7 @@
   .overview-section .detail-overview-p {
     font-size: 14px;
     line-height: 20px;
-    height: 200px;
+    height: 100px;
     width: 140%;
   }
   .detail-cd .cast h2 {
@@ -555,7 +559,7 @@
     font-size: 28px;
   }
   .overview-section .detail-overview-p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 30px;
     height: 200px;
     width: 140%;
@@ -769,7 +773,7 @@
 }
 
 .sugg-album-title {
-  width: 100%;
+  width: 90%;
 }
 
 @media screen and (min-width: 0px) and (max-width: 420px) {
@@ -800,7 +804,7 @@
   }
 }
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
   .sugg-album-row {
     margin-top: 10vh;
     overflow: visible;

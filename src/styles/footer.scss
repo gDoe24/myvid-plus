@@ -1,11 +1,13 @@
 .footer-container{
+    margin-top: 10vh;
     background: #0b0b0b;
     width: 100%;
     height: auto;
+    padding-bottom: 5vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .footer-links-column{
     flex: 1 1 30%;
@@ -13,8 +15,10 @@
     display: flex;
     flex-direction: column;
     .footer-logo{
+        font-family: 'Open Sans', sans-serif;
         color: #DC97FF;
         font-size: 2rem;
+        font-weight: 600;
         padding: 7.5% 0 5% 0;
      }
     ul{
@@ -69,3 +73,43 @@
     }
 }
 
+@media only screen 
+and (min-width:768px) 
+and (max-width: 991px)
+{
+    .footer-myvid-links-column{
+        ul{
+            padding-top: 25%; 
+        }
+    }
+}
+@media only screen 
+and (min-width:992px) 
+and (max-width: 1199px)
+{
+    .footer-container{
+        height: 30vh;
+    }
+    .footer-myvid-links-column{
+        ul{
+            padding-top: 20%; 
+        }
+    }
+}
+@media only screen 
+and (min-width: 1200px)
+and (max-width: 1399px){
+    .footer-myvid-links-column{
+        ul{
+            padding-top: 20%; 
+        }
+    }
+}
+@media only screen 
+and (min-width: 1400px){
+    .footer-myvid-links-column{
+        ul{
+            padding-top: 10%; 
+        }
+    }
+}

@@ -4,13 +4,16 @@ body{
 }
 
 /* NAVBAR */
+
 nav{
     height: 10vh;
 }
 nav a{
     color: white;
 }
-
+.logo{
+    font-family: 'Open Sans', sans-serif;
+}
 .home-search{
     width: 400px;
     background-color: transparent;
