@@ -1,26 +1,75 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useReducer, useState } from 'react';
 import { connect } from 'react-redux';
 import ProgressBar from '../layout/ProgressBar';
-import { getTrending } from '../../actions/movies';
-import {getMovieCredits} from '../../actions/movieDetailAction';
+import produce from 'immer';
+
+function Featured({moviesReducer}){
 
 
-function Featured({moviesReducer, getTrending, getMovieCredits}){
+  const movies = moviesReducer.genres[0].data;
+  const featuredMovies = movies.slice(0,3);
+  
+{/*  const initialState = {
+                        f_movies: [{
+                                    id: 0,
+                                    cast: [],
+                                    video: ''
+                                  },
+                                  {
+                                    id: 1,
+                                    cast: [],
+                                    video: ''
+                                  },
+                                  {
+                                    id: 2,
+                                    cast: [],
+                                    video: ''
+                                  }
+                                ],
+                          err: ''
+                        }
 
+  function reducer(state, action){
+      switch(action.type){
+        case "ADD_CAST_0":
+          return produce(state, draft => {
+            draft.f_movies[0].cast = action.payload
+          });
+        case "ADD_CAST_1":
+          return produce(state, draft => {
+            draft.f_movies[0].cast = action.payload
+          });
+        case "ADD_CAST_0":
+          return produce(state, draft => {
+            draft.f_movies[0].cast = action.payload
+          });
+        default:
+          return state
+      }
+  }
 
+  const [state, dispatch] = useReducer(reducer, initialState); */}
 
   useEffect(() => {
-    getTrending('movie');
+    featuredMovies.forEach((movie, idx) => {
+        fetchMovieCredits(movie.id);
+    });
   }, []);
+  
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  async function fetchMovieCredits(movie_id){
+    const data = await fetch(
+        `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
+    );
+    const res = await data.json();
+    const c = res.cast.slice(0,5).map((actor) => {
+      return actor.name;
+    })
 
-  const featuredMovies = moviesReducer.genres[0].data.slice(0,3);
+    console.log(c);
+  }
 
-  const cast = featuredMovies.map((movie, idx) => {
-      return movieDetailReducer.movie_credits.cast.slice(0,5).map((actor, i) => {
-        return actor.name;
-      })
-  });
-  console.log(cast);
+  
 
   const mql = window.matchMedia('(max-width: 767px)');
 
@@ -75,13 +124,13 @@ function Featured({moviesReducer, getTrending, getMovieCredits}){
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
          {/* <div className="featured-cd mx-4">
-              <h2 className="fw-dark mb-4">Cast</h2>
+              <h2 className="fw-dark mb-4">Director/Cast</h2>
               <ul className="featured-cd-ul">
               {movie.cast.map((name) =>{
                   return(<li className="featured-cd-p"key={name}> {name} </li>)
               })} 
               </ul>
-          </div> */}
+            </div> */}
           </section>
           </div>
         )
@@ -114,16 +163,11 @@ function Featured({moviesReducer, getTrending, getMovieCredits}){
         </Fragment>
     )
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return{
-      moviesReducer: state.moviesReducer,
+      moviesReducer: ownProps.moviesReducer
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-     getTrending: (media_type) => dispatch(getTrending(media_type)),
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Featured);
+export default connect(mapStateToProps)(Featured);

@@ -11,7 +11,7 @@ function Home({ moviesReducer, showsReducer, getTrending, getActionMovies,getAni
               getTrendingShows, getActionShows, getComedyShows, getSciFiShows,}){
 
     useEffect(() => {
-        getTrending('all');
+        getTrending('movie');
         getActionMovies();
         getAnimationMovies();
         getThrillerMovies();
@@ -24,7 +24,7 @@ function Home({ moviesReducer, showsReducer, getTrending, getActionMovies,getAni
     return(
         <Fragment>
             <main>
-            <Featured />
+            <Featured moviesReducer={moviesReducer}/>
             <HomeSlider moviesReducer={moviesReducer}
                         showsReducer={showsReducer} />
             </main>

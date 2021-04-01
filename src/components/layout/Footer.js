@@ -26,10 +26,10 @@ function Footer(){
                             <NavLink to="/" >Home</NavLink>
                         </li>
                         <li className="myvid-link">
-                            <NavLink to="/" >Movies</NavLink>
+                            <NavLink to="/movies" >Movies</NavLink>
                         </li>
                         <li className="myvid-link">
-                            <NavLink to="/" >TV Shows</NavLink>
+                            <NavLink to="/tv" >TV Shows</NavLink>
                         </li>
                         <li className="myvid-link">
                             <NavLink to="/" >Login/Register</NavLink>
