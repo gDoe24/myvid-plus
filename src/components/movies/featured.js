@@ -1,34 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 import ProgressBar from '../layout/ProgressBar';
+import { getTrending } from '../../actions/movies';
+import {getMovieCredits} from '../../actions/movieDetailAction';
 
 
-const array = ["Lebron James", "Kobe Bryant", "Michael Jordan", "John Cena", "Deshaun Watson"];
-
-const featuredMovies = [
-                      {title: "Tenet",
-                       overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
-                       ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-                       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
-                       voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                       image: 'https://www.themoviedb.org/t/p/original/k68nPLbIST6NP96JmTxmZijEvCA.jpg',
-                       backdrop: 'https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg',
-                       cast: array,
-                       vote_average: 8.1
-                        },/*
-                        {title: "Your Name.",
-                        overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                        image: 'https://www.themoviedb.org/t/p/original/a954X8xMnukqMracTipsK3T5lD3.jpg',
-                        backdrop: 'https://www.themoviedb.org/t/p/original/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg',
-                        cast: array
-                         }*/
-                      ];
+function Featured({moviesReducer, getTrending, getMovieCredits}){
 
 
-function Featured(){
-  
+
+  useEffect(() => {
+    getTrending('movie');
+  }, []);
+
+  const featuredMovies = moviesReducer.genres[0].data.slice(0,3);
+
+  const cast = featuredMovies.map((movie, idx) => {
+      return movieDetailReducer.movie_credits.cast.slice(0,5).map((actor, i) => {
+        return actor.name;
+      })
+  });
+  console.log(cast);
+
   const mql = window.matchMedia('(max-width: 767px)');
 
   const smallSection = ( featuredMovies.map((movie, idx) => {
@@ -61,7 +54,8 @@ function Featured(){
     return(
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured">
-            <img key={`item-pic-${idx}`} className="featured-pic mx-3" src={movie.image}>
+            <img key={`item-pic-${idx}`} className="featured-pic mx-3" 
+                src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`}>
             </img>
             <div key={`featured-info-${idx}`} className="featured-info mx-2">
               <div className="fi-title-score">
@@ -80,14 +74,14 @@ function Featured(){
               <h3 className="fi-overview mt-1 mb-3">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
-          <div className="featured-cd mx-4">
-              <h2 className="fw-dark mb-4">Director/Cast</h2>
+         {/* <div className="featured-cd mx-4">
+              <h2 className="fw-dark mb-4">Cast</h2>
               <ul className="featured-cd-ul">
               {movie.cast.map((name) =>{
                   return(<li className="featured-cd-p"key={name}> {name} </li>)
               })} 
               </ul>
-          </div>
+          </div> */}
           </section>
           </div>
         )
@@ -120,5 +114,16 @@ function Featured(){
         </Fragment>
     )
 }
+const mapStateToProps = state => {
+  return{
+      moviesReducer: state.moviesReducer,
+  }
+}
 
-export default Featured
+const mapDispatchToProps = dispatch => {
+  return {
+     getTrending: (media_type) => dispatch(getTrending(media_type)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Featured);
