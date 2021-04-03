@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Featured from '../movies/featured';
 import '../../styles/styles.css';
@@ -20,22 +20,24 @@ function Home({ moviesReducer, showsReducer, getTrending, getActionMovies,getAni
         getComedyShows();
         getSciFiShows();
     }, []);
-
+    
     return(
-        <Fragment>
-            <main>
-            <Featured moviesReducer={moviesReducer}/>
-            <HomeSlider moviesReducer={moviesReducer}
-                        showsReducer={showsReducer} />
-            </main>
-        </Fragment>
+        <main>
+            <Fragment>
+                <Featured />
+                <HomeSlider 
+                    moviesReducer={moviesReducer}
+                    showsReducer={showsReducer} />
+            </Fragment>
+        </main>
     )
 }
 
 const mapStateToProps = state => {
     return{
         moviesReducer: state.moviesReducer,
-        showsReducer: state.showsReducer
+        showsReducer: state.showsReducer,
+        featuredReducer: state.featuredReducer
     }
 }
 

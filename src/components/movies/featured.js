@@ -1,81 +1,34 @@
-import React, { Fragment, useEffect, useReducer, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ProgressBar from '../layout/ProgressBar';
-import produce from 'immer';
+import { getFeaturedDetail } from '../../actions/featuredAction';
+import { getTrending } from '../../actions/movies';
 
-function Featured({moviesReducer}){
 
 
-  const movies = moviesReducer.genres[0].data;
-  const featuredMovies = movies.slice(0,3);
+function Featured({featuredReducer, getFeaturedDetail, moviesReducer, getTrending}){
   
-{/*  const initialState = {
-                        f_movies: [{
-                                    id: 0,
-                                    cast: [],
-                                    video: ''
-                                  },
-                                  {
-                                    id: 1,
-                                    cast: [],
-                                    video: ''
-                                  },
-                                  {
-                                    id: 2,
-                                    cast: [],
-                                    video: ''
-                                  }
-                                ],
-                          err: ''
-                        }
-
-  function reducer(state, action){
-      switch(action.type){
-        case "ADD_CAST_0":
-          return produce(state, draft => {
-            draft.f_movies[0].cast = action.payload
-          });
-        case "ADD_CAST_1":
-          return produce(state, draft => {
-            draft.f_movies[0].cast = action.payload
-          });
-        case "ADD_CAST_0":
-          return produce(state, draft => {
-            draft.f_movies[0].cast = action.payload
-          });
-        default:
-          return state
-      }
-  }
-
-  const [state, dispatch] = useReducer(reducer, initialState); */}
-
+  const [featuredMovies, setMovies] = useState();
   useEffect(() => {
-    featuredMovies.forEach((movie, idx) => {
-        fetchMovieCredits(movie.id);
-    });
+    getTrending('movie');
+    
   }, []);
-  
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  async function fetchMovieCredits(movie_id){
-    const data = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
-    );
-    const res = await data.json();
-    const c = res.cast.slice(0,5).map((actor) => {
-      return actor.name;
-    })
+  const m = moviesReducer.genres[0].data.slice(0,3);
+  setMovies(m);
+  useEffect(() => {
+    getFeaturedDetail(featuredMovies);
+  }, [])
 
-    console.log(c);
-  }
-
-  
-
+  const movies = featuredReducer.movies;
+  const loading = featuredReducer.loading;
   const mql = window.matchMedia('(max-width: 767px)');
 
-  const smallSection = ( featuredMovies.map((movie, idx) => {
+  const smallSection = ( 
+    loading == true ? 
+    <h2>Loading</h2> :
+    movies.map((movie, idx) => {
     return(
-      <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
+      <div key={`carousel-item-${idx}`} className={(idx === 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured-sm"
           style={{
             backgroundImage: `url(${movie.backdrop})`
@@ -98,9 +51,13 @@ function Featured({moviesReducer}){
         )
         }
         ));
-
-  const largeSection = ( featuredMovies.map((movie, idx) => {
+  const largeSection = (
+    loading == true ?
+              <h2>Loading</h2>
+              :
+              movies.map((movie, idx) => {
     return(
+      
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured">
             <img key={`item-pic-${idx}`} className="featured-pic mx-3" 
@@ -114,25 +71,25 @@ function Featured({moviesReducer}){
                   </div>
               </div>
               
-              <div className="fi-btns my-3">
-              <a href="#" className="btn fi-play my-1">
+              <div className="fi-btns">
+              <a href="#" className="btn fi-play">
                 <i className="bi bi-play-fill"></i>Play
               </a>
-              <a href="#" className="btn fi-trailer my-1"><i className="bi bi-film"></i>Watch Trailer</a>
+              <a href="#" className="btn fi-trailer"><i className="bi bi-film"></i>Watch Trailer</a>
               </div>
-              <h3 className="fi-overview mt-1 mb-3">Overview</h3>
+              <h3 className="fi-overview">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
-         {/* <div className="featured-cd mx-4">
-              <h2 className="fw-dark mb-4">Director/Cast</h2>
+        {/* <div className="featured-cd mx-4">
+              <h2 className="fw-dark mb-4">Starring</h2>
               <ul className="featured-cd-ul">
-              {movie.cast.map((name) =>{
+              {cast[idx].map((name) =>{
                   return(<li className="featured-cd-p"key={name}> {name} </li>)
               })} 
               </ul>
-            </div> */}
+            </div> */} 
           </section>
-          </div>
+          </div> 
         )
         }
         ));
@@ -146,7 +103,9 @@ function Featured({moviesReducer}){
               <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
             <div className="carousel-inner" role="listbox">
-            { mql.matches == false ? largeSection : smallSection}
+            {
+              mql.matches == false ? largeSection : smallSection
+            }
             </div>
           <a className="carousel-control-prev" href=".carousel" role="button" data-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -157,17 +116,21 @@ function Featured({moviesReducer}){
             
           </a>
     </div>
-    
-        
-        
         </Fragment>
     )
 }
 const mapStateToProps = (state, ownProps) => {
   return{
-      moviesReducer: ownProps.moviesReducer
+      featuredReducer: state.featuredReducer,
+      moviesReducer: state.moviesReducer
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getTrending: (media_type) => dispatch(getTrending(media_type)),
+    getFeaturedDetail: (movies) => dispatch(getFeaturedDetail(movies))
+  }
+}
 
-export default connect(mapStateToProps)(Featured);
+export default connect(mapStateToProps, mapDispatchToProps)(Featured);

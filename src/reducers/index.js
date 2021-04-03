@@ -4,6 +4,7 @@ import { showsReducer } from './showsReducer';
 import { movieDetailReducer } from './movieDetailReducer';
 import { showDetailReducer } from './showDetailReducer';
 import { searchReducer } from './searchReducer';
+import { featuredReducer } from './featuredReducer';
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
         showsReducer,
         movieDetailReducer,
         showDetailReducer,
-        searchReducer
+        searchReducer,
+        featuredReducer
     })
