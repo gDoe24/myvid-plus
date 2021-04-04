@@ -1,34 +1,11 @@
 import React, { Fragment } from 'react';
 import ProgressBar from '../layout/ProgressBar';
 
-
-const array = ["Lebron James", "Kobe Bryant", "Michael Jordan", "John Cena", "Deshaun Watson"];
-
-const featuredMovies = [
-                      {title: "Tenet",
-                       overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
-                       ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-                       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
-                       voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                       image: 'https://www.themoviedb.org/t/p/original/k68nPLbIST6NP96JmTxmZijEvCA.jpg',
-                       backdrop: 'https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg',
-                       cast: array,
-                       vote_average: 8.1
-                        },/*
-                        {title: "Your Name.",
-                        overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt \
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco \
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in \
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                        image: 'https://www.themoviedb.org/t/p/original/a954X8xMnukqMracTipsK3T5lD3.jpg',
-                        backdrop: 'https://www.themoviedb.org/t/p/original/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg',
-                        cast: array
-                         }*/
-                      ];
-
-
-function Featured(){
+function Featured(props){
   
+  const movies = props.moviesReducer.genres[0];
+  const featuredMovies = movies.data.slice(0,3);
+  console.log(featuredMovies);
   const mql = window.matchMedia('(max-width: 767px)');
 
   const smallSection = ( featuredMovies.map((movie, idx) => {
@@ -61,11 +38,17 @@ function Featured(){
     return(
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured">
-            <img key={`item-pic-${idx}`} className="featured-pic mx-3" src={movie.image}>
+            <img 
+              key={`item-pic-${idx}`} 
+              className="featured-pic mx-3"
+              alt={`poster for ${movie.title ? movie.title : movie.name}`}
+              src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`}>
             </img>
             <div key={`featured-info-${idx}`} className="featured-info mx-2">
               <div className="fi-title-score">
-                  <h1 className="fw-dark" id="fi-title">{movie.title}</h1>
+                  <h1 className="fw-dark" id="fi-title">
+                    {movie.title ?  movie.title : movie.name}
+                  </h1>
                   <div className="fi-score">
                     <ProgressBar rating={movie.vote_average}/>
                   </div>
@@ -80,14 +63,14 @@ function Featured(){
               <h3 className="fi-overview mt-1 mb-3">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
-          <div className="featured-cd mx-4">
+         {/* <div className="featured-cd mx-4">
               <h2 className="fw-dark mb-4">Director/Cast</h2>
               <ul className="featured-cd-ul">
               {movie.cast.map((name) =>{
                   return(<li className="featured-cd-p"key={name}> {name} </li>)
               })} 
               </ul>
-          </div>
+            </div> */}
           </section>
           </div>
         )

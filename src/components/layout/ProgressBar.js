@@ -4,7 +4,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export default function ProgressBar(props){
 
-    const percentage = parseInt(props.rating) * 10;
+    const percentage = props.rating * 10;
 
     return(
         <Fragment>

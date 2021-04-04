@@ -25,7 +25,7 @@ function Home({ moviesReducer, showsReducer, getTrending, getActionMovies,getAni
     return(
         <Fragment>
             <main>
-            <Featured />
+            <Featured moviesReducer={moviesReducer}/>
             <HomeSlider moviesReducer={moviesReducer}
                         showsReducer={showsReducer} />
             </main>
