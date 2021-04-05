@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import ProgressBar from '../layout/ProgressBar';
+import { Link } from 'react-router-dom';
 
 function Featured(props){
   
@@ -11,13 +12,18 @@ function Featured(props){
   const smallSection = ( featuredMovies.map((movie, idx) => {
     return(
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
+        <Link 
+            to={ movie.title ? `/movies/${movie.id}`
+              :`/tv/${movie.id}`}
+            style={{textDecoration:"none"}}
+            >
           <section key={`home-featured-${idx}`} className="home-featured-sm"
           style={{
-            backgroundImage: `url(${movie.backdrop})`
+            backgroundImage: `url("https://www.themoviedb.org/t/p/original/${movie.backdrop_path}")`
           }}>
             <div key={`featured-info-${idx}`} className="featured-info-sm mx-2">
               <div className="fi-title-score">
-                  <h1 className="fw-dark" id="fi-title">{movie.title}</h1>
+                  <h1 className="fw-dark" id="fi-title">{movie.title ? movie.title : movie.name}</h1>
                   <div className="fi-score"></div>
               </div>
               <div className="fi-btns">
@@ -29,6 +35,7 @@ function Featured(props){
               </div>
           </div>
           </section>
+          </Link>
           </div>
         )
         }
@@ -37,18 +44,24 @@ function Featured(props){
   const largeSection = ( featuredMovies.map((movie, idx) => {
     return(
       <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
+        <Link 
+            to={ movie.title ? `/movies/${movie.id}`
+              :`/tv/${movie.id}`}
+            style={{textDecoration:"none"}}
+            >
           <section key={`home-featured-${idx}`} className="home-featured">
-            <img 
-              key={`item-pic-${idx}`} 
-              className="featured-pic mx-3"
-              alt={`poster for ${movie.title ? movie.title : movie.name}`}
-              src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`}>
-            </img>
-            <div key={`featured-info-${idx}`} className="featured-info mx-2">
+            
+              <img
+                key={`item-pic-${idx}`} 
+                className="featured-pic"
+                alt={`poster for ${movie.title ? movie.title : movie.name}`}
+                src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
+            
+            <div key={`featured-info-${idx}`} className="featured-info">
               <div className="fi-title-score">
-                  <h1 className="fw-dark" id="fi-title">
-                    {movie.title ?  movie.title : movie.name}
-                  </h1>
+                <h1 id="fi-title"
+                  key={`href-${idx}`}>
+                    {movie.title ?  movie.title : movie.name}</h1>
                   <div className="fi-score">
                     <ProgressBar rating={movie.vote_average}/>
                   </div>
@@ -60,7 +73,7 @@ function Featured(props){
               </a>
               <a href="#" className="btn fi-trailer my-1"><i className="bi bi-film"></i>Watch Trailer</a>
               </div>
-              <h3 className="fi-overview mt-1 mb-3">Overview</h3>
+              <h3 className="fi-overview">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>
           </div>
          {/* <div className="featured-cd mx-4">
@@ -72,6 +85,7 @@ function Featured(props){
               </ul>
             </div> */}
           </section>
+          </Link>
           </div>
         )
         }

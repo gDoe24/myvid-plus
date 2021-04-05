@@ -76,16 +76,17 @@ nav i{
     border-radius: 1rem;
     box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, .69), 0 10px 10px -5px rgba(0, 0, 0, .73);
     flex: 1;
+    margin: 0 20px 0 20px;
 }
 .featured-info{
     height: 100%;
     width: 50%;
     border-radius: 2rem;
     padding: 1.2rem;
+    margin-left: 3em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
     flex: auto;
 }
 .fi-title-score{
@@ -93,11 +94,13 @@ nav i{
     flex-direction: row;
 }
 #fi-title{
-    font-size: 2.2rem;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
 }
 .fi-score{
-    width: 60px;
-    height: 60px;
+    width: 3.2em;
+    height: 3.2em;
     margin-left: 3rem;
     border-radius: 50%;
 }
@@ -125,10 +128,11 @@ nav i{
     margin-right: 5px;
 }
 .fi-overview{
-    
+    margin: 1.5em 0 1em 0;
     font-size: 1.4rem;
 }
 .fi-overview-p{
+    width: 90%;
     font-size: 1rem;
     overflow: auto;
 }
@@ -283,8 +287,6 @@ nav i{
         font-size: 24px;
     }
     .fi-score{
-        width: 2rem;
-        height: 1.5rem;
         margin-left: 1rem;
         border-radius: 50%;
     }
@@ -335,8 +337,6 @@ nav i{
         font-size: 24px;
     }
     .fi-score{
-        width: 2rem;
-        height: 2rem;
         margin-left: 2rem;
         border-radius: 50%;
     }
@@ -402,8 +402,6 @@ nav i{
         font-size: 24px;
     }
     .fi-score{
-        width: 2rem;
-        height: 2rem;
         margin-left: 2rem;
         border-radius: 50%;
     }
@@ -454,10 +452,6 @@ nav i{
     #fi-title{
         font-size: 1.8rem;
     }
-    .fi-score{
-        width: 2rem;
-        height: 2rem;
-    }
     .fi-play{
         height: 2rem;
         width: auto;
@@ -488,10 +482,18 @@ nav i{
 }
 @media screen and (min-width:1400px)
 {
+    .featured-pic{
+        margin: 0 1.5em 0 1.5em;
+    }
+    .featured-info{
+        padding: 2em;
+        margin-left: 3em;
+    }
     .fi-overview{
         font-size: 1.6rem;
     }
     .fi-overview-p{
+        width: 80%;
         font-size: 1.2rem;
         overflow: auto;
     }

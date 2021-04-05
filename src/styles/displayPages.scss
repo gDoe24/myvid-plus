@@ -1,7 +1,7 @@
 
 
 .display-main{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     margin-top: 10vh;
     width: 84%;
     height: auto;
@@ -12,7 +12,6 @@
         color: white;
     }
 }
-
 .genres-row{
     height: 200px;
     width: 100%;
@@ -26,8 +25,8 @@
         justify-content: space-between;
     }
     .genre-box{
-        height: 100%;
-        width: 200px;
+        height: 80%;
+        width: 180px;
         border: none;
         border-radius: .5rem;
         box-shadow:  0px 26px 30px -10px rgba(0, 0, 0, .69),  0px 16px 10px -10px rgba(0, 0, 0, .73);
@@ -64,7 +63,7 @@
     height: auto;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: space-between;
 }
 .display-g-card{

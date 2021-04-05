@@ -92,7 +92,7 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
     return (
         <div key={`shows-${genre.title}`} className="shows-container">
             <div className="active-genre">
-                <h1>{genre.title}</h1>
+                <h1 className="active-genre-title">{genre.title}</h1>
             </div>
             <div key={`genre-${genre.title}`} className="display-album-container">
                 {genre.id == 0 ? 
