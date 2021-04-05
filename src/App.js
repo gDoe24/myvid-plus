@@ -10,6 +10,7 @@ import MovieDetail from './components/movies/movieDetail';
 import MoviesPage from './components/movies/moviesPage';
 import ShowsPage from './components/tvshows/showsPage';
 import SearchDisplay from './components/search/SearchDisplay';
+import movieTrailer from './components/movies/movieTrailer';
 import Footer from './components/layout/Footer';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/tv/:id" render={props => <TvDetail key={props.location.key} {...props} />} />
+          <Route path="/movies/:id/video" exact component={movieTrailer} />
           <Route path="/movies/:id" render={props => <MovieDetail key={props.location.key} {...props} />} />
           <Route path="/movies/" exact component={MoviesPage}/>
           <Route path="/tv/" exact component={ShowsPage}/>

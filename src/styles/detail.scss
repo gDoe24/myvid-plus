@@ -794,3 +794,13 @@ and (-webkit-min-device-pixel-ratio: 2)
         overflow: visible;
     }
 }
+
+// EMBEDDED VIDEOS
+.video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 60%;
+    width: 60%;
+    position: absolute;
+  }
+  

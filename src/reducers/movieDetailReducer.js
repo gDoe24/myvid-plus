@@ -6,7 +6,10 @@ const initialState = {
     movie_detail: {},
     movie_credits: [],
     watch_providers: [],
-    movie_videos: [],
+    movie_videos: {
+        loading: true,
+        data: []
+    },
     similar_movies: [],
 
     err: ''
@@ -34,7 +37,11 @@ export const movieDetailReducer = (state = initialState, action) => {
         }
         case MOVIE_VIDEOS: return {
             ...state,
-            movie_videos: action.payload
+            movie_videos: {
+                ...state,
+                loading: false,
+                data: action.payload
+            }
         }
         case SIMILAR_MOVIES: return {
             ...state,

@@ -1,19 +1,18 @@
 import React, {useEffect} from "react";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import '../../styles/detail.css';
-import {getMovieDetail, getMovieCredits, getWatchProviders, 
-        getVideos, getSimilarMovies} from '../../actions/movieDetailAction';
+import {getMovieDetail, getMovieCredits, getWatchProviders, getSimilarMovies} from '../../actions/movieDetailAction';
 import {validProvidersSelector} from '../../reducers/movieDetailReducer';
 import Suggested from '../layout/suggested';
 import ProgressBar from "../layout/ProgressBar";
 
 function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWatchProviders,
-                      getSimilarMovies, getVideos }){
+                      getSimilarMovies }){
     useEffect(() => {
         getMovieDetail();
         getMovieCredits();
         getWatchProviders();
-        getVideos();
         getSimilarMovies();
     }, [])
     
@@ -35,9 +34,9 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         </div>
                     </div>
                     <div className="detail-btns">
-                        <a href="#" className="btn fi-play dt-play">
+                        <Link to={`/movies/${movie.movie_detail.id}/video`} className="btn fi-play dt-play">
                             <i className="bi bi-play-fill"></i>Play
-                        </a>
+                        </Link>
                         <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
                         </a>
                     </div>
@@ -101,7 +100,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             getMovieDetail: () => dispatch(getMovieDetail(ownProps.match.params.id)),
             getMovieCredits: () => dispatch(getMovieCredits(ownProps.match.params.id)),
             getWatchProviders: () => dispatch(getWatchProviders(ownProps.match.params.id)),
-            getVideos: () => dispatch(getVideos(ownProps.match.params.id)),
             getSimilarMovies: () => dispatch(getSimilarMovies(ownProps.match.params.id))
         }
 }
