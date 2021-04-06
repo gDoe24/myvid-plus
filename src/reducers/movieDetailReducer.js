@@ -38,7 +38,6 @@ export const movieDetailReducer = (state = initialState, action) => {
         case MOVIE_VIDEOS: return {
             ...state,
             movie_videos: {
-                ...state,
                 loading: false,
                 data: action.payload
             }

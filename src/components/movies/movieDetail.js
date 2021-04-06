@@ -34,11 +34,15 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                         </div>
                     </div>
                     <div className="detail-btns">
-                        <Link to={`/movies/${movie.movie_detail.id}/video`} className="btn fi-play dt-play">
+                        <Link 
+                            to={`/movies/${movie.movie_detail.id}/video`} 
+                            className="btn fi-play dt-play">
                             <i className="bi bi-play-fill"></i>Play
                         </Link>
-                        <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
-                        </a>
+                        <Link 
+                            to={`/movies/${movie.movie_detail.id}/video`} 
+                            className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
+                        </Link>
                     </div>
                     <div className="overview-section">
                         <h2 className="detail-overview">Overview</h2>

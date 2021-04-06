@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import '../../styles/detail.css';
+import '../../styles/videoPage.css';
 import { getVideos } from '../../actions/movieDetailAction';
 
-function MovieTrailer({ movieDetail, getVideos }){
+function MovieTrailer({ movie, getVideos }){
     
     useEffect(() => {
         getVideos();
     }, [])
-    
+
+
     return (
         <div className="video-responsive">
-            { movieDetail.movie_videos.loading == true ? 
+            { movie.movie_videos.loading == true ? 
             <h2>Loading</h2> :
             <iframe
             width="853"
             height="480"
-            src={`https://www.youtube.com/embed/${movieDetail.movie_videos.data[0].key}`}
+            src={`https://www.youtube.com/embed/${movie.movie_videos.data[0].key}`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -27,9 +28,9 @@ function MovieTrailer({ movieDetail, getVideos }){
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        movieDetail: state.movieDetailReducer
+        movie: state.movieDetailReducer
     }
 }
 

@@ -828,12 +828,4 @@
     overflow: visible;
   }
 }
-
-.video-responsive iframe {
-  left: 0;
-  top: 0;
-  height: 60%;
-  width: 60%;
-  position: absolute;
-}
 /*# sourceMappingURL=detail.css.map */

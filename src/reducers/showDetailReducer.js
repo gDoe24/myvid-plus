@@ -8,7 +8,10 @@ const initialState = {
     show_detail: {},
     show_credits: [],
     watch_providers: [],
-    show_videos: [],
+    show_videos: {
+        loading: true,
+        data: []
+    },
     similar_shows: [],
 
     err: ''
@@ -36,7 +39,10 @@ export const showDetailReducer = (state = initialState, action) => {
         }
         case SHOW_VIDEOS: return {
             ...state,
-            show_videos: action.payload
+            show_videos: {
+                loading: false,
+                data: action.payload
+            }
         }
         case SIMILAR_SHOWS: return {
             ...state,
@@ -90,4 +96,14 @@ export function validShowProvidersSelector(state){
     }
 
     return output;
+}
+
+export function validShowTrailerSelector(state){
+    const data = state.show_videos.data;
+    for (let i = 0; i < data.length; i++){
+        if ((data[i].type == "Trailer") && (data[i].name.includes("Official"))){
+            return data[i]
+        }
+    }
+    return data[0];
 }

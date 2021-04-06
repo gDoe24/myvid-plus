@@ -1,25 +1,26 @@
 import React, { useEffect} from "react";
-import {connect} from 'react-redux';
-import {getShowDetail, getShowCredits, getShowWatchProviders, 
-    getShowVideos, getSimilarShows} from '../../actions/showDetailAction';
-import {validShowProvidersSelector} from '../../reducers/showDetailReducer';
+import { connect } from 'react-redux';
+import { getShowDetail, getShowCredits, getShowWatchProviders, getSimilarShows } 
+        from '../../actions/showDetailAction';
+import { validShowProvidersSelector } from '../../reducers/showDetailReducer';
 import Suggested from '../layout/suggested';
 import '../../styles/detail.css';
 import ProgressBar from "../layout/ProgressBar";
+import { Link } from "react-router-dom";
 
 
 
 
-function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getShowWatchProviders, 
-    getShowVideos, getSimilarShows}){
+function TvDetail({ match, show, providers, getShowDetail, getShowCredits, 
+                    getShowWatchProviders, getSimilarShows}){
     
     useEffect(() => {
         getShowDetail();
         getShowCredits();
-        getShowWatchProviders(); 
-        getShowVideos(); 
+        getShowWatchProviders();
         getSimilarShows();
     }, [])
+
     const m = match.params.id;
     const mql = window.matchMedia('(max-width: 420px)');
     return (
@@ -36,11 +37,16 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits, getSh
                         </div>
                     </div>
                     <div className="detail-btns">
-                        <a href="#" className="btn fi-play dt-play">
+                        <Link 
+                            to={`/tv/${show.show_detail.id}/video`} 
+                            className="btn fi-play dt-play">
                             <i className="bi bi-play-fill"></i>Play
-                        </a>
-                        <a href="#" className="btn fi-trailer dt-trailer fw-light"><i className="bi bi-film"></i>Watch Trailer
-                        </a>
+                        </Link>
+                        <Link 
+                            to={`/tv/${show.show_detail.id}/video`} 
+                            className="btn fi-trailer dt-trailer fw-light">
+                            <i className="bi bi-film"></i>Watch Trailer
+                        </Link>
                     </div>
                     <div className="overview-section">
                         <h2 className="detail-overview">Overview</h2>
@@ -101,7 +107,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             getShowDetail: () => dispatch(getShowDetail(ownProps.match.params.id)),
             getShowCredits: () => dispatch(getShowCredits(ownProps.match.params.id)),
             getShowWatchProviders: () => dispatch(getShowWatchProviders(ownProps.match.params.id)),
-            getShowVideos: () => dispatch(getShowVideos(ownProps.match.params.id)),
             getSimilarShows: () => dispatch(getSimilarShows(ownProps.match.params.id))
         }
 }

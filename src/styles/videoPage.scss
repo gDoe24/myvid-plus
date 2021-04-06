@@ -1,0 +1,19 @@
+// EMBEDDED VIDEOS
+
+.video-responsive{
+    height: 100vh;
+    width: 99vw;
+    margin: 0 auto 0 auto;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+      }
+}
+.no-trailer{
+    color: white;
+}
