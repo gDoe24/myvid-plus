@@ -101,7 +101,7 @@ export function validShowProvidersSelector(state){
 export function validShowTrailerSelector(state){
     const data = state.show_videos.data;
     for (let i = 0; i < data.length; i++){
-        if ((data[i].type == "Trailer") && (data[i].name.includes("Official"))){
+        if ((data[i].type.toLowerCase() === "trailer") && (data[i].name.toLowerCase().includes("official"))){
             return data[i]
         }
     }

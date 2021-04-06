@@ -50,8 +50,11 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
                                                             :`/tv/${show.id}`}>
                         <div key={`display-img-container-${idx}`}className="display-image-container">
                             
-                            <img key={`display-g-card-pic-${idx}`} className="display-card-pic" 
-                            src={`https://www.themoviedb.org/t/p/original${show.poster_path}`} />
+                            <img 
+                                key={`display-g-card-pic-${idx}`} 
+                                alt={`${show.name} poster`}
+                                className="display-card-pic" 
+                                src={`https://www.themoviedb.org/t/p/original${show.poster_path}`} />
                         </div>
                         </Link>
                         <div key={`display-card-overlay-${idx}`} className="display-card-overlay">
@@ -74,8 +77,11 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
                                                             :`/tv/${show.id}`}>
                         <div key={`display-img-container-${idx}`}className="display-image-container">
                             
-                            <img key={`display-g-card-pic-${idx}`} className="display-card-pic" 
-                            src={`https://www.themoviedb.org/t/p/original${show.poster_path}`} />
+                            <img 
+                                key={`display-g-card-pic-${idx}`}
+                                alt={`${show.name} poster`}
+                                className="display-card-pic" 
+                                src={`https://www.themoviedb.org/t/p/original${show.poster_path}`} />
                         </div>
                         </Link>
                         <div key={`display-card-overlay-${idx}`} className="display-card-overlay">
@@ -94,7 +100,7 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
                 <h1 className="active-genre-title">{genre.title}</h1>
             </div>
             <div key={`genre-${genre.title}`} className="display-album-container">
-                {genre.id == 0 ? 
+                {genre.id === 0 ? 
                     popularShows :
                     genreById
                 }

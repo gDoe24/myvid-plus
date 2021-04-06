@@ -99,7 +99,7 @@ export function validProvidersSelector(state){
 export function validMovieTrailerSelector(state){
     const data = state.movie_videos.data;
     for (let i = 0; i < data.length; i++){
-        if ((data[i].type == "Trailer") && (data[i].name.includes("Official"))){
+        if ((data[i].type.toLowerCase() === "trailer") && (data[i].name.toLowerCase().includes("official"))){
             return data[i]
         }
     }

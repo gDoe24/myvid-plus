@@ -44,7 +44,7 @@ function SearchDisplay({ multi, searchMovies, searchShows }){
     const movies = multi.movies;
     const shows = multi.shows;
 
-    const activeType = active == "movies" ? movies : shows;
+    const activeType = active === "movies" ? movies : shows;
     const moviesTotal = multi.total_movies;
     const showsTotal = multi.total_shows
     

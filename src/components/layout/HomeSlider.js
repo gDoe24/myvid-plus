@@ -19,7 +19,7 @@ function HomeSlider(props){
 
     for (let i = 0; i < 8; i ++)
     {
-        if (i % 2 == 0){
+        if (i % 2 === 0){
             rows.push(moviesReducer.genres[m_i]);
             m_i ++;
         }
@@ -36,7 +36,7 @@ function HomeSlider(props){
             <div className="album-title">
                 <p className="album-title-h">{genre.title}</p>
             </div>
-            {genre.loading == true ? <h2>Loading</h2> :
+            {genre.loading === true ? <h2>Loading</h2> :
             
             <Fragment>
             <Swiper
@@ -69,15 +69,17 @@ function HomeSlider(props){
                 >
                 {genre.data.map((multi, idx) =>{
                 return (
-                    <SwiperSlide alt={multi.title ? multi.title 
-                                                    : multi.name } 
-                                 key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
+                    <SwiperSlide key={`slide-${idx}`} virtualIndex={`slide-${idx}`}>
                         <div key={`g-card-${idx}`} className="g-card">
                         <div key={`img-container-${idx}`}className="image-container">
                             <Link  key={`href-${idx}`} to={ multi.title ? `/movies/${multi.id}`
                                                             :`/tv/${multi.id}`}>
-                            <img key={`g-card-pic-${idx}`} className="card-pic" 
-                            src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />
+                            <img 
+                                key={`g-card-pic-${idx}`}
+                                alt={multi.title ? multi.title 
+                                    : multi.name } 
+                                className="card-pic" 
+                                src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />
                             </Link>
                         </div>
                         <div key={`card-title-area-${idx}`} className="card-title-area">

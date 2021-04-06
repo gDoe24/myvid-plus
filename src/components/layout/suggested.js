@@ -59,8 +59,12 @@ export default function Suggested(props) {
                                    to={ multi.title ? `/movies/${multi.id}`
                                                       :`/tv/${multi.id}`}
                             >
-                            <img key={`g-card-pic-${idx}`} className="card-pic" 
-                            src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />
+                            <img 
+                                key={`g-card-pic-${idx}`}
+                                alt={`${multi.title ? multi.title 
+                                    : multi.name} card`} 
+                                className="card-pic" 
+                                src={`https://www.themoviedb.org/t/p/original${multi.poster_path}`} />
                             </Link>
                         </div>
                         <div key={`card-title-area-${idx}`} className="card-title-area">

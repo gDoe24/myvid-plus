@@ -38,7 +38,7 @@ function GenreDisplay(props){
                         {genres.map((genre, idx) => {
                             return(
                                 <SwiperSlide key={`swiperslide-${idx}`}>
-                                <button className={`${idx == props.active ? `genre-box genre-active`: 
+                                <button className={`${idx === props.active ? `genre-box genre-active`: 
                                 ` genre-box genre-deactive`}`} key={`genre-${idx}`} 
                                         onClick={() => props.handleGenre(idx)}>
                                     <p key={`${genre.title}`} className="genre-title">{genre.title}</p>

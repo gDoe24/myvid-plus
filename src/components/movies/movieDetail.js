@@ -57,7 +57,7 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                                 {movie.movie_credits.cast.slice(0,5).map((actor, idx) => {
                                     return (
                                         <span className="cast-n" key={actor.id}>{
-                                            idx == 4 ? actor.name :
+                                            idx === 4 ? actor.name :
                                             `${actor.name}, `}
                                             </span>
                                     )
@@ -69,7 +69,9 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                             { providers ? 
                               providers.map((provider, idx) => {
                                 return <div key={`${provider}-${idx}`} className="watch-n">
-                                    <img className="me-3 watch-img"
+                                    <img 
+                                        className="me-3 watch-img"
+                                        alt={`logo for ${provider}`}
                                         src={`${process.env.PUBLIC_URL}/${provider.toLowerCase()}.svg`}/>
                                     {provider}
                                 </div>
@@ -78,9 +80,11 @@ function MovieDetail({ movie, providers, getMovieDetail, getMovieCredits, getWat
                             }
                         </div>
                     </div>
-                <img className="detail-pic"
+                <img 
+                    className="detail-pic"
+                    alt={`${movie.title} backdrop`}
                     src={`https://www.themoviedb.org/t/p/original${
-                        mql.matches == false ? 
+                        mql.matches === false ? 
                         movie.movie_detail.backdrop_path : movie.movie_detail.poster_path}`}>
                 </img>
                 <div className="overlay"></div>

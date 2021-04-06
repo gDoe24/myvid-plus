@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Footer from './Footer';
 import Featured from '../movies/featured';
 import '../../styles/styles.css';
 import { getActionMovies, getAnimationMovies, getThrillerMovies, getTrending } from '../../actions/movies';

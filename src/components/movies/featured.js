@@ -10,7 +10,7 @@ function Featured(props){
 
   const smallSection = ( featuredMovies.map((movie, idx) => {
     return(
-      <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
+      <div key={`carousel-item-${idx}`} className={(idx === 0? "carousel-item active": "carousel-item")}>
         <Link 
             to={ movie.title ? `/movies/${movie.id}`
               :`/tv/${movie.id}`}
@@ -49,25 +49,24 @@ function Featured(props){
 
   const largeSection = ( featuredMovies.map((movie, idx) => {
     return(
-      <div key={`carousel-item-${idx}`} className={(idx == 0? "carousel-item active": "carousel-item")}>
-        <Link 
-            to={ movie.title ? `/movies/${movie.id}`
-              :`/tv/${movie.id}`}
-            style={{textDecoration:"none"}}
-            >
+      <div key={`carousel-item-${idx}`} className={(idx === 0? "carousel-item active": "carousel-item")}>
           <section key={`home-featured-${idx}`} className="home-featured">
-            
               <img
                 key={`item-pic-${idx}`} 
                 className="featured-pic"
                 alt={`poster for ${movie.title ? movie.title : movie.name}`}
                 src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
-            
             <div key={`featured-info-${idx}`} className="featured-info">
               <div className="fi-title-score">
+              <Link 
+            to={ movie.title ? `/movies/${movie.id}`
+              :`/tv/${movie.id}`}
+            style={{textDecoration:"none"}}
+            >
                 <h1 id="fi-title"
                   key={`href-${idx}`}>
                     {movie.title ?  movie.title : movie.name}</h1>
+                    </Link>
                   <div className="fi-score">
                     <ProgressBar rating={movie.vote_average}/>
                   </div>
@@ -99,7 +98,6 @@ function Featured(props){
               </ul>
             </div> */}
           </section>
-          </Link>
           </div>
         )
         }
@@ -114,7 +112,7 @@ function Featured(props){
               <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
             <div className="carousel-inner" role="listbox">
-            { mql.matches == false ? largeSection : smallSection}
+            { mql.matches === false ? largeSection : smallSection}
             </div>
           <a className="carousel-control-prev" href=".carousel" role="button" data-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>

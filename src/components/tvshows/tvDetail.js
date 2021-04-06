@@ -71,6 +71,7 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits,
                               providers.map((provider, idx) => {
                                 return <div key={`${provider}-${idx}`}>
                                     <img className="me-3"
+                                        alt={`logo for ${provider}`}
                                         src={`${process.env.PUBLIC_URL}/${provider.toLowerCase()}.svg`}/>
                                     {provider}
                                 </div>
@@ -80,8 +81,9 @@ function TvDetail({ match, show, providers, getShowDetail, getShowCredits,
                         </div>
                     </div>
                 <img className="detail-pic"
+                    alt={`backdrop for ${show.show_detail.name}`}
                     src={`https://www.themoviedb.org/t/p/original${
-                        mql.matches == false ?
+                        mql.matches === false ?
                         show.show_detail.backdrop_path : show.show_detail.poster_path
                         }`}>
                 </img>

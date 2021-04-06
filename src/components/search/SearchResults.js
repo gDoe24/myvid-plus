@@ -38,9 +38,13 @@ export default function SearchResults(props)
                                     to={multi.title ? `/movies/${multi.id}`
                                     :`/tv/${multi.id}`}
                                     >
-                                    <img className="result-img" src={ multi.poster_path ?
-                                        `https://www.themoviedb.org/t/p/original${multi.poster_path}`
-                                        : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
+                                    <img 
+                                        className="result-img"
+                                        alt={`${multi.title ? multi.tile
+                                                            : multi.name} poster`}
+                                        src={ multi.poster_path ?
+                                              `https://www.themoviedb.org/t/p/original${multi.poster_path}`
+                                              : `${process.env.PUBLIC_URL}/default-placeholder-image.png`
                                     }
                                     />
                                 </Link>

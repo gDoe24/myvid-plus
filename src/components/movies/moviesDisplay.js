@@ -11,7 +11,7 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, getTrending, movie
     const genre = props.genre;
 
     useEffect(() => {
-        if (genre.id == 0)
+        if (genre.id === 0)
         {
             getTrending('movie');
         }
@@ -48,12 +48,17 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, getTrending, movie
                 popular.data.map((movie, idx) => {
                     return (
                         <div key={`display-g-card-${idx}`} className="display-g-card">
-                            <Link  key={`href-${idx}`} to={ movie.title ? `/movies/${movie.id}`
-                                                                :`/tv/${movie.id}`}>
+                            <Link  
+                                key={`href-${idx}`}
+                                to={ movie.title ? `/movies/${movie.id}`
+                                                 :`/tv/${movie.id}`}>
                             <div key={`display-img-container-${idx}`}className="display-image-container">
-                                
-                                <img key={`display-g-card-pic-${idx}`} className="display-card-pic" 
-                                src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
+                                <img 
+                                    key={`display-g-card-pic-${idx}`}
+                                    alt={`${movie.title ? movie.title 
+                                        : movie.name} card` }
+                                    className="display-card-pic" 
+                                    src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
                             </div>
                             </Link>
                             <div key={`display-card-overlay-${idx}`} className="display-card-overlay">
@@ -77,8 +82,12 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, getTrending, movie
                                                             :`/tv/${movie.id}`}>
                         <div key={`display-img-container-${idx}`}className="display-image-container">
                             
-                            <img key={`display-g-card-pic-${idx}`} className="display-card-pic" 
-                            src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
+                            <img 
+                                key={`display-g-card-pic-${idx}`}
+                                className="display-card-pic"
+                                alt={`${movie.title ? movie.title 
+                                    : movie.name} card` }
+                                src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`} />
                         </div>
                         </Link>
                         <div key={`display-card-overlay-${idx}`} className="display-card-overlay">
@@ -98,7 +107,7 @@ function MoviesDisplay({props, getGenreById, fetchMoviesData, getTrending, movie
                 <h1 className="active-genre-title">{genre.title}</h1>
             </div>
         <div key={`genre-${genre.title}`} className="display-album-container">
-        { genre.id == 0 ? 
+        { genre.id === 0 ? 
         trendingMovies :
         genreById
     }

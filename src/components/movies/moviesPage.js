@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
 import GenreDisplay from '../layout/genresDisplay';
 import MoviesDisplay from './moviesDisplay';
@@ -16,9 +16,13 @@ function MoviesPage({ movies }) {
     return (
         <div className="display-main">
             <h1>Movies Page</h1>
-            <GenreDisplay handleGenre={handleGenre}
-                          genres={movies.genres} active={active}/>
-            <MoviesDisplay genre={movies.genres[active]} key={movies.genres[active].id}/>
+            <GenreDisplay 
+                handleGenre={handleGenre}
+                genres={movies.genres}
+                active={active}/>
+            <MoviesDisplay
+                genre={movies.genres[active]}
+                key={movies.genres[active].id}/>
         </div>
     )
 };

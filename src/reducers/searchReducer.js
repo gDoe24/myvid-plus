@@ -1,11 +1,8 @@
 import {SEARCH_MOVIES_SUCCESS, SEARCH_MOVIES_FAILURE, SEARCH_SHOWS_SUCCESS, SEARCH_SHOWS_FAILURE }
         from '../actions/types';
-import produce from 'immer';
-
 
 const initialState = {
     loading: true,
-    shows: [],
     movies: {
         loading: true,
         data: [],

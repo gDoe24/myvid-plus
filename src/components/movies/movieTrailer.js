@@ -13,9 +13,9 @@ function MovieTrailer({ movie, getVideos, movieTrailer }){
 
     return (
         <div className="video-responsive">
-            { movie.movie_videos.loading == true ? 
+            { movie.movie_videos.loading === true ? 
             <h2>Loading</h2> :
-            movieTrailer != undefined ?
+            movieTrailer !== undefined ?
             <iframe
             width="853"
             height="480"
