@@ -16,7 +16,7 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
             getShowGenreById();
         }
         window.addEventListener('scroll', infinteLoop);
-    })
+    }, [])
 
     useEffect(() => {
         if (isBottom){

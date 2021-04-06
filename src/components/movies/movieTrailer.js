@@ -10,7 +10,6 @@ function MovieTrailer({ movie, getVideos, movieTrailer }){
         getVideos();
     }, [])
 
-
     return (
         <div className="video-responsive">
             { movie.movie_videos.loading === true ? 
