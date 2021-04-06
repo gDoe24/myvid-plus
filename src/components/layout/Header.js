@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 import Search from '../search/Search';
 
 function Header(){
 
+    const location = useLocation();
     return(
         <Fragment>
-        <header>
+        <header className={location.pathname.includes("/video") ? "hidden": ""}>
             <nav className="navbar navbar-expand-md navbar-dark fixed-top ">
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand logo">MyVids Plus</Link>

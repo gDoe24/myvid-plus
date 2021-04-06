@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTrending } from '../../actions/movies';
 import { getShowGenreById, fetchData, getTrendingShows } from '../../actions/shows';
 
 function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchData}){
@@ -10,14 +9,14 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
     const [page, incrementPage] = useState(2);
 
     useEffect(() => {
-        if (genre.id == 0){
+        if (genre.id === 0){
             getTrendingShows();
         }
         else{
             getShowGenreById();
         }
         window.addEventListener('scroll', infinteLoop);
-    }, [])
+    })
 
     useEffect(() => {
         if (isBottom){
@@ -33,7 +32,7 @@ function ShowsDisplay({props, shows, getShowGenreById, getTrendingShows, fetchDa
     const infinteLoop = () => {
         const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-        if (scrollTop + window.innerHeight + 50 >= scrollHeight)
+        if (scrollTop + window.innerHeight + 150 >= scrollHeight)
         {
             setIsBottom(true);
         }

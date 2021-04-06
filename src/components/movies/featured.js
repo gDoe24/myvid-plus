@@ -6,7 +6,6 @@ function Featured(props){
   
   const movies = props.moviesReducer.genres[0];
   const featuredMovies = movies.data.slice(0,3);
-  console.log(featuredMovies);
   const mql = window.matchMedia('(max-width: 767px)');
 
   const smallSection = ( featuredMovies.map((movie, idx) => {
@@ -27,11 +26,18 @@ function Featured(props){
                   <div className="fi-score"></div>
               </div>
               <div className="fi-btns">
-              <a href="#" className="btn fi-play me-1">
+              <Link 
+                  to={movie.title ? `/movies/${movie.id}/video`
+                : `/tv/${movie.id}/video`}
+                  className="btn fi-play me-1">
                 <i className="bi bi-play-fill"></i>Play
-              </a>
-              <a href="#" className="btn fi-trailer ms-1 fw-light"><i className="bi bi-film"></i>Watch Trailer
-              </a>
+              </Link>
+              <Link 
+                  to={movie.title ? `/movies/${movie.id}/video`
+                  : `/tv/${movie.id}/video`} 
+                  className="btn fi-trailer ms-1 fw-light">
+                    <i className="bi bi-film"></i>Watch Trailer
+              </Link>
               </div>
           </div>
           </section>
@@ -68,10 +74,18 @@ function Featured(props){
               </div>
               
               <div className="fi-btns my-3">
-              <a href="#" className="btn fi-play my-1">
+              <Link 
+                  to={movie.title ? `/movies/${movie.id}/video`
+                  : `/tv/${movie.id}/video`} 
+                  className="btn fi-play my-1">
                 <i className="bi bi-play-fill"></i>Play
-              </a>
-              <a href="#" className="btn fi-trailer my-1"><i className="bi bi-film"></i>Watch Trailer</a>
+              </Link>
+              <Link 
+                  to={movie.title ? `/movies/${movie.id}/video`
+                  : `/tv/${movie.id}/video`} 
+                  className="btn fi-trailer my-1">
+                    <i className="bi bi-film"></i>Watch Trailer
+              </Link>
               </div>
               <h3 className="fi-overview">Overview</h3>
               <p className="fi-overview-p lead " id="fi-sum">{movie.overview}</p>

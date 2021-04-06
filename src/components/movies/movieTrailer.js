@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import '../../styles/videoPage.css';
 import { getVideos } from '../../actions/movieDetailAction';
+import { validMovieTrailerSelector } from '../../reducers/movieDetailReducer';
 
-function MovieTrailer({ movie, getVideos }){
+function MovieTrailer({ movie, getVideos, movieTrailer }){
     
     useEffect(() => {
         getVideos();
@@ -14,6 +15,7 @@ function MovieTrailer({ movie, getVideos }){
         <div className="video-responsive">
             { movie.movie_videos.loading == true ? 
             <h2>Loading</h2> :
+            movieTrailer != undefined ?
             <iframe
             width="853"
             height="480"
@@ -23,6 +25,8 @@ function MovieTrailer({ movie, getVideos }){
             allowFullScreen
             title="Embedded youtube"
             />
+            :
+            <h2 className="no-trailer">There is no Trailer for this Show</h2>
             }       
         </div>
     )
@@ -30,7 +34,8 @@ function MovieTrailer({ movie, getVideos }){
 
 const mapStateToProps = (state) => {
     return {
-        movie: state.movieDetailReducer
+        movie: state.movieDetailReducer,
+        movieTrailer: validMovieTrailerSelector(state.movieDetailReducer)
     }
 }
 
