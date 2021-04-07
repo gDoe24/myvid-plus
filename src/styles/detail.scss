@@ -1,0 +1,796 @@
+.movie-detail-main{
+    width: 98vw;
+    height: auto;
+    margin-top: 10vh;
+    align-items: center;
+    
+}
+.detail{
+    display: grid;
+    width: 90%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 20vh auto 0 auto;
+    padding-top: 5%;
+    grid-template-columns: 40% 30%;
+    justify-content: space-between;
+    background-size: cover;
+    place-items: center;
+}
+.detail-info{
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    color: white;
+    z-index: 2;
+}
+.detail-title-score{
+    height: auto;
+    display: grid;
+    grid-template-columns: 85% 10%;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    #detail-title{
+        font-size: 36px;
+    }
+    .detail-score{
+        width: 70px;
+        height: 70px;
+        margin-top: 10%;
+        border-radius: 50%;
+    }
+}
+
+.detail-btns{
+    padding-bottom: 40px;
+    align-items: center;
+    a{
+        font-size: 16px;
+        
+    }
+    .dt-play{
+        width: auto;
+        height: auto;
+        margin-right: 10px;
+    }
+    .dt-trailer{
+        width: auto;
+        height: auto;
+        margin-left: 10px;
+    }
+}
+.overview-section{
+    .detail-overview{
+        padding-bottom: 10px;
+        font-size: 28px;
+    }
+    .detail-overview-p {
+        font-size: 16px;
+        line-height: 30px;
+        height: 140px;
+        width: 120%;
+        overflow: auto;
+    }
+}
+
+.detail-cd{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    color: white;
+    h2{
+        font-size: 28px;
+    }
+    .cast{
+        padding-bottom: 40px;
+        line-height: 30px;
+        h2{
+            font-size: 28px;
+        }
+    }
+    .cast-n{
+        list-style-type: none;
+        font-size: 18px;
+    }
+    .watch{
+        line-height: 30px;
+        h2{
+            font-size: 28px;
+        }
+        .watch-img{
+            height: 40px;
+            width: 40px;
+        }
+    }
+    .watch-n{
+        font-size: 18px;
+    }
+
+}
+.detail-pic{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.overlay{
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left bottom, rgba(0,0,0,0), rgba(0,0,0, .8)),
+                linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
+}
+
+
+
+@media screen and (min-width:0px)and (max-width: 420px)
+{
+    .movie-detail-main{
+        margin-top: 0vh;
+        width: 100%;
+    }
+    .detail{
+        height: auto;
+        width: 100%;
+        grid-template-columns: 100%;
+        align-items: center;
+        padding: 0;
+        margin: 50vh auto 0 auto;
+    }
+    .detail-info{
+        height: auto;
+        width: 80%;
+        bottom: 0px;
+        padding: 0px;
+        margin: 0 auto 0 auto;
+    }
+    .detail-title-score{
+        height: auto;
+        width: 100%;
+        place-items: center;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 100%;
+        padding-bottom: 20px;
+        #detail-title{
+            font-size: 24px;
+            text-align: center;
+            }
+        .detail-score{
+            display: none;
+        }
+    }
+    .detail-btns{
+        padding-bottom: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        a{
+            font-size: 14px;
+            
+        }
+        .dt-play{
+            width: 100%;
+            height: auto;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .dt-trailer{
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+    }
+    .overview-section{
+        margin-top: 10vh;
+        margin-right: 0;
+        width: 100%;
+        .detail-overview{
+            padding-bottom: 10px;
+            font-size: 18px;
+        }
+        .detail-overview-p {
+            width: 100%;
+            font-size: 14px;
+            line-height: 20px;
+            height: auto;
+        }
+    }
+    .detail-cd{
+        left: 0%;
+        width: 80%;
+        margin: 0 auto 0 auto;
+        .cast{
+            h2{
+                font-size: 18px;
+            }
+            .cast-n{
+                font-size: 14px;
+            }
+        }
+        .watch{
+            h2{
+                font-size: 18px;
+            }
+            .watch-n{
+                display: inline-block;
+                padding-right: 10px;
+                overflow-wrap: normal;
+            }
+        }
+    }
+    .detail-pic{
+        position: absolute;
+        height: 80vh;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+    .overlay{
+        height: 80vh;
+    }
+}
+@media screen and (min-width:421px) and (max-width: 767px){
+    .detail{
+        margin-top: 15vh;
+        padding-top: 5%;
+        grid-template-columns: 40% 40%;
+    }
+    .detail-info{
+        width: 100%;
+        height: 100%;
+        padding-left: 5%;
+        color: white;
+        z-index: 2;
+    }
+    .detail-title-score{
+        #detail-title{
+            font-size: 32px;
+        }
+        .detail-score{
+            display: none;
+        }
+    }
+    
+    .detail-btns{
+        padding-bottom: 2em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        a{
+            font-size: 14px;
+        }
+        .dt-play{
+            width: 100%;
+            height: auto;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .dt-trailer{
+            width: 100%;
+            height: auto;
+            margin: 0;
+        }
+    }
+    .overview-section{
+        .detail-overview{
+            padding-bottom: .5em;
+            font-size: 24px;
+        }
+        .detail-overview-p {
+            font-size: 14px;
+            line-height: 20px;
+            height: 100px;
+            width: 140%;
+        }
+    }
+    
+    .detail-cd{
+        .cast{
+            h2{
+                font-size: 24px;
+            }
+            .cast-n{
+                font-size: 14px;
+            }
+        }
+        .watch{
+            h2{
+                font-size: 18px;
+            }
+            .watch-n{
+                font-size: 14px;
+            }
+            .watch-img{
+                height: 30px;
+                width: 30px;
+            }
+        }
+        
+    }  
+}
+@media screen and (min-width:768px)and (max-width: 991px){
+    .detail{
+        width: 90%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: space-between;
+        background-size: cover;
+        place-items: center;
+        margin: 70vh auto 0 auto;
+    }
+    .detail-info{
+        height: 100%;
+
+        color: white;
+        z-index: 2;
+    }
+    .detail-title-score{
+        height: auto;
+        display: grid;
+        grid-template-columns: 85% 10%;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        #detail-title{
+            font-size: 32px;
+        }
+        .detail-score{
+            width: 100px;
+            height: 100px;
+            margin-top: 10%;
+            margin-left: 0;
+            border-radius: 50%;
+        }
+    }
+
+    .overview-section{
+        margin-top: 5vh;
+        width: 90%;
+        .detail-overview{
+            padding-bottom: 20px;
+            font-size: 24px;
+        }
+        .detail-overview-p {
+            font-size: 16px;
+            line-height: 30px;
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .detail-cd{
+        left: 0%;
+        width: 90%;
+        margin: 0 auto 0 auto;
+        h2{
+            font-size: 24px;
+        }
+        .cast{
+            padding-bottom: 40px;
+            line-height: 30px;
+        }
+        .cast-n{
+            list-style-type: none;
+            font-size: 16px;
+        }
+        .watch{
+            line-height: 30px;
+        }
+        .watch-n{
+            font-size: 16px;
+        }
+    }
+}
+// IPAD
+@media all 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1){
+      .detail{
+        margin: 75vh auto 0 auto;
+      }
+    
+}
+
+// IPAD PRO
+  @media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+    .detail{
+        margin: 50vh auto 0 auto;
+        grid-template-columns: 40% 30%;
+    }
+    .detail-info{
+        width: 100%;
+        height: 100%;
+    }
+    .detail-title-score{
+        height: auto;
+        display: grid;
+        grid-template-columns: 90% 10%;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        #detail-title{
+            font-size: 36px;
+        }
+        .detail-score{
+            width: 80px;
+            height: 80px;
+            margin-left: 30px;
+            margin-top: 10%;
+            border-radius: 50%;
+        }
+    }
+    .detail-overview{
+        padding-bottom: 20px;
+        font-size: 28px;
+    }
+    .detail-overview-p {
+        font-size: 18px;
+        height: 300px;
+        width: 100%;
+        overflow: auto;
+    }
+    .detail-cd{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 2;
+        color: white;
+        h2{
+            font-size: 28px;
+        }
+        .cast{
+            padding-bottom: 40px;
+            line-height: 30px;
+        }
+        .cast-n{
+            list-style-type: none;
+            font-size: 18px;
+        }
+        .watch{
+            line-height: 30px;
+            h2{
+                font-size: 28px;
+            }
+        }
+        .watch-n{
+            font-size: 18px;
+        }
+    
+    }
+}
+@media screen and (min-width:768px) and (max-width: 991px)
+{
+    .detail{
+        margin-top: 20vh;
+        padding-top: 5%;
+        grid-template-columns: 40% 30%;
+    }
+    .detail-info{
+        width: 100%;
+        height: 100%;
+        padding-left: 5%;
+        color: white;
+        z-index: 2;
+    }
+    .detail-title-score{
+        #detail-title{
+            font-size: 36px;
+        }
+        .detail-score{
+            width: 60px;
+            height: 60px;
+            margin-left: 0;
+        }
+    }
+    
+    .detail-btns{
+        padding-bottom: 40px;
+        align-items: center;
+        a{
+            font-size: 16px;
+            
+        }
+        .dt-play{
+            width: auto;
+            height: auto;
+            margin-right: .2em;
+        }
+        .dt-trailer{
+            width: 160px;
+            height: auto;
+            margin-left: .2em;
+        }
+    }
+    .overview-section{
+        .detail-overview{
+            padding-bottom: 20px;
+            font-size: 28px;
+        }
+        .detail-overview-p {
+            font-size: 16px;
+            line-height: 30px;
+            height: 200px;
+            width: 140%;
+        }
+    }
+    
+    .detail-cd{
+        h2{
+            font-size: 28px;
+        }
+    }
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
+{
+    .detail{
+        margin-top: 15vh;
+    }
+    .detail-title-score{
+        padding-bottom: 20px;
+        #detail-title{
+            font-size: 36px;
+        }
+        .detail-score{
+            width: 80px;
+            height: 80px;
+            margin-left: 20px;
+        }
+    }
+    .detail-btns{
+        padding-bottom: 20px;
+        align-items: center;
+        a{
+            font-size: 16px;
+            
+        }
+        .dt-play{
+            width: auto;
+            height: auto;
+            margin-right: 10px;
+        }
+        .dt-trailer{
+            width: auto;
+            height: auto;
+            margin-left: 10px;
+        }
+    }
+    .overview-section{
+        .detail-overview{
+            padding-bottom: 5px;
+            font-size: 28px;
+        }
+        .detail-overview-p {
+            font-size: 16px;
+            line-height: 30px;
+            height: 120px;
+            width: 130%;
+        }
+    }
+    .detail-cd{
+        h2{
+            font-size: 28px;
+        }
+        .cast{
+            padding-bottom: 40px;
+            line-height: 30px;
+            h2{
+                font-size: 28px;
+            }
+        }
+        .cast-n{
+            list-style-type: none;
+            font-size: 18px;
+        }
+        .watch{
+            line-height: 30px;
+            .watch-img{
+                height: 40px;
+                width: 40px;
+            }
+        }
+        .watch-n{
+            font-size: 18px;
+        }
+    
+    }
+}
+@media screen and (min-width:1400px)
+{
+    .detail{
+        display: grid;
+        width: 90%;
+        height: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30vh;
+        padding-top: 5%;
+        grid-template-columns: 40% 30%;
+        justify-content: space-between;
+        background-size: cover;
+        place-items: center;
+    }
+    .detail-info{
+        width: 100%;
+        height: 100%;
+        padding-left: 5%;
+        color: white;
+        z-index: 2;
+    }
+    .detail-title-score{
+        height: auto;
+        display: grid;
+        grid-template-columns: 90% 10%;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        #detail-title{
+            font-size: 48px;
+        }
+        .detail-score{
+            width: 100px;
+            height: 100px;
+            margin-left: 30px;
+            margin-top: 10%;
+            border-radius: 50%;
+        }
+    }
+    
+    .detail-btns{
+        padding-bottom: 40px;
+        align-items: center;
+        a{
+            font-size: 18px;
+            
+        }
+        .dt-play{
+            width: 120px;
+            height: auto;
+            margin-right: 30px;
+        }
+        .dt-trailer{
+            width: 160px;
+            height: auto;
+            margin-left: 30px;
+        }
+    }
+    .detail-overview{
+        padding-bottom: 20px;
+        font-size: 36px;
+    }
+    .detail-overview-p {
+        font-size: 18px;
+        line-height: 30px;
+        height: 200px;
+        width: 700px;
+        overflow: auto;
+    }
+    .detail-cd{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 2;
+        color: white;
+        h2{
+            font-size: 36px;
+        }
+        .cast{
+            padding-bottom: 40px;
+            line-height: 30px;
+        }
+        .cast-n{
+            list-style-type: none;
+            font-size: 18px;
+        }
+        .watch{
+            line-height: 30px;
+        }
+        .watch-n{
+            font-size: 18px;
+        }
+    
+    }
+    .detail-pic{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .overlay{
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to left bottom, rgba(0,0,0,0), rgba(0,0,0, .8)),
+                    linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
+    }
+    
+}
+
+
+//SUGGESTED SLIDER
+
+.sugg-album-row{
+    margin-top: 10vh;
+    overflow: visible;
+}
+.sugg-album-title{
+    width: 90%;
+}
+@media screen and (min-width:0px)and (max-width: 420px){
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:421px) and (max-width: 767px){
+    .sugg-album-row{
+        margin-top: 20vh;
+        overflow: visible;
+    }
+    
+}
+@media screen and (min-width:768px)and (max-width: 991px){
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+    .g-card{
+        height: 85%;
+        width: 100%;
+    }
+}
+// IPAD
+
+@media all 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1)
+  {
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+  }
+// IPAD PRO
+@media only screen 
+and (min-device-width: 1024px) 
+and (max-device-width: 1366px)
+and (orientation: portrait) 
+and (-webkit-min-device-pixel-ratio: 2) 
+{
+    .sugg-album-row{
+        margin-top: 10vh;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:992px) and (max-width: 1199px)
+{
+    .sugg-album-row{
+        margin-top: 40vh;
+        overflow: visible;
+    }
+}
+@media screen and (min-width:1400px)
+{
+    .sugg-album-row{
+        margin-top: 20vh;
+        overflow: visible;
+    }
+}

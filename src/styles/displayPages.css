@@ -1,0 +1,181 @@
+.display-main {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 10vh;
+  width: 84%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.display-main h1 {
+  color: white;
+}
+
+.genres-row {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 10vh;
+}
+
+.genres-row .swiper-container {
+  overflow: visible;
+}
+
+.genres-row .swiper-wrapper {
+  width: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.genres-row .genre-box {
+  height: 80%;
+  width: 180px;
+  border: none;
+  border-radius: .5rem;
+  -webkit-box-shadow: 0px 26px 30px -10px rgba(0, 0, 0, 0.69), 0px 16px 10px -10px rgba(0, 0, 0, 0.73);
+          box-shadow: 0px 26px 30px -10px rgba(0, 0, 0, 0.69), 0px 16px 10px -10px rgba(0, 0, 0, 0.73);
+}
+
+.genres-row .genre-title {
+  font-size: 24px;
+}
+
+.genres-row .genre-deactive {
+  color: #d283ff;
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(172, 172, 172, 0.5)), to(rgba(172, 172, 172, 0.2)));
+  background: linear-gradient(to right bottom, rgba(172, 172, 172, 0.5), rgba(172, 172, 172, 0.2));
+}
+
+.genres-row .genre-active {
+  color: #e9ecef;
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(139, 47, 201, 0.7)), to(rgba(55, 1, 96, 0.5)));
+  background: linear-gradient(to right bottom, rgba(139, 47, 201, 0.7), rgba(55, 1, 96, 0.5));
+}
+
+.shows-container {
+  margin-top: 20px;
+}
+
+.active-genre-title {
+  color: white;
+}
+
+.active-genre {
+  margin-bottom: 2em;
+}
+
+.display-album-container {
+  width: 100%;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  gap: 2rem;
+  -ms-grid-columns: (minmax(150px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.display-g-card {
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 90% auto;
+      grid-template-rows: 90% auto;
+      grid-template-areas: "image"  "gc-title";
+  -webkit-transition: ease-in .3s;
+  transition: ease-in .3s;
+  overflow: hidden;
+}
+
+.display-g-card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  z-index: 10;
+}
+
+.display-g-card:hover .display-card-title {
+  font-size: 1.2rem;
+  color: white;
+  display: block;
+}
+
+.display-g-card:hover .display-image-container {
+  opacity: .6;
+}
+
+.display-image-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: image;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 5px;
+}
+
+.display-card-title {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  display: none;
+}
+
+.display-card-pic {
+  height: 100%;
+  width: 100%;
+  border-radius: .5rem;
+  -webkit-box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, 0.69), 0 10px 10px -5px rgba(0, 0, 0, 0.73);
+          box-shadow: -8px 26px 30px -10px rgba(0, 0, 0, 0.69), 0 10px 10px -5px rgba(0, 0, 0, 0.73);
+}
+
+@media screen and (min-width: 0px) and (max-width: 420px) {
+  .genres-row {
+    height: 120px;
+    width: 100%;
+  }
+  .genres-row .swiper-wrapper {
+    width: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .genres-row .genre-box {
+    height: 100%;
+    width: 140px;
+  }
+  .genres-row .genre-box .genre-title {
+    font-size: 20px;
+  }
+  .display-album-container {
+    gap: 2rem;
+    -ms-grid-columns: (minmax(100px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .display-g-card {
+    height: 100%;
+  }
+  .display-card-title {
+    display: block;
+    font-size: 18px;
+    color: white;
+    display: none;
+  }
+}
+/*# sourceMappingURL=displayPages.css.map */

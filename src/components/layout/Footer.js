@@ -1,9 +1,46 @@
 import React, { Fragment } from 'react';
+import {NavLink} from 'react-router-dom';
+import '../../styles/footer.css';
 
 function Footer(){
     return(
         <Fragment>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+           <div className="footer-container">
+               <div className="footer-links-column">
+                    <span className="footer-logo">MyVids +</span>
+                    <ul>
+                        <li className="personal-li">
+                            <a href="#">Contact</a>
+                        </li>
+                        <li className="personal-li">
+                            <a href="#">Portfolio</a>
+                        </li>
+                        <li className="personal-li">
+                            <a href="https://github.com/gDoe24">Github</a>
+                        </li>
+                    </ul>
+               </div>
+               <div className="footer-myvid-links-column">
+                    <ul>
+                        <li className="myvid-link">
+                            <NavLink to="/" >Home</NavLink>
+                        </li>
+                        <li className="myvid-link">
+                            <NavLink to="/movies" >Movies</NavLink>
+                        </li>
+                        <li className="myvid-link">
+                            <NavLink to="/tv" >TV Shows</NavLink>
+                        </li>
+                        <li className="myvid-link">
+                            <NavLink to="/" >Login/Register</NavLink>
+                        </li>
+                    </ul>
+               </div>
+               <div className="attribution">
+                    <span className="provided-by">Powered By:</span>
+                    <img className="movieDb-logo" src={`${process.env.PUBLIC_URL}/theMovieDb.svg`}/>
+               </div>
+           </div>
         </Fragment>
     );
 }
