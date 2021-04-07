@@ -13,7 +13,6 @@
     "immer": "^8.0.1",
     "progressbar.js": "^1.1.0",
     "prop-types": "^15.7.2",
-    "radium": "^0.26.1",
     "react": "^17.0.1",
     "react-addons-update": "^15.6.3",
     "react-circular-progressbar": "^2.0.3",
