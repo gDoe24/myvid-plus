@@ -10,7 +10,7 @@ import MovieDetail from './components/movies/movieDetail';
 import MoviesPage from './components/movies/moviesPage';
 import ShowsPage from './components/tvshows/showsPage';
 import SearchDisplay from './components/search/SearchDisplay';
-import movieTrailer from './components/movies/movieTrailer';
+import MovieTrailer from './components/movies/movieTrailer';
 import Footer from './components/layout/Footer';
 import ShowTrailer from './components/tvshows/ShowTrailer';
 
@@ -23,10 +23,10 @@ function App() {
         <ScrollToTop />
         <Header />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/tv/:id/video" exact component={ShowTrailer} />
+          <Route path="/" exact render={props => <Home key={props.location.key} {...props} />}/>
+          <Route path="/tv/:id/video" exact render={props => <ShowTrailer key={props.location.key} {...props} />} />
           <Route path="/tv/:id" render={props => <TvDetail key={props.location.key} {...props} />} />
-          <Route path="/movies/:id/video" exact component={movieTrailer} />
+          <Route path="/movies/:id/video" exact render={props => <MovieTrailer key={props.location.key} {...props} />} />
           <Route path="/movies/:id" render={props => <MovieDetail key={props.location.key} {...props} />} />
           <Route path="/movies/" exact component={MoviesPage}/>
           <Route path="/tv/" exact component={ShowsPage}/>

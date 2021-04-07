@@ -100,10 +100,19 @@ export function validShowProvidersSelector(state){
 
 export function validShowTrailerSelector(state){
     const data = state.show_videos.data;
+    const output = [];
     for (let i = 0; i < data.length; i++){
         if ((data[i].type.toLowerCase() === "trailer") && (data[i].name.toLowerCase().includes("official"))){
             return data[i]
         }
+        if (data[i].type.toLowerCase() === "trailer"){
+            output.push(data[i])
+        }
     }
-    return data[0];
+    try{
+        return output[0];
+    }
+    catch {
+        return data[0];
+    }
 }
